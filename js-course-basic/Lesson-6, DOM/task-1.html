@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson-6, task-1</title>
+</head>
+<body>
+
+<button id="btn">addImg</button>
+<p id="img"></p>
+
+<script>
+
+  // 1. У вас есть форма с кнопкой и элемент параграф (тег p)…Нажав на кнопку у вас в
+  // параграфе появляется какая то картинка
+
+var idElem = document.getElementById('img');
+var createElementImg = document.createElement('img');
+createElementImg.src = "http://kyky.org/uploads/post/photo/2479/default_635844198531727087654293112_cat_1-jpg.jpg";
+
+var btn = document.getElementById('btn');
+btn.onclick = function () {
+  idElem.appendChild(createElementImg)
+}
+
+</script>
+
+</body>
+</html>
+

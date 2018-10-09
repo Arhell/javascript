@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lesson-2</title>
+</head>
+<body>
+
+<script>
+
+// 1. Среди трех чисел найти среднее арифметическое. Если среди чисел есть равные, вывести сообщение "Ошибка". Числа принять от пользователя.
+
+	var countFirst = +prompt('Введите произвольное число');
+	var countSecont = +prompt('Введите произвольное число');
+	var countThird = +prompt('Введите произвольное число');
+	var countAll = (countFirst + countSecont+ countThird) / 3;
+
+	if (countFirst == countSecont || countSecont == countThird || countThird == countFirst) {
+		alert('Ошибка');
+	} else (document.write('Среднее арифметическое = ' + countAll))
+
+
+// 2. Построить прямоугольный треугольник состоящий из символа "*".
+
+	// for (var i = 0; i < 10; i++) {
+	//
+	// 	for (var j = 0; j < 10 - i; j++) {
+	// 		document.write("* ");
+	// 	}
+	//
+	// 	document.write("<br/>");
+	// }
+
+
+// 3. Определить какое из трех, введенных пользователем, чисел максимальное и вывести его на экран.
+
+	// var a = +prompt('Введите число');
+	// var b = +prompt('Введите число');
+	// var c = +prompt('Введите число');
+	//
+	// var message = (a > b && a > c) ? 'a - самое большое число' :
+	// 							(b > a && b > c) ? 'b - самое большое число' :
+	// 							'c - самое большое число' ;
+	//
+	// document.write(message);
+
+
+// 4. Дано два числа A и B где (A<B).
+// Выведите на экран суму всех чисел расположенных в числовом промежутке от А до В.
+// Выведите на экран все нечетные значения, расположенные в числовом промежутке от А до В.
+
+// 1
+
+	// var a = +prompt ("Введите меньшее число");
+	// var b = +prompt("Введите большее число");
+	//
+	// if (a < b) {
+	// 	var c = 0;
+	// 	for (var i = a; i <= b; i++) {
+	// 		c += i;
+	// 	}
+	// }
+	// document.write("Сумма чисел в промежутке:" + " " + c);
+
+// 2
+
+	// var a = +prompt ("Введите меньшее число");
+	// var b = +prompt("Введите большее число")
+	//
+	// for (i = a; i <= b; i++) {
+	// 	if (i % 2 == 0) {
+	// 		document.write("<br/>");
+	// 	}
+	// 	else {
+	// 		document.write("Нечетные числа в промежутке:" + " " + i + "<br/>");
+	// 	}
+	// }
+
+
+// 5. Вывести на экран ряд чисел Фибоначчи, состоящий из n элементов (n принять от пользователя).
+// Числа Фибоначчи – это элементы числовой последовательности, в которой каждое последующее число равно сумме двух предыдущих.
+
+	// var count = +prompt('Введите число, не больше 100');
+	// var max = 101,
+	// 		a = 0,
+	// 		b = 1,
+	// 		c;
+	//
+	// if (count >= max) {
+	// 	document.write('Вы ввели слишком большое число');
+	// }
+	//
+	// else if (count < max && count != 0) {
+	// 	document.write(a + ", ");
+	// 	document.write(b + ", ");
+	//
+	// 	for(i = 3; i <= count; i++)
+	// 	{
+	// 		c = a + b;
+	// 		a = b;
+	// 		b = c;
+	//
+	// 		document.write(c + ", ");
+	// 	}
+	// }
+	//
+	// else if (count == 0){
+	// 	document.write('Вы ввели 0');
+	// }
+
+
+// 6. Вывести на экран таблицу умножения от 0 до 9.
+
+	// document.write('<table border="1" style="border-collapse: collapse;">');
+	//
+	// for (i=1; i <= 10; i++){
+	// 	document.write('<tr>');
+	// 	for (j=1; j<=10; j++){
+	// 		document.write('<td>' + i + ' x ' + j +' = ' + i*j + '</td>');
+	// 	}
+	// 	document.write('</tr>');
+	// }
+	//
+	// document.write('</table>');
+
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson-3</title>
+</head>
+<body>
+
+<script>
+
+  // 1. Сделать собственные примеры методов применяемых для массивов.
+
+  // Join
+
+  var lang = ['html', 'css', 'js', 'php'];
+  var addSpace = lang.join(' > ');
+  document.write(addSpace);
+
+
+  // Concat
+
+  // var frameworks = ['vue', 'react', 'angular'];
+  // var langFrameworks = lang.concat(frameworks).join(' > ');
+  // document.write(langFrameworks);
+
+
+  // Reverse
+
+  // var phpFrameworks = ['laravel' ,'symfony', 'phalcon'];
+  // var phpFrameworksReverse = phpFrameworks.reverse();
+  // document.write(phpFrameworksReverse);
+
+
+  // Slice
+
+  // var numbers = ['1', '2', '3', '4', '5', '6', '7'];
+  // var numArr = numbers.slice(1, 5);
+  // document.write(numArr);
+
+
+  // Splice
+
+  // var num = ['1', '2', '3', '4', '5', '6', '7'];
+  // num.splice(2, 5, '8', '9', '10');
+  // document.write(num);
+
+
+  // Sort
+
+  // var sortArr = [1, 23, 43, 57, 64, 65, 12];
+  // sortArr.sort();
+  // document.write(sortArr);
+
+
+  // Push
+
+  // var numbers = [1, 2, 3, 4, 5];
+  // numbers.push(6, 7, 8, 9, 10);
+  // document.write(numbers);
+
+
+  // Pop
+
+  // var numbers = [1, 2, 3, 4, 5];
+  // var delNumbers = numbers.pop();
+  // document.write('Старый масив ' + numbers + '<br>' + 'Удаленное число = ' + '\"' + delNumbers + '\"');
+
+
+  // Unshift
+
+  // var numbers = ['1', '2', '3', '4', '5'];
+  // var numbersLength = numbers.length;
+  // document.write(numbersLength + '<br>');
+  // var addNumbers = numbers.unshift('-2', '-1', '0');
+  // document.write(addNumbers);
+
+
+  // Shift
+
+  // var numbers = ['1', '2', '3', '4', '5'];
+  // document.write('Исходный масив ' + numbers);
+  // var delNumber = numbers.shift();
+  // document.write('<br>' + 'Удаленное число = ' + delNumber);
+
+
+  // 2. Создать функцию для нахождения минимального и максимального элемента массива getMinAndMax(array).
+  // 	Результат должен выводиться в консоль.
+
+  // var arr = [23, 345, 23, 4, 6, -24, -1, 25, -23];
+  //
+  // function getMaxValue(arr) {
+  //   var arrLength = arr.length,
+  //       maxElement = arr[0];
+  //
+  //   for (var i = 0; i < arrLength; i++) {
+  //     if (maxElement < arr[i]) {
+  //       maxElement = arr[i];
+  //     }
+  //   }
+  //   return maxElement;
+  // };
+  //
+  // function getMinValue(arr) {
+  //   var arrLength = arr.length,
+  //       minElement = arr[0];
+  //
+  //   for (var i = 0; i < arrLength; i++) {
+  //     if (minElement > arr[i]) {
+  //       minElement = arr[i];
+  //     }
+  //   }
+  //   return minElement;
+  // };
+  //
+  // var functionMaxElement = getMaxValue(arr);
+  // var functionMinElement = getMinValue(arr);
+  //
+  // console.log(functionMaxElement, functionMinElement);
+  // document.write('Максимальное значение = ' + functionMaxElement + '<br>' + 'Минимальное значение = ' + functionMinElement);
+
+
+  // 3. Определить элементы массива и вывести их значения, индексы которых лежит в указанном пределе. Предел вводит пользователь.
+
+  // var indexOne = +prompt('Введите число от 1 до 10, первое число должно быть меньше второго');
+  // var indexTwo = +prompt('Введите второе число, оно должно быть больше первого');
+  //
+  // var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+  //
+  // for (var i = 0; i < arr.length; i++) {
+  //   if (i >= indexOne - 1 && i <= indexTwo -1) {
+  //     document.write(arr[i] + '<br>');
+  //   }
+  // }
+
+
+  // 4. Отсортировать массив на 10 чисел в порядке возростания. Значения принимаются от пользователя. Сортировка осушествляется методом sort().
+
+  // var arr = [];
+  //
+  // for (i = 0; i < 10; i++) {
+  //   var num = +prompt('Введите число');
+  //   arr.push(num);
+  //   var result = arr.sort(function (a, b) { return a - b; });
+  // }
+  //
+  // document.write(result);
+
+
+  // 5. Создать программу, выполняющую вставку элемента в массив после элемента, значение которого укажет пользователь.
+
+  // var ask = +prompt('Укажите любое число от 0 до 9');
+  // var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  //
+  // if (ask < 0) {
+  //   alert('Вы ввели слишком маленькое число')
+  // }
+  //
+  // else if (ask > 9) {
+  //   alert('Вы ввели слишком большое значение')
+  // }
+  //
+  // else {
+  //   var element = prompt('Введите любое значение');
+  //   arr.splice(ask, 0, element);
+  //   document.write(arr.join());
+  // }
+
+
+  // 6. Необходимо получить предпоследний элемент из массива month и вывести его на экран. 3-мя способами
+  // var month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+
+  // var month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+  // var one = month.length - 2;
+  // document.write(month[one]);
+
+  // var month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+  // var two = month.slice(10, 11);
+  // document.write(two);
+
+  // var month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+  //
+  // for (i = 10; i < month.length - 1; i++) {
+  //   document.write(month[i]);
+  // }
+
+  // var month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+  //
+  // var arr = month[10];
+  // document.write(arr);
+
+
+  // 7. Создать два произвольных массива: один массив - любимая спортивная команда / модели автомобилей / города, во втором - количество игроков в команде / объем двигателя / количество жителей в городе. Объединить данные из двух массивов и вывести их в одну строку.  -->
+
+  // var cars = ['Запорожец', 'Лада-калина', 'Киа'];
+  // var oil = ['1.4', '1.3', '2'];
+  //
+  // for (i = 0; i < cars.length; i++) {
+  //   document.write('Марка автомобился - ' + cars[i].concat(' с обьемом двигателя ' + oil[i]) + ' литра.' + '<br>');
+  // }
+
+
+</script>
+
+</body>
+</html>
+

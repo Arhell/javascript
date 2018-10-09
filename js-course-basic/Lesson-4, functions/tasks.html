@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson-4</title>
+</head>
+<body>
+
+<script>
+
+  // 1. Создать функцию calculate(operand1, operand2, sign), где operand1 и operand2 — два числа, sign — знак арифметической операции.
+  //     Функция должна расчитывать результат операции, исходя из переданного ей знака.
+  //     Функция должна проверять корректность введенных чисел и знака операции.
+  //     Все аргументы для функции принять от пользователя.
+
+  function calculate(operand1, operand2, sign) {
+    operand1 = +prompt('Введите число');
+    sign = prompt('Введите значение * - + /');
+    operand2 = +prompt('Введите число');
+    var result;
+
+    switch (sign) {
+      case "+":
+        result = operand1 + operand2;
+        break;
+
+      case "-":
+        result = operand1 - operand2;
+        break;
+
+      case "*":
+        result = operand1 * operand2;
+        break;
+
+      case "/":
+        result = operand1 / operand2;
+        break;
+
+      default:
+        document.write( sign + ' - не является знаком арифметической операции.');
+    }
+    if (result != undefined) {
+      document.write("Результат операции: " + result);
+    }
+  }
+
+  calculate();
+
+
+  // 2. Создать функцию, возводящую число в степень, число и сама степень вводится пользователем
+
+  // function pow(x, y) {
+  //   var result = x;
+  //
+  //   for (var i = 1; i < y; i++) {
+  //     result *= x;
+  //   }
+  //   return result;
+  // }
+  //
+  // var x = prompt("x?", '');
+  // var y = prompt("y?", '');
+  //
+  // document.write( pow(x, y));
+
+
+  // 3.  Создать игру "Камень-Ножницы-Бумага".
+  //     Выбор компьютера определяется строкой:
+  //     "var computerChoice = Math.random();
+  //     alert(computerChoice);".
+  //     Math.random() выдает произвольное число в промежутке от 0 до 1, на основании этого можно построить принцип выбора решения компьютера.
+
+  // var userChoice = prompt('Что выберете: камень, ножницы или бумага?');
+  //
+  // var computerChoice = Math.random();
+  //
+  // if (computerChoice < 0.34) {
+  //   computerChoice = 'камень';
+  // }
+  // else if(computerChoice <= 0.67) {
+  //   computerChoice = 'бумага';
+  // } else {
+  //   computerChoice = 'ножницы';
+  // }
+  //
+  // document.write('ИИ выбрал ' + computerChoice + '<br>');
+  // alert(computerChoice);
+  //
+  //
+  // var choice1 = userChoice;
+  // var choice2 = computerChoice;
+  //
+  // var compare = function (choice1, choice2) {
+  //   if (choice1 == choice2) {
+  //     return 'Ничья!!!';
+  //   }
+  //
+  //   else if(choice1 == 'камень') {
+  //     if(choice2 == 'ножницы') {
+  //       return 'камень победил';
+  //     }
+  //     else {
+  //       return 'бумага выйграла';
+  //     }
+  //   }
+  //
+  //   else if(choice1 == 'бумага') {
+  //     if(choice2 == 'камень') {
+  //       return 'бумага выйграла';
+  //     }
+  //     else {
+  //       return 'ножницы победили';
+  //     }
+  //   }
+  //
+  //   else if(choice1 == 'ножницы') {
+  //     if(choice2 == 'бумага') {
+  //       return 'ножницы победили';
+  //     }
+  //     else {
+  //       return 'камень победил';
+  //     }
+  //   }
+  // }
+  //
+  // document.write(compare(choice1, choice2));
+
+
+// 4. Напишите функцию, которая возвращает n-е число Фибоначчи. Для решения используйте цикл.
+
+  // function fib(n) {
+  //   var a = 1,
+  //       b = 1;
+  //   for (var i = 3; i <= n; i++) {
+  //     var c = a + b;
+  //     a = b;
+  //     b = c;
+  //   }
+  //   return b;
+  // }
+  // var number = +prompt('Введите число');
+  // alert(fib(number));
+
+</script>
+
+</body>
+</html>
+
