@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Practice</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		.wrapper {
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.img {
+			width: 450px;
+		}
+
+		.img img {
+			width: 100%;
+		}
+
+		.counter {
+			margin-top: 10px;
+			text-align: center;
+			font-weight: bold;
+			font-size: 20px;
+			color: red;
+		}
+
+		.reset-btn {
+			padding: 4px 10px;
+			display: inline-block;
+			background-color: red;
+			margin: 15px auto 0;
+			color: #fff;
+			cursor: pointer;
+		}
+		.cat-wrapper {
+			text-align: center;
+		}
+		.cat-wrapper img {
+			display: block;
+		}
+		.cat-wrapper-second img {
+			display: block;
+		}
+
+		.wrapper-all {
+			text-align: center;
+		}
+
+		.tab {
+			display: inline-block;
+			padding: 5px;
+			cursor: pointer;
+			position: relative;
+		}
+
+		.active {
+			border: 1px solid red;
+		}
+
+		.hide {
+			display: none;
+		}
+
+		.show {
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+
+<div class="wrapper">
+	<div class="wrapper-all" id="tabs">
+
+		<div class="tab active">Monya</div>
+		<div class="tab">Boris</div>
+		<div class="tab">Pedro</div>
+		<div class="tab">Nice</div>
+		<div class="tab">Red</div>
+
+		<div class="cat-wrapper tabContent">
+			<div class="img" id="img">
+				<img src="Monya.jpg">
+			</div>
+
+			<div class="counter">
+				Count = <span id="span">0</span>
+			</div>
+			<div class="reset-btn" id="reset">
+				reset
+			</div>
+		</div>
+
+		<div class="cat-wrapper tabContent">
+			<div class="img" id="img">
+				<img src="boris.jpg">
+			</div>
+
+			<div class="counter">
+				Count = <span id="span2">0</span>
+			</div>
+			<div class="reset-btn" id="reset2">
+				reset
+			</div>
+		</div>
+
+		<div class="cat-wrapper tabContent">
+			<div class="img" id="img">
+				<img src="pedro.jpg">
+			</div>
+
+			<div class="counter">
+				Count = <span id="span2">0</span>
+			</div>
+			<div class="reset-btn" id="reset2">
+				reset
+			</div>
+		</div>
+
+		<div class="cat-wrapper tabContent">
+			<div class="img" id="img">
+				<img src="nice.jpg">
+			</div>
+
+			<div class="counter">
+				Count = <span id="span2">0</span>
+			</div>
+			<div class="reset-btn" id="reset2">
+				reset
+			</div>
+		</div>
+
+		<div class="cat-wrapper tabContent">
+			<div class="img" id="img">
+				<img src="red.jpg">
+			</div>
+
+			<div class="counter">
+				Count = <span id="span2">0</span>
+			</div>
+			<div class="reset-btn" id="reset2">
+				reset
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script>
+
+  var tab;
+  var tabContent;
+
+  window.onload = function () {
+		tabContent = document.getElementsByClassName('tabContent');
+		tab = document.getElementsByClassName('tab');
+		hideTabContent(1);
+  }
+
+  function hideTabContent(a) {
+		for (var i = a; i<tabContent.length; i++) {
+		  tabContent[i].classList.remove('show');
+      tabContent[i].classList.add('hide');
+      tab[i].classList.remove('active');
+		}
+  }
+
+  document.getElementById('tabs').onclick = function (event) {
+		var target = event.target;
+		if (target.className == 'tab')  {
+		  for (var i = 0; i < tab.length; i++) {
+				if (target == tab[i]) {
+				  showTabContent(i);
+				  break;
+				}
+			}
+		}
+  }
+
+  function showTabContent(b) {
+		if(tabContent[b].classList.contains('hide')) {
+		  hideTabContent(0);
+      tab[b].classList.add('active');
+      tabContent[b].classList.remove('hide');
+      tabContent[b].classList.add('show');
+		}
+  }
+
+  var catImg = document.getElementById('img'),
+      countSpan = document.getElementById('span'),
+      resetBrn = document.getElementById('reset'),
+      count = 0;
+
+
+  catImg.onclick = function () {
+    count += 1;
+    countSpan.innerHTML = count;
+  }
+
+  resetBrn.onclick = function () {
+    if (count >= 1) {
+      count = 0;
+      countSpan.innerHTML = count;
+    }
+  }
+
+
+</script>
+
+</body>
+</html>
