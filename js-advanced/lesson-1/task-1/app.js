@@ -1,5 +1,5 @@
 var myNumber,
-    answer,
+    result,
     numEvent;
 
 numEvent = Math.floor((Math.random() * 10) + 1);
@@ -7,14 +7,14 @@ console.log(numEvent);
 
 function numRandom() {
   myNumber = document.getElementById("success").value;
-  answer = document.getElementById("answer");
+  result = document.getElementById("result");
 
   if (myNumber == numEvent) {
-    answer.innerHTML = "Угадал";
+    result.innerHTML = "Угадал";
   }
   else if (myNumber > numEvent) {
-    answer.innerHTML = "Повезет в следующий раз";
+    result.innerHTML = "Повезет в следующий раз";
   } else {
-    answer.innerHTML = "Повезет в следующий раз";
+    result.innerHTML = "Повезет в следующий раз";
   }
 }

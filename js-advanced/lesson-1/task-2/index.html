@@ -5,7 +5,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Javascript advanced, lesson-1, guess the number</title>
+  <title>Javascript advanced, lesson-2, calculator</title>
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
@@ -13,15 +13,19 @@
 <div class="wrapper">
   <div class="inner">
 
-    <h1>Введите число от 1 до 10</h1>
+    <h1>Канкулятор</h1>
 
-    <input type="text" id="success">
+    <p>Число 1: <input type="text" id="numOne"></p>
+    <p>Число 2: <input type="text" id="numTwo"></p>
 
-    <button onclick="numRandom()">Угадать число</button>
+    <button onclick="plus()">+</button>
+    <button onclick="minus()">-</button>
+    <button onclick="multiply()">*</button>
+    <button onclick="divide()">/</button>
 
-    <p class="line"></p>
+    <hr>
 
-    <p id="answer"></p>
+    <p id="result">Результат:</p>
 
   </div>
 </div>
