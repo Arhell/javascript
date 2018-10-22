@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Work wish 'this'</title>
+</head>
+<body>
+<script>
+
+  var pizza = {
+    toppings: ['meet'],
+    bortik: true,
+    size: '36',
+    makePizza: function () {
+      return this.size + " " +(this.bortik == true) + " " + [this.toppings];
+    },
+    packPizza: function () {
+      return this.size
+    }
+  }
+
+  alert(pizza.makePizza())
+  alert(pizza.packPizza())
+
+</script>
+</body>
+</html>
