@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Call</title>
+</head>
+<body>
+<script>
+
+  function printArgs() {
+    var join = [].join;
+    var argStr = join.call(arguments, ':');
+
+    alert( argStr );
+  }
+
+  printArgs(1, 2, 3);
+
+</script>
+</body>
+</html>
