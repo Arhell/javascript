@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bind</title>
+</head>
+<body>
+<script>
+
+  var user = {
+    firstName: "Name",
+    sayHi: function(who) {
+      alert( this.firstName + ": Hi, " + who );
+    }
+  };
+
+  var sayHi = bind(user.sayHi, user);
+
+  sayHi("Name2");
+  sayHi("Name3");
+
+</script>
+</body>
+</html>
