@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>hierarchy</title>
+
+</head>
+<body>
+
+<script>
+
+  class Animal {
+    constructor(name) {
+      this.name = name;
+    }
+
+    walk() {
+      alert("dance: " + this.name);
+    }
+  }
+
+  class Rabbit extends Animal {
+    walk() {
+      super.walk();
+      alert("run");
+    }
+  }
+
+  new Rabbit("Cat").walk();
+
+</script>
+
+</body>
+</html>
