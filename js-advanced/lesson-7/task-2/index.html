@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dom elem</title>
+
+</head>
+<body>
+
+<div id="test" style="height: 50px;background-color: lightblue;">Test Div</div>
+<p>Расчетные стили для test div: <br><span id="output"></span></p>
+
+<script>
+  function myFunction(){
+    var elem = document.getElementById("test");
+    var txt;
+    var cssObj = window.getComputedStyle(elem)
+
+    for (i = 0; i < cssObj.length; i++) {
+      cssObjProp = cssObj.item(i)
+      txt += cssObjProp + " = " + cssObj.getPropertyValue(cssObjProp) + "<br>";
+    }
+    document.getElementById("output").innerHTML = txt;
+
+    document.getElementById("output").innerHTML = elem.style.backgroundColor;
+  }
+
+  myFunction()
+</script>
+
+
+</body>
+</html>
