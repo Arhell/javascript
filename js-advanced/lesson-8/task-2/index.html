@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div>
+  <input id="todo-input" value="" /> <button id="button-add">Add</button>
+  <p>ToDo List:</p>
+  <ol id="todo-list">
+    <li class="todo-item">
+      First todo
+      <span class="delete-button" onclick="removeItem(event)" title="Delete current item">x</span>
+    </li>
+  </ol>
+</div>
+<script>
+  var btn = document.getElementById('button-add');
+  var todoItemTemplate = document.getElementById('todo-list').firstElementChild;
+  btn.onclick = addItem;
+  function addItem() {
+    var input = document.getElementById('todo-input');
+    var newItem = todoItemTemplate.cloneNode(true);
+    newItem.firstChild.textContent = input.value;
+    document.getElementById('todo-list').appendChild(newItem);
+    input.value = '';
+  }
+
+  function removeItem(e) {
+    e.target.parentElement.remove();
+  }
+</script>
+<style>
+  .delete-button{
+    padding-left: 5px;
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+</body>
+</html>
