@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -20,4 +24,11 @@
   border: 1px solid #fff;
   box-sizing: border-box;
   float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  text-transform: uppercase;
 }
