@@ -25,31 +25,47 @@ function makeCells() {
 
 makeCells()
 
-// var сontainer = document.getElementsByClassName('wrapper')[0];
-// var element = document.createElement('ul');
-// сontainer.appendChild(element);
-//
-// cells.map(createCell)
-//
-// function createCell(item) {
-//   var el = document.createElement('li');
-//   el.setAttribute('id', item.id);
-//   element.appendChild(el);
-// }
+var allCells = getFieldSelector('li'),
+    currentPlayer = 'x';
 
-
-var liItem = document.getElementsByTagName('li');
-//console.log(liItem)
-
-for (let i = 0; i < liItem.length; i++) {
-  liItem[i].addEventListener("click", currentStep);
+function getFieldSelector(selector) {
+  return document.getElementsByTagName(selector);
 }
 
+function eventClick(getElement) {
+  for (let i = 0; i < getElement.length; i++) {
+    getElement[i].addEventListener("click", currentStep);
+  }
+}
+
+eventClick(allCells);
+
 function currentStep() {
-  var playerOne = 'x';
-  var playerTwo = 'o';
-  this.innerHTML = playerOne
-  console.log(this)
+  this.innerHTML = currentPlayer;
+  (currentPlayer === 'x') ? (currentPlayer = 'o') : (currentPlayer = 'x')
+  this.removeEventListener('click', currentStep)
+  checkWinner(allCells)
+}
+
+function checkWinner(getElement) {
+  var winConbinations = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6]
+  ];
+
+  for (let i =0; winConbinations.length; i++) {
+    var win = winConbinations[i];
+
+    if ((getElement[win[0]]).innerHTML === (getElement[win[1]]).innerHTML &&
+        (getElement[win[1]]).innerHTML === (getElement[win[2]]).innerHTML &&
+        (getElement[win[0]]).innerHTML !== '') {alert('WIN!!')}
+  }
 }
 
 
