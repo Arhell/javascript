@@ -43,13 +43,27 @@ function currentStep() {
   this.innerHTML = currentPlayer;
   (currentPlayer === 'x') ? (currentPlayer = 'o') : (currentPlayer = 'x')
   this.removeEventListener('click', currentStep)
-  checkWinner(allCells)
 }
 
-function checkWinner(getElement) {
-  for (let i =0; i <= 2; i++){
-    console.log(getElement)
+var chunks = function(array, size) {
+  var results = [];
+  while (array.length) {
+    results.push(array.splice(0, size));
   }
-}
+  return results;
+};
+
+var newArr = Array.from(allCells)
+
+console.log(chunks(newArr,3)[0][2])
+
+
+
+
+
+
+
+
+
 
 
