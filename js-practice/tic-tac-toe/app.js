@@ -1,15 +1,14 @@
 var cells = [
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {} // 9
+  {id: 1, markedBy: null},
+  {id: 2, markedBy: null},
+  {id: 3, markedBy: null},
+  {id: 4, markedBy: null},
+  {id: 5, markedBy: null},
+  {id: 6, markedBy: null},
+  {id: 7, markedBy: null},
+  {id: 8, markedBy: null},
+  {id: 9, markedBy: null} // 9
 ];
-
 
 function makeCells() {
   var сontainer = document.getElementsByClassName('wrapper')[0];
@@ -17,9 +16,10 @@ function makeCells() {
   сontainer.appendChild(element);
 
   for(let i = 0; i < cells.length; i++) {
-      var item = document.createElement('li');
-      element.appendChild(item);
-    }
+    var item = document.createElement('li');
+    item.setAttribute('id', cells[i].id);
+    element.appendChild(item);
+  }
 }
 
 makeCells()
@@ -39,11 +39,25 @@ function eventClick(getElement) {
 
 eventClick(allCells);
 
-function currentStep() {
-  this.innerHTML = currentPlayer;
-  (currentPlayer === 'x') ? (currentPlayer = 'o') : (currentPlayer = 'x')
-  this.removeEventListener('click', currentStep)
+
+
+function currentStep(event) {
+  //this.innerHTML = currentPlayer;
+  //(currentPlayer === 'x') ? (currentPlayer = 'o') : (currentPlayer = 'x')
+  // this.removeEventListener('click', currentStep)
+  var getCellId = event.target.getAttribute('id');
+
+  cells.find(function (item) {
+    for (let i=0; i < cells.length; i++) {
+      
+      console.log(item[i])
+    }
+  })
+  var resultObj;
 }
+
+
+
 
 var chunks = function(array, size) {
   var results = [];
@@ -55,10 +69,30 @@ var chunks = function(array, size) {
 
 var newArr = Array.from(allCells)
 
-console.log(chunks(newArr,3)[0][2])
+var arrChunks = chunks(newArr,3);
+
+
+for (let i =0; i < arrChunks[0].length; i++) {
+
+}
 
 
 
+// var newCell = {};
+//
+// for (let i =0; i < cells.length; i++) {
+//   if (cells[i].id == getCellId) {
+//     newCell =  cells[i]
+//   }
+// }
+//
+// console.log(newCell)
+//
+// cells.find(findId);
+//
+// function findId(elem) {
+//   return elem === elem
+// }
 
 
 
