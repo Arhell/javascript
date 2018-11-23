@@ -47,13 +47,17 @@ function currentStep(event) {
   // this.removeEventListener('click', currentStep)
   var getCellId = event.target.getAttribute('id');
 
-  cells.find(function (item) {
-    for (let i=0; i < cells.length; i++) {
-      
-      console.log(item[i])
+  //console.log(getCellId)
+
+  var resultObj = cells.find(function (item) {
+    if (item.id === +getCellId) {
+      return true
     }
-  })
-  var resultObj;
+    return false
+  });
+
+  console.log(resultObj.id)
+
 }
 
 
