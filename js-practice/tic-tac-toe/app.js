@@ -50,17 +50,33 @@ function currentStep(event) {
   //console.log(getCellId)
 
   var resultObj = cells.find(function (item) {
-    if (item.id === +getCellId) {
-      return true
+    //console.log(item)
+    if (item.id == getCellId) {
+      return item
     }
-    return false
   });
+  resultObj.markedBy =  currentPlayer;
 
-  console.log(resultObj.id)
 
+  console.log(resultObj)
 }
 
+function renderCells(arr) {
+  arr.map(function (item, index, array) {
+    //console.log(item)
+    if (item.markedBy !== null) {
+      var field = document.getElementById(item.id)
+      item.markedBy === 'x' ? field.classList.add('win') : field.classList.add('win2')
+    }
+  })
+}
 
+// по клику на ячейку, проверка на занятость ячейки(смотрим на данные (markedBy)) есди markedBy свободен, ставим текущего игрока, если занята то ничего не делаем.
+// заменить запись в масиве
+// меняем текущего икрока.
+// проверка на результат.
+
+renderCells(cells)
 
 
 var chunks = function(array, size) {
