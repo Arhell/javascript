@@ -32,3 +32,25 @@ body {
   cursor: pointer;
   text-transform: uppercase;
 }
+
+.playerOne {
+  position: relative;
+}
+
+.playerOne::before {
+  content: 'x';
+  position: absolute;
+  left: 12px;
+  top: 6px;
+}
+
+.playerTwo {
+  position: relative;
+}
+
+.playerTwo::before {
+  content: '0';
+  position: absolute;
+  left: 16px;
+  top: 6px;
+}

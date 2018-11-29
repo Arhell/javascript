@@ -25,7 +25,10 @@ function makeCells() {
 makeCells()
 
 var allCells = getFieldSelector('li'),
-    currentPlayer = 'x';
+    currentPlayer = 'x',
+    playerMove = 0,
+    playerX = 'x',
+    playerO = '0';
 
 function getFieldSelector(selector) {
   return document.getElementsByTagName(selector);
@@ -55,46 +58,47 @@ function currentStep(event) {
       return item
     }
   });
-  resultObj.markedBy =  currentPlayer;
 
-
-  console.log(resultObj)
+  resultObj.markedBy = currentPlayer;
+  renderCells(cells)
+  // if (currentPlayer === playerX) {
+  //   currentPlayer = playerO;
+  // } else {
+  //   currentPlayer = playerX
+  // }
+  currentPlayer = currentPlayer === playerX ? playerO : playerX
+  console.log(currentPlayer)
 }
 
 function renderCells(arr) {
-  arr.map(function (item, index, array) {
+  arr.map(function (item) {
     //console.log(item)
     if (item.markedBy !== null) {
       var field = document.getElementById(item.id)
-      item.markedBy === 'x' ? field.classList.add('win') : field.classList.add('win2')
+      item.markedBy === 'x' ? field.classList.add('playerOne') : field.classList.add('playerTwo')
+      //console.log(field)
     }
   })
 }
 
-// по клику на ячейку, проверка на занятость ячейки(смотрим на данные (markedBy)) есди markedBy свободен, ставим текущего игрока, если занята то ничего не делаем.
-// заменить запись в масиве
-// меняем текущего икрока.
-// проверка на результат.
-
-renderCells(cells)
 
 
-var chunks = function(array, size) {
-  var results = [];
-  while (array.length) {
-    results.push(array.splice(0, size));
-  }
-  return results;
-};
-
-var newArr = Array.from(allCells)
-
-var arrChunks = chunks(newArr,3);
-
-
-for (let i =0; i < arrChunks[0].length; i++) {
-
-}
+// var chunks = function(array, size) {
+//   var results = [];
+//   while (array.length) {
+//     results.push(array.splice(0, size));
+//   }
+//   return results;
+// };
+//
+// var newArr = Array.from(allCells)
+//
+// var arrChunks = chunks(newArr,3);
+//
+//
+// for (let i =0; i < arrChunks[0].length; i++) {
+//
+// }
 
 
 
