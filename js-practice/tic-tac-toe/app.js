@@ -45,9 +45,6 @@ eventClick(allCells);
 
 
 function currentStep(event) {
-  //this.innerHTML = currentPlayer;
-  //(currentPlayer === 'x') ? (currentPlayer = 'o') : (currentPlayer = 'x')
-  // this.removeEventListener('click', currentStep)
   var getCellId = event.target.getAttribute('id');
 
   //console.log(getCellId)
@@ -61,11 +58,6 @@ function currentStep(event) {
 
   resultObj.markedBy = currentPlayer;
   renderCells(cells)
-  // if (currentPlayer === playerX) {
-  //   currentPlayer = playerO;
-  // } else {
-  //   currentPlayer = playerX
-  // }
   currentPlayer = currentPlayer === playerX ? playerO : playerX
   console.log(currentPlayer)
 }
