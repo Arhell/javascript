@@ -55,11 +55,12 @@ function currentStep(event) {
       return item
     }
   });
+  //console.log(cells)
 
   resultObj.markedBy = currentPlayer;
   renderCells(cells)
   currentPlayer = currentPlayer === playerX ? playerO : playerX
-  console.log(currentPlayer)
+  //console.log(currentPlayer)
 }
 
 function renderCells(arr) {
@@ -73,24 +74,37 @@ function renderCells(arr) {
   })
 }
 
+var chunkArray = function(myArray, chunkSize) {
+  var index       = 0,
+      arrayLength = myArray.length,
+      resultArray = [];
 
+  for (index; index < arrayLength; index += chunkSize) {
+    var myChunk = myArray.slice(index, index+chunkSize);
+
+    resultArray.push(myChunk);
+  }
+
+  return resultArray;
+}
 
 // var chunks = function(array, size) {
 //   var results = [];
-//   while (array.length) {
-//     results.push(array.splice(0, size));
+//   var copy = array.slice(0)
+//   while (copy.length) {
+//     results.push(copy.splice(0, size));
 //   }
 //   return results;
 // };
-//
-// var newArr = Array.from(allCells)
-//
-// var arrChunks = chunks(newArr,3);
-//
-//
-// for (let i =0; i < arrChunks[0].length; i++) {
-//
-// }
+
+
+
+var arrChunks = chunkArray(cells,3);
+
+console.log(arrChunks)
+
+
+
 
 
 
