@@ -99,9 +99,9 @@ var chunkArray = function(myArray, chunkSize) {
 
 
 
-var arrChunks = chunkArray(cells,3);
+chunkArray(cells,3);
 
-console.log(arrChunks)
+console.log(chunkArray(cells,3))
 
 
 
