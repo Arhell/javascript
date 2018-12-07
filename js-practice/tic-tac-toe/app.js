@@ -60,7 +60,9 @@ function currentStep(event) {
   resultObj.markedBy = currentPlayer;
   renderCells(cells)
   currentPlayer = currentPlayer === playerX ? playerO : playerX
-  //console.log(currentPlayer)
+
+
+  console.log(currentPlayer)
 }
 
 function renderCells(arr) {
@@ -69,6 +71,8 @@ function renderCells(arr) {
     if (item.markedBy !== null) {
       var field = document.getElementById(item.id)
       item.markedBy === 'x' ? field.classList.add('playerOne') : field.classList.add('playerTwo')
+
+
       //console.log(field)
     }
   })
@@ -88,43 +92,11 @@ var chunkArray = function(myArray, chunkSize) {
   return resultArray;
 }
 
-// var chunks = function(array, size) {
-//   var results = [];
-//   var copy = array.slice(0)
-//   while (copy.length) {
-//     results.push(copy.splice(0, size));
-//   }
-//   return results;
-// };
-
-
-
 chunkArray(cells,3);
 
-console.log(chunkArray(cells,3))
+var allArr = chunkArray(cells,3)
 
-
-
-
-
-
-// var newCell = {};
-//
-// for (let i =0; i < cells.length; i++) {
-//   if (cells[i].id == getCellId) {
-//     newCell =  cells[i]
-//   }
-// }
-//
-// console.log(newCell)
-//
-// cells.find(findId);
-//
-// function findId(elem) {
-//   return elem === elem
-// }
-
-
+console.log(allArr)
 
 
 
