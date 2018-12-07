@@ -55,14 +55,24 @@ function currentStep(event) {
       return item
     }
   });
-  //console.log(cells)
 
-  resultObj.markedBy = currentPlayer;
-  renderCells(cells)
-  currentPlayer = currentPlayer === playerX ? playerO : playerX
-
-
+  // if(resultObj.markedBy !== null) {
+  //   return false
+  // }
+  if(resultObj.markedBy === null) {
+    resultObj.markedBy = currentPlayer;
+    renderCells(cells)
+    currentPlayer = currentPlayer === playerX ? playerO : playerX
+  }
   console.log(currentPlayer)
+
+
+  //currentPlayer = currentPlayer === playerX ? playerO : playerX
+
+
+
+
+  //console.log(currentPlayer)
 }
 
 function renderCells(arr) {
@@ -96,7 +106,7 @@ chunkArray(cells,3);
 
 var allArr = chunkArray(cells,3)
 
-console.log(allArr)
+//console.log(allArr)
 
 
 
