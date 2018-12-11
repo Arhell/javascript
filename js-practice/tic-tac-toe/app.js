@@ -74,8 +74,6 @@ function renderCells(arr) {
     if (item.markedBy !== null) {
       var field = document.getElementById(item.id)
       item.markedBy === 'x' ? field.classList.add('playerOne') : field.classList.add('playerTwo')
-
-
       //console.log(field)
     }
   })
@@ -95,20 +93,27 @@ var chunkArray = function(myArray, chunkSize) {
   return resultArray;
 }
 
-const chunkArr = (myArray, chunkSize) => {
-
-}
-
-const chunkArr2 = oneArg => {
-
-}
-
-chunkArray(cells,3);
-
 var allArr = chunkArray(cells,3)
 
-//console.log(allArr)
+//console.log(allArr[0])
 
+function checkResult(arrCheck) {
+  arrCheck.map(function (item) {
+    if (item.markedBy !== null) {
+      //console.log('!!!')
+    }
+  })
+}
+
+checkResult(allArr)
+
+var fruits = ["Яблоко", "Апельсин", "Слива"];
+
+for (const value of fruits) {
+  console.log(value)
+}
+
+fruits.forEach(value => console.log(value), fruits)
 
 
 
