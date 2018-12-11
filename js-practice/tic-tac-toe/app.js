@@ -56,20 +56,13 @@ function currentStep(event) {
     }
   });
 
-  // if(resultObj.markedBy !== null) {
-  //   return false
-  // }
-  if(resultObj.markedBy === null) {
-    resultObj.markedBy = currentPlayer;
-    renderCells(cells)
-    currentPlayer = currentPlayer === playerX ? playerO : playerX
+  if(resultObj.markedBy !== null) {
+    return false
   }
-  console.log(currentPlayer)
 
-
-  //currentPlayer = currentPlayer === playerX ? playerO : playerX
-
-
+  resultObj.markedBy = currentPlayer;
+  renderCells(cells)
+  currentPlayer = currentPlayer === playerX ? playerO : playerX
 
 
   //console.log(currentPlayer)
@@ -100,6 +93,14 @@ var chunkArray = function(myArray, chunkSize) {
   }
 
   return resultArray;
+}
+
+const chunkArr = (myArray, chunkSize) => {
+
+}
+
+const chunkArr2 = oneArg => {
+
 }
 
 chunkArray(cells,3);
