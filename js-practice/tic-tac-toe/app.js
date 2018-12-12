@@ -64,7 +64,9 @@ function currentStep(event) {
   renderCells(cells)
   currentPlayer = currentPlayer === playerX ? playerO : playerX
 
+  var allArr = chunkArray(cells,3)
 
+  checkResult(allArr)
   //console.log(currentPlayer)
 }
 
@@ -93,27 +95,29 @@ var chunkArray = function(myArray, chunkSize) {
   return resultArray;
 }
 
-var allArr = chunkArray(cells,3)
-
 //console.log(allArr[0])
 
 function checkResult(arrCheck) {
-  arrCheck.map(function (item) {
-    if (item.markedBy !== null) {
-      //console.log('!!!')
-    }
+  arrCheck.map(function (item,index) {
+    //console.log("!!!")
+
+    var currentObj = item.map(function (item2) {
+      if (item2.markedBy == 'x') {
+        return item2
+      } else {
+        return null
+      }
+    })
+
+    //console.log(currentObj,index)
+    var someElem = currentObj.every()
+
+    console.log(someElem)
   })
 }
 
-checkResult(allArr)
 
-var fruits = ["Яблоко", "Апельсин", "Слива"];
 
-for (const value of fruits) {
-  console.log(value)
-}
-
-fruits.forEach(value => console.log(value), fruits)
 
 
 
