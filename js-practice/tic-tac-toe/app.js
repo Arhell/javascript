@@ -101,18 +101,18 @@ function checkResult(arrCheck) {
   arrCheck.map(function (item,index) {
     //console.log("!!!")
 
-    var currentObj = item.map(function (item2) {
-      if (item2.markedBy == 'x') {
-        return item2
-      } else {
-        return null
-      }
+    var currentObj = item.filter(function (item2) {
+
     })
 
     //console.log(currentObj,index)
-    var someElem = currentObj.every()
-
-    console.log(someElem)
+    // var someElem = currentObj.every(function (item) {
+    //   return item
+    // })
+    //
+    // if (someElem == true) {
+    //   console.log('@')
+    // }
   })
 }
 
