@@ -99,11 +99,32 @@ var chunkArray = function(myArray, chunkSize) {
 
 function checkResult(arrCheck) {
   arrCheck.map(function (item,index) {
-    //console.log("!!!")
+    //console.log(item.length)
 
     var currentObj = item.filter(function (item2) {
-
+      if(item2.markedBy === playerX) {
+        return true
+      }
     })
+
+    var currentObj2 = item.filter(function (item2) {
+      if(item2.markedBy === playerO) {
+        return true
+      }
+    })
+
+    if(currentObj.length == item.length) {
+      console.log('231')
+    }
+    else if(currentObj2.length == item.length) {
+      console.log('!!!!')
+    }
+
+
+
+
+
+
 
     //console.log(currentObj,index)
     // var someElem = currentObj.every(function (item) {
