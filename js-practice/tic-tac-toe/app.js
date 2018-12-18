@@ -113,13 +113,16 @@ function checkResult(arrCheck) {
       }
     })
 
-    if(currentObj.length == item.length) {
+    if(currentObj.length === item.length) {
       console.log('231')
     }
-    else if(currentObj2.length == item.length) {
+    else if(currentObj2.length === item.length) {
       console.log('!!!!')
     }
 
+    for(let i =0; i < item.length; i++) {
+      console.log(i)
+    }
 
 
 
