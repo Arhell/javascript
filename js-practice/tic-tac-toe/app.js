@@ -120,9 +120,10 @@ function checkResult(arrCheck) {
       console.log('!!!!')
     }
 
-    for(let i =0; i < item.length; i++) {
-      console.log(i)
-    }
+    var line = item[index]
+
+    console.log(line)
+
 
 
 
