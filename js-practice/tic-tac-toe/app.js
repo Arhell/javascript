@@ -99,7 +99,7 @@ var chunkArray = function(myArray, chunkSize) {
 
 function checkResult(arrCheck) {
   arrCheck.map(function (item,index) {
-    //console.log(item.length)
+    //console.log(item)
 
     var currentObj = item.filter(function (item2) {
       if(item2.markedBy === playerX) {
@@ -120,24 +120,6 @@ function checkResult(arrCheck) {
       console.log('!!!!')
     }
 
-    var line = item[index]
-
-    console.log(line)
-
-
-
-
-
-
-
-    //console.log(currentObj,index)
-    // var someElem = currentObj.every(function (item) {
-    //   return item
-    // })
-    //
-    // if (someElem == true) {
-    //   console.log('@')
-    // }
   })
 }
 
