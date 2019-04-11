@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>upd arr</title>
+</head>
+<body>
+
+<script>
+
+  var arr = [11,21,11,19,11,17,11,15,11,13];
+  var arr2 =[21,19,17,15,13];
+
+  for(i = 0; i < arr.length; i++){
+    if(arr[i] === 11) {
+      arr[i] = arr2;
+    }
+  }
+
+  var Arr = arr.filter(function(number) {
+    if (number === 11) {
+      number = arr2
+    }
+    return number
+  })
+
+  console.log(arr)
+  console.log(Arr)
+
+
+</script>
+</body>
+</html>
