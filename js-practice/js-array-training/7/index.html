@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>upd arr</title>
+  <title>change arr</title>
 </head>
 <body>
 
@@ -10,10 +10,14 @@
 
   var arr = [11,21,11,19,11,17,11,15,11,13];
   var arr2 =[21,19,17,15,13];
+  var arr3 = [];
 
   for(i = 0; i < arr.length; i++){
     if(arr[i] === 11) {
       arr[i] = arr2;
+    }
+    else if(arr[i] !== 11) {
+      arr[i] = arr3
     }
   }
 

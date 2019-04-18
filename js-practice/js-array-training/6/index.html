@@ -2,32 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>6 remove numbers</title>
+  <title>upd arr</title>
 </head>
 <body>
 
 <script>
 
   var arr = [11,21,11,19,11,17,11,15,11,13];
-  var result =[]
-
+  var arr2 =[21,19,17,15,13];
 
   for(i = 0; i < arr.length; i++){
     if(arr[i] === 11) {
-      arr.splice(arr[i])
-    } else {
-      result.push(arr[i])
+      arr[i] = arr2;
     }
   }
 
   var Arr = arr.filter(function(number) {
-    return number !== 11;
+    if (number === 11) {
+      number = arr2
+    }
+    return number
   })
 
-
-
-  console.log(result)
-
+  console.log(arr)
   console.log(Arr)
 
 
