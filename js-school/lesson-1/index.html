@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>1</title>
+</head>
+<body>
+<script>
+  function calculateAge(birthDay) {
+      return 2019 - birthDay
+  }
+  
+  function yearInit(birthDay, name) {
+     console.log(68 - calculateAge(birthDay), name);
+  }
+  yearInit(1992, 'Mary');
+
+  var whathDoToyDo = function (firstName, job) {
+      switch (job) {
+          case "teacher":
+              return firstName + " teach people";
+
+          case "doctor":
+              return firstName + ' preople';
+
+          default:
+              return firstName + " doing something";
+      }
+  }
+  console.log(whathDoToyDo())
+
+  var age = new Array(123, 12, 156)
+  console.log(age)
+
+  var names = ['test1', 'test2', 'test3']
+  console.log(names.length);
+
+  console.log(names.push('test4')) // return arr length
+
+  console.log(names[names.length-1])
+
+  names[12] = "test5"
+
+  console.log(names);
+
+  console.log(names.indexOf('test2'))
+
+  function tipCanculator(bill) {
+      var parcentage;
+      if (bill < 50) {
+          parcentage = .2;
+      } else if (bill >=50 && bill < 200) {
+          parcentage = .15;
+      } else {
+          parcentage = .1
+      }
+      return parcentage * bill;
+  }
+
+  var bills = [124, 48, 268]
+
+  var tips = [tipCanculator(bills[0]),
+              tipCanculator(bills[1]),
+              tipCanculator(bills[2])]
+
+  var finalValue = [bills[0] + tips[0],
+                    bills[1] + tips[1],
+                    bills[2] + tips[2]];
+
+  console.log(tips, finalValue)
+
+  var obj1 = new Object();
+  obj1.name = 'SomeName'
+
+  console.log(obj1)
+  var obj2 = {
+      firstName: "some",
+      lastName: "Name",
+      age: '27'
+  }
+
+  var city = 'city'
+
+  console.log('obj2', obj2.hasOwnProperty('city'))
+
+
+
+
+</script>
+
+</body>
+</html>
