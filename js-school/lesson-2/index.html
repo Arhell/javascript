@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2</title>
+</head>
+<body>
+<script>
+  var arr = ['1', '2','3','4','5']
+  arr.forEach(function (element,index, array) {
+      console.log(index, element)
+  })
+
+  console.log(arr.some(function (element) {
+      return element === '3'
+  }))
+
+  var letters = arr.reduce(function (sum, element) {
+      return sum + element.length
+  }, 0)
+
+  console.log(letters)
+
+  var names = arr.filter(function (e) {
+      return e !== '1'
+  })
+
+  console.log(names)
+
+  let a = 10;
+
+  if(true) {
+      let a = 5;
+  }
+
+  console.log(a);
+
+  const Zoo = [
+      createAnimal('Elephant', 30, 100),
+      createAnimal('Jiraffa', 10, 40),
+      createAnimal('Jiraffa', 10, 40),
+      createAnimal('Lama', 20, 25),
+      createAnimal('Lama', 20, 25),
+  ]
+
+
+  function createAnimal(name, lifespan, costPerDay) {
+      const lifeTimeCost = costPerDay * 365 * lifespan
+    return {
+        name,
+        lifespan,
+        costPerDay,
+        lifeTimeCost
+    }
+  }
+
+  function getTotalCost(animals, days) {
+    return animals.reduce((sum, a) => sum + a.costPerDay * days, 0)
+  }
+
+  function getMostExpensiveAnimal(animals) {
+    return animals.reduce((bestAnimal, animal) => bestAnimal.lifeTimeCost >= animal.lifeTimeCost ? bestAnimal : animal)
+  }
+
+  console.log(getTotalCost(Zoo, 4));
+  console.log(getMostExpensiveAnimal(Zoo));
+
+
+
+</script>
+
+</body>
+</html>
