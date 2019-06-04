@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3</title>
+</head>
+<body>
+<script>
+
+// name()
+//
+// function name() {}
+//
+// const test = () => {
+//     console.log(this);
+// }
+//
+// const test1 = () => {
+//     test()
+// }
+//
+// test1();
+//
+// function test3() {
+//     console.log(this);
+// }
+
+// var a1 = 0;
+
+// b();
+
+// var d = 123;
+
+// function b() {
+    // console.log(1, a1);
+    // var a1 = 1;
+    // console.log(2, a1);
+    // function c() {
+        // console.log('before', a1++)
+        // a1++;
+        // console.log('a', ++a1)
+    // }
+    // const c = () => ++a1;
+    // console.log('window', window.d)
+
+//     return  c;
+// }
+
+// const counter = b();
+//
+// console.log(counter(),counter(), counter(), counter())
+
+// console.log(3, a1);
+
+// const temp = {
+//     name: 1,
+//     surName: 2,
+//     getNameAndSurname: function () {
+//         console.log(this);
+//
+//         function test4() {
+//             console.log(1, this)
+//         }
+//
+//
+//
+//         return test4;
+//     }
+// }
+//
+// temp.getNameAndSurname()();
+
+
+function fib(number) {
+    var a = 1,
+        b = 1;
+    for (var i = 3; i <= number; i++) {
+        var c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
+console.log(fib(7))
+
+function fib2(num) {
+    return num === 0 ? 0 : num <= 2 ? 1 : fib2(num - 1) + fib2(num - 2)
+}
+
+console.log(fib2(7))
+
+</script>
+
+</body>
+</html>
