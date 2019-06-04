@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>h-1</title>
+</head>
+<body>
+<script>
+
+  console.log('-------------------------------------------------------')
+
+  function difference(arr, itemsToExclude) {
+
+    var newArr =  arr.filter(function(number) {
+      //console.log(number)
+      return itemsToExclude.indexOf(number);
+    });
+    return newArr
+  }
+
+  console.log(difference([2, 1, 5], [2, 3]))
+
+  console.log('-------------------------------------------------------')
+
+  function groupBy(array, value) {
+
+    var group = {};
+    // console.log(array)
+    // console.log(value)
+    array.map(function (val) {
+      //console.log(val)
+      var key = val[value];
+      if(group[key]) {
+        group[key].push(val)
+      } else {
+        group[key] = [val]
+      }
+      // console.log(key)
+      // console.log(group[key])
+    })
+    return group
+  }
+
+  console.log(groupBy([
+    { gender: 'male', name: 'Max'},
+    { gender: 'male', name: 'Fred'},
+    { gender: 'female', name: 'Jane'}
+    ],
+      'gender')
+  )
+
+  console.log('-------------------------------------------------------')
+
+  function flatten(array) {
+    var arr = array.reduce((a, b) => a.concat(b), []);
+
+    return arr
+  }
+
+  console.log(flatten([1, [2, [3, [4]], 5]]))
+
+  console.log(flatten([1, 2, 3, 4, 5]))
+
+  console.log(flatten([1, [2, 3], 4, 5]))
+
+  console.log('-------------------------------------------------------')
+
+  function uniq(array) {
+
+   const newArr = array.filter(function(elem, index, self) {
+     // console.log(elem, index, self)
+      return index === self.indexOf(elem);
+   })
+
+    return newArr
+  }
+
+  console.log(uniq([2, 1, 2]))
+
+  console.log('-------------------------------------------------------')
+
+
+  function chunk(array, size) {
+
+    const chunkArr = [];
+    for (let i = 0; i <= array.length; i++) {
+      //console.log(i)
+      chunkArr.push(array.slice(i - i, size))
+      array = array.slice(size);
+      // console.log(array)
+    }
+    return chunkArr
+  }
+
+  console.log(chunk(['a', 'b', 'c', 'd'], 2))
+
+  console.log(chunk(['a', 'b', 'c', 'd'], 3))
+
+  console.log('-------------------------------------------------------')
+</script>
+
+</body>
+</html>
