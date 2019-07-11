@@ -139,12 +139,31 @@ i {
 
 .dice {
     position: absolute;
-    left: 50%;
-    top: 178px;
+    left: 44%;
+    top: 225px;
     transform: translateX(-50%);
     height: 100px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
 }
 
+.dice:last-child {
+    right: 34%;
+    left: auto;
+}
+
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+.win-score {
+    width: 100px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 200px;
+}
