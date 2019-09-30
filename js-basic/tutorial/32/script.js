@@ -8,6 +8,6 @@ var obj = {
   friends: ['text1', 'text2']
 }
 
-var str = JSON.stringify(person)
+var str = JSON.stringify(obj)
 console.log(str)
 console.log(JSON.parse(str))
