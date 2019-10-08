@@ -1,0 +1,5 @@
+import './consts/index'
+import './components/changePlayer'
+import './components/hold'
+import './components/newGame'
+import './components/roll'
