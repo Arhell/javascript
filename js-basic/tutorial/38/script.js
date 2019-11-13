@@ -1,6 +1,11 @@
 var ford = Object.create({
   calculateDistancePerYear: function () {
-    console.log('Calculate')
+    Object.defineProperty(this, 'distancePerYear', {
+      value: Math.ceil(this.distance / this.age),
+      enumerable: false,
+      writable: false,
+      configurable: false
+    })
   }
 }, {
   name: {
@@ -40,4 +45,10 @@ var ford = Object.create({
   }
 })
 
-console.log(ford)
+ford.calculateDistancePerYear()
+
+for (var key in ford) {
+  if(ford.hasOwnProperty(key)) {
+    console.log(key, ford[key])
+  }
+}
