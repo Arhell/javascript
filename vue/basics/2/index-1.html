@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+</head>
+<body>
+
+<div id="app">
+  <p>String: {{ name }}</p>
+  <p>Sum: (5 + 5) = {{ 5 + 5 }}</p>
+  <p>Num: {{ num }}</p>
+  <p>Method: {{ newMethod() }}</p>
+  <p>value: {{ value ? 'true' : 'false'}}</p>
+  <p>functions: {{ newString.split('').reverse().join('') }}</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+<script>
+
+  new Vue({
+    el: '#app',
+    data: {
+      name: 'World',
+      num: '5',
+      value: true,
+      newString: 'string'
+    },
+    methods: {
+      newMethod: function () {
+        return 'string'
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

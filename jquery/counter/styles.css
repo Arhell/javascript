@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+  margin: auto;
+}
+
+input,
+.counter{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+.reset {
+  float: right;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+</head>
+<body>
+
+<div id="app">
+  <h1 v-html="link"></h1>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+<script>
+
+  new Vue({
+    el: '#app',
+    data: {
+      link: "<a href='https://github.com/'>github</a>"
+    }
+  })
+
+</script>
+</body>
+</html>

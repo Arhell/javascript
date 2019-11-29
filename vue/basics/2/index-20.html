@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+</head>
+<body>
+
+<div id="app">
+
+  <h2>{{title}}</h2>
+  <button @click="title = 'change'">change</button>
+  <button @click="doDestroy">Destroy</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+<script>
+
+  new Vue({
+    el: '#app',
+    data: {
+      title: 'Github'
+    },
+    methods: {
+      doDestroy: function () {
+        this.$destroy()
+      }
+    },
+
+    beforeCreate: function () {
+      console.log('before create')
+    },
+    created: function () {
+      console.log('Created')
+    },
+    beforeMount: function () {
+      console.log('before mount')
+    },
+    mounted: function () {
+      console.log('Mounted')
+    },
+    beforeUpdate: function () {
+      console.log('before update')
+    },
+    updated: function () {
+      console.log('Updated')
+    },
+    beforeDestroy: function () {
+      console.log('before destroy')
+    },
+    destroyed: function () {
+      console.log('Destroyed')
+    }
+  })
+
+
+</script>
+</body>
+</html>

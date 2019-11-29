@@ -1,0 +1,7 @@
+.accordion-description {
+  display: none;
+}
+
+.accordion-title {
+  cursor: pointer;
+}

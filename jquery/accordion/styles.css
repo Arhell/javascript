@@ -1,0 +1,11 @@
+.accordion-description {
+  display: none;
+}
+
+.accordion-title {
+  cursor: pointer;
+}
+
+.active .accordion-description{
+  display: block;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+</head>
+<body>
+
+<div id="app">
+
+  <a href="https://github.com/" target="_blank" v-on:click.prevent="">Github</a>
+
+  <p v-on:mousemove="mouseMove">
+    X: {{ x }} / Y: {{ y }}
+    <span v-on:mousemove.stop="">Dont track</span>
+  </p>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+<script>
+
+  new Vue({
+    el: '#app',
+    data: {
+      x: 0,
+      y: 0
+    },
+    methods: {
+      mouseMove: function (event) {
+        this.x = event.clientX
+        this.y = event.clientY
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

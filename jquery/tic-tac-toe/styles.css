@@ -1,0 +1,19 @@
+.innerBlock {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  float: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  width: 150px;
+  margin: auto;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+  <style>
+    .div {
+      width: 150px;
+      height: 150px;
+      border-radius: 100%;
+      border: 1px solid #000;
+      display: inline-block;
+      margin: 50px;
+    }
+    .red {
+      background: red;
+    }
+    .green {
+      background: green;
+    }
+    .tomato {
+      background: tomato;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div class="div" :style="divClass"></div>
+  <div class="div" :style="[divClass, {'width': height + 'px'}]"></div>
+
+  <input type="text" v-model="color">
+  <input type="text" v-model="height">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+<script>
+
+  new Vue({
+    el: '#app',
+    data: {
+      color: 'tomato',
+      height: '150px'
+    },
+    computed: {
+      divClass: function () {
+        return {
+          'background':this.color,
+          'height': this.height + 'px'
+        }
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

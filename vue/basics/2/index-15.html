@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+</head>
+<body>
+
+<div id="app">
+
+  <h2>Counter {{ counter }} / {{ counter2 }}</h2>
+  <h3>Result: {{ result() }}</h3>
+  <h3>Computed result: {{ computedResult }}</h3>
+
+  <button @click="add">Add</button>
+  <button @click="sub">Sub</button>
+
+  <button @click="counter2++">Add counter 2</button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+<script>
+
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0,
+      counter2: 0
+    },
+    methods: {
+      add: function () {
+        this.counter++
+      },
+      sub: function () {
+        this.counter--
+      },
+      result: function () {
+        console.log('result')
+        return this.counter > 3 ? 'More 3' : 'Less 3'
+      }
+    },
+    computed: {
+      computedResult: function () {
+        console.log('Computed')
+        return this.counter > 3 ? 'More 3' : 'Less 3'
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

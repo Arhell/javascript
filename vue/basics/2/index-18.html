@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+</head>
+<body>
+
+<div id="app">
+
+  <h2 ref="heading">{{ title }}</h2>
+  <button @click="upd">upd</button>
+  <h3 ref="hhead"></h3>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+<script>
+
+  var vue1 = new Vue({
+    el: '#app',
+    data: {
+      title: 'Github'
+    },
+    methods: {
+      upd() {
+        this.title = 'New Github'
+        console.log(this.$refs)
+      }
+    }
+  })
+  
+
+</script>
+</body>
+</html>

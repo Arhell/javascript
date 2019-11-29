@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+</head>
+<body>
+
+<div id="app">
+  <h1>Counter = {{ counter }}</h1>
+  <button @click="addCounter">Add</button>
+  <a :href="urlString">github</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+<script>
+
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0,
+      urlString: 'https://github.com'
+    },
+    methods: {
+      addCounter: function () {
+        this.counter++
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

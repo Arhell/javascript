@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+</head>
+<body>
+
+<div id="app">
+  <h1>Counter = {{ counter }}</h1>
+  <button v-on:click="addCounter">Add</button>
+
+  <hr>
+
+  <h1 v-on:mouseover="onHover">Counter 2 = {{ counter2 }}</h1>
+  <button v-on:click="counter2++">Add</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+<script>
+
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0,
+      counter2: 0
+    },
+    methods: {
+      addCounter: function () {
+        this.counter++
+      },
+      onHover: function (event) {
+        event.target.style.color = "red"
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

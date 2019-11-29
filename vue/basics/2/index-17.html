@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+</head>
+<body>
+
+<div id="app">
+
+  <h2>{{ title }}</h2>
+  <h3>{{ newField }}</h3>
+  <button @click="title = 'upd title'">upd</button>
+
+</div>
+
+<div id="app2">
+
+  <h2>{{ title }}</h2>
+  <button @click="updFirstTitle">upd 1</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+<script>
+
+  var vue1 = new Vue({
+    el: '#app',
+    data: {
+      title: 'Github'
+    },
+    methods: {
+      alertFast: function () {
+        alert('from vue1')
+      }
+    }
+  })
+
+  vue1.newField = 'random'
+
+  console.log(vue1)
+
+  new Vue({
+    el: '#app2',
+    data: {
+      title: 'Github 2'
+    },
+    methods: {
+      updFirstTitle: function () {
+        vue1.title = "upd first app"
+        vue1.newField = 'New random'
+        setTimeout(function () {
+          vue1.alertFast()
+        },1000)
+      }
+    }
+  })
+
+</script>
+</body>
+</html>
