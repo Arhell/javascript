@@ -14,7 +14,7 @@ const HEX = '#ff0000'
 
 const arr = [1, 2]
 
-const onl = {a:1}
+const obj = {a:1}
 
 arr.unshift(4)
 
