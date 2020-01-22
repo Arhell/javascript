@@ -2,7 +2,7 @@ class View {
   constructor() {
     this.app = document.getElementById('app')
 
-    this.title = document.createElement('h1', 'title')
+    this.title = this.createElement('h1', 'title')
     this.title.textContent = 'Github search users'
 
 
