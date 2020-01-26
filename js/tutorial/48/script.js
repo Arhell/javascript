@@ -8,18 +8,19 @@ form.addEventListener('submit', event => {
   const description = form.description.value
 
   saveForm({title, text, description})
+  saveForm2(title, text, description)
 })
 
-// function saveForm(data) {
-//   const formData = {
-//     date: new Date().toLocaleDateString(),
-//     ...data
-//   }
-//
-//   console.log('Some text', formData)
-// }
+function saveForm(data) {
+  const formData = {
+    date: new Date().toLocaleDateString(),
+    ...data
+  }
 
-function saveForm(...args) {
+  console.log('Some text', formData)
+}
+
+function saveForm2(...args) {
 
   const [title, text, description] = args
 
