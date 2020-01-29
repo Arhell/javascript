@@ -11,7 +11,7 @@
 
 <script>
 import {useToggle} from "../composition/toggle";
-import {watch} from "../composition/toggle";
+import {watch} from '@vue/composition-api'
 
 export default {
   props: {
