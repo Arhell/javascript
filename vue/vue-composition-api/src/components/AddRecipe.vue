@@ -1,25 +1,29 @@
 <template>
   <form class="form" @submit.prevent="submit">
     <h1>Добавить рецепт</h1>
-    <div v-if="visible">
+    <div v-if="show">
       <div class="input">
-        <input type="text" placeholder="Название рецепта" v-model="title">
+        <input type="text" placeholder="Название рецепта" v-model="form.title">
       </div>
       <div class="input">
-        <input type="text" placeholder="Описание рецепта" v-model="description">
+        <input type="text" placeholder="Описание рецепта" v-model="form.description">
       </div>
     </div>
 
     <div class="buttons">
       <button class="btn" type="submit" :disabled="!valid">Создать</button>
-      <button class="btn secondary" type="button" @click="toggle">
-        {{ visible ? 'Убрать' : 'Показать' }} форму
+      <button class="btn secondary" type="button" @click="changeShow">
+        {{ show ? 'Убрать' : 'Показать' }} форму
       </button>
     </div>
   </form>
 </template>
 
 <script>
+// import toggleMixin from '@/toggleMixin'
+import {useToggle} from "../composition/toggle";
+import {useForm} from "../composition/form";
+
 export default {
   props: {
     onAdd: {
@@ -27,32 +31,12 @@ export default {
       required: true
     }
   },
-  data() {
+  setup(props) {
+    const {visible: show, toggle: changeShow} = useToggle()
+
     return {
-      title: '',
-      description: '',
-      visible: true
-    }
-  },
-  methods: {
-    toggle() {
-      this.visible = !this.visible
-    },
-    submit() {
-      const recipe = {
-        title: this.title.trim(),
-        description: this.description.trim(),
-        id: Date.now().toString()
-      }
-
-      this.title = this.description = ''
-
-      this.onAdd(recipe)
-    }
-  },
-  computed: {
-    valid() {
-      return this.title.trim() && this.description.trim()
+      ...useForm(props),
+      show, changeShow
     }
   }
 }

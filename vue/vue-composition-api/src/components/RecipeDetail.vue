@@ -10,23 +10,22 @@
 </template>
 
 <script>
+import {useToggle} from "../composition/toggle";
+import {watch} from "../composition/toggle";
+
 export default {
   props: {
     recipe: Object
   },
-  data() {
+  setup(props) {
+    const {visible, toggle} = useToggle()
+
+    watch(() => props.recipe, () => {
+      visible.value = false
+    })
+
     return {
-      visible: false
-    }
-  },
-  methods: {
-    toggle() {
-      this.visible = !this.visible
-    }
-  },
-  watch: {
-    recipe() {
-      this.visible = false
+      visible, toggle
     }
   }
 }
