@@ -2,3 +2,51 @@
   margin: 0;
 }
 
+.title,
+.search-wrapper {
+  text-align: center;
+}
+
+.search-input {
+  margin-top: 20px;
+  width: 400px;
+  padding: 5px 10px;
+}
+
+.users-wrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.users-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  max-width: 800px;
+  margin: auto;
+}
+
+.user-item {
+  width: 150px;
+  margin: 5px 5px 15px;
+  list-style: none;
+}
+
+.user-item img {
+  width: 100%;
+}
+
+.user-name {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn {
+  padding: 5px 10px;
+  background: #f0f0f0;
+  margin: auto;
+}
+
