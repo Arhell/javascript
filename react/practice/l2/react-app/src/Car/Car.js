@@ -18,11 +18,10 @@ import React from "react";
 //   </div>
 // )
 
-
-
 export default () => (
   <div>
-    This is cat <strong>component</strong>
+    <p>This is cat</p>
+    <p>Num: <strong>{Math.round(Math.random() * 100)}</strong></p>
   </div>
 )
 

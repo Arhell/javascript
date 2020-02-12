@@ -50,3 +50,8 @@
   margin: auto;
 }
 
+.counter {
+  margin-top: 15px;
+  display: block;
+}
+
