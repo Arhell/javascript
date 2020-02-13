@@ -18,10 +18,10 @@ import React from "react";
 //   </div>
 // )
 
-export default () => (
+export default props => (
   <div>
-    <p>This is cat</p>
-    <p>Num: <strong>{Math.round(Math.random() * 100)}</strong></p>
+    <h3>Car name: {props.name}</h3>
+    <p>Year: <strong>{props.year}</strong></p>
   </div>
 )
 
