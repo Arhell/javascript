@@ -24,11 +24,17 @@ const state = {
   pageTitle: 'React components'
 }
 
+const changeTitleHendler = () => {
+  console.log('text')
+}
+
 function App() {
 
   return (
     <div style={divStyle}>
       <h1>{state.pageTitle}</h1>
+
+      <button onClick={changeTitleHendler}>Change title</button>
 
       <Car name={state.cars[0].name} year={state.cars[0].year} />
       <Car name={state.cars[1].name} year={state.cars[1].year} />
