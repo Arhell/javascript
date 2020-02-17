@@ -1,47 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Car from './Car/Car'
 
-const divStyle = {
-  textAlign: 'center'
-};
+class App extends Component {
 
-const state = {
-  cars: [
-    {
-      name: 'Car',
-      year: 2022
-    },
-    {
-      name: 'Car2',
-      year: 2023
-    },
-    {
-      name: 'Car3',
-      year: 2033
-    },
-  ],
-  pageTitle: 'React components'
-}
+  state = {
+    cars: [
+      {name: 'Text1', year: 2010},
+      {name: 'Text2', year: 2011},
+      {name: 'Text3', year: 2012}
+    ],
+    pageTitle: 'React components'
+  }
 
-const changeTitleHendler = () => {
-  console.log('text')
-}
+  render() {
+    const divStyle = {
+      textAlign: 'center'
+    }
 
-function App() {
+    const cars = this.state.cars
 
-  return (
-    <div style={divStyle}>
-      <h1>{state.pageTitle}</h1>
+    return (
+      <div style={divStyle}>
+        <h1>{this.state.pageTitle}</h1>
 
-      <button onClick={changeTitleHendler}>Change title</button>
-
-      <Car name={state.cars[0].name} year={state.cars[0].year} />
-      <Car name={state.cars[1].name} year={state.cars[1].year} />
-      <Car name={state.cars[2].name} year={state.cars[2].year} />
-
-    </div>
-  );
+        <Car name={cars[0].name} year={cars[0].year} />
+        <Car name={cars[1].name} year={cars[1].year} />
+        <Car name={cars[2].name} year={cars[2].year} />
+      </div>
+    );
+  }
 }
 
 export default App;
