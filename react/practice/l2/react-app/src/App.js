@@ -64,7 +64,14 @@ class App extends Component {
           onClick={this.toggleCarsHendler}
         >Toggle</button>
 
-        { cars }
+        <div style={{
+          width: 400,
+          margin: 'auto',
+          paddingTop: '20px'
+        }}>
+          { cars }
+        </div>
+
       </div>
     );
   }
