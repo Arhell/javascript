@@ -6,3 +6,21 @@
   box-shadow: 0 4px 5px rgba(0, 0, 0, .14);
   border-right: 5px;
 }
+
+.input:active,
+.input:focus {
+  outline: none;
+}
+
+.input.green {
+  border: 1px solid green;
+}
+
+.input.red {
+  border: 1px solid red;
+}
+
+.input.bold {
+  border: 2px solid green;
+  font-weight: bold;
+}
