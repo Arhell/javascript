@@ -3,8 +3,7 @@
   margin-bottom: 10px;
   display: block;
   padding: 10px;
-  box-shadow: 0 4px 5px rgba(0, 0, 0, .14);
-  border-right: 5px;
+  transition: border, box-shadow .3s;
 }
 
 .input:active,
