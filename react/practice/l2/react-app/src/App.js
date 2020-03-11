@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import './App.scss';
-import Car from './Car/Car'
+import styles from './App.scss';
+import Car from './Car/Car';
 
 class App extends Component {
 
@@ -12,25 +12,25 @@ class App extends Component {
     ],
     pageTitle: 'React components',
     showCars: false
-  }
+  };
 
   toggleCarsHendler = () => {
     this.setState({
       showCars: !this.state.showCars
     })
-  }
+  };
 
   onChangeName(name, index) {
-    const car = this.state.cars[index]
-    car.name = name
-    const cars = [...this.state.cars]
-    cars[index] = car
+    const car = this.state.cars[index];
+    car.name = name;
+    const cars = [...this.state.cars];
+    cars[index] = car;
     this.setState({ cars })
   }
 
   deleteHandler(index) {
-    const cars = this.state.cars.concat()
-    cars.splice(index, 1)
+    const cars = this.state.cars.concat();
+    cars.splice(index, 1);
 
     this.setState({cars})
   }
@@ -38,9 +38,9 @@ class App extends Component {
   render() {
     const divStyle = {
       textAlign: 'center'
-    }
+    };
 
-    let cars = null
+    let cars = null;
 
     if(this.state.showCars) {
       cars = this.state.cars.map((car, index) => {
@@ -61,7 +61,7 @@ class App extends Component {
         <h1>{this.state.pageTitle}</h1>
 
         <button
-          className={'appBtn'}
+          className={styles.appBtn}
           onClick={this.toggleCarsHendler}
         >Toggle</button>
 

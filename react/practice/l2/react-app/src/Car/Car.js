@@ -1,18 +1,18 @@
 import React from "react";
 import Radium from "radium";
-import classes from'./Car.css';
+import classes from'./Car.scss';
 
 const Car = props => {
-  const inputCalsses = [classes.input]
+  const inputClasses = [classes.input]
 
   if (props.name !== '') {
-    inputCalsses.push(classes.green)
+    inputClasses.push(classes.green)
   } else {
-    inputCalsses.push(classes.red)
+    inputClasses.push(classes.red)
   }
 
   if (props.name.length > 4) {
-    inputCalsses.push(classes.bold)
+    inputClasses.push(classes.bold)
   }
 
   const style = {
@@ -33,7 +33,7 @@ const Car = props => {
         type="text"
         onChange={props.onChangeName}
         value={props.name}
-        className={inputCalsses.join(' ')}
+        className={inputClasses.join(' ')}
       />
       <button onClick={props.onDelete}>Delete</button>
     </div>
