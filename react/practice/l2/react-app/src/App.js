@@ -4,15 +4,18 @@ import Car from './Car/Car';
 
 class App extends Component {
 
-  state = {
-    cars: [
-      {name: 'Text1', year: 2010},
-      {name: 'Text2', year: 2011},
-      {name: 'Text3', year: 2012}
-    ],
-    pageTitle: 'React components',
-    showCars: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      cars: [
+        {name: 'Text1', year: 2010},
+        {name: 'Text2', year: 2011},
+        {name: 'Text3', year: 2012}
+      ],
+      pageTitle: 'React components',
+      showCars: false
+    };
+  }
 
   toggleCarsHendler = () => {
     this.setState({
