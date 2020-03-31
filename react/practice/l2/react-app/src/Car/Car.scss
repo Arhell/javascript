@@ -4,6 +4,12 @@
   display: block;
   padding: 10px;
   transition: border, box-shadow .3s;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14);
+  &:hover {
+    border: 1px solid #aaa;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, .15);
+    cursor: pointer;
+  }
 }
 
 .input:active,
