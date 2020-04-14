@@ -1,4 +1,6 @@
 @import "./components/ActiveQuiz/ActiveQuiz.css";
+@import "./components/ActiveQuiz/AnswerList/AnswerList.css";
+@import "./components/ActiveQuiz/AnswerList/AnswerItem/AnswerItem.css";
 @import "./containers/Quiz/Quiz.css";
 @import "./hoc/Layout/Layout.css";
 

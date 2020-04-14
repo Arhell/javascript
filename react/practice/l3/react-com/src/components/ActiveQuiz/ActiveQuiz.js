@@ -1,4 +1,5 @@
 import React from "react";
+import AnswersList from "./AnswerList/AnswerList";
 
 const ActiveQuiz = props => {
   return (
@@ -15,12 +16,9 @@ const ActiveQuiz = props => {
         </small>
       </p>
 
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-      </ul>
+      <AnswersList
+        answers={props.answers}
+      />
     </div>
   )
 };
