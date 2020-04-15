@@ -9,7 +9,7 @@ const ActiveQuiz = props => {
           <strong>
             1.
           </strong>
-          Some text
+          {props.quastion}
         </span>
         <small>
           Text
@@ -18,6 +18,7 @@ const ActiveQuiz = props => {
 
       <AnswersList
         answers={props.answers}
+        onAnswerClick={props.onAnswerClick}
       />
     </div>
   )
