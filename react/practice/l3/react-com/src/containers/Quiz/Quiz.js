@@ -8,7 +8,7 @@ class Quiz extends Component{
     quiz: [
       {
         rightAnswerId: 1,
-        quastion: 'Some text',
+        question: 'Some text',
         id: 1,
         answers: [
           {
@@ -31,7 +31,7 @@ class Quiz extends Component{
       },
       {
         rightAnswerId: 2,
-        quastion: 'Some text',
+        question: 'Some text',
         id: 2,
         answers: [
           {
@@ -56,16 +56,16 @@ class Quiz extends Component{
   };
 
   onAnswerClickHandler = (answerId) => {
-    const quastion = this.state.quiz[this.state.activeQuestion]
+    const question = this.state.quiz[this.state.activeQuestion]
 
-    if(quastion.rightAnswerId === answerId) {
+    if(question.rightAnswerId === answerId) {
 
       this.setState({
         answerState: {[answerId]: 'success'}
       })
 
       const timeout = window.setTimeout(() => {
-        if(this.isQuizFinished) {
+        if(this.isQuizFinished()) {
           console.log('text')
         } else {
           this.setState({
@@ -78,7 +78,7 @@ class Quiz extends Component{
       }, 1000)
     } else  {
       this.setState({
-        answerId: {[answerId]: 'error'}
+        answerState: {[answerId]: 'error'}
       })
     }
   }
@@ -95,10 +95,10 @@ class Quiz extends Component{
           <h1>Some text</h1>
           <ActiveQuiz
             answers={this.state.quiz[this.state.activeQuestion].answers}
-            quastion={this.state.quiz[this.state.activeQuestion].quastion}
+            question={this.state.quiz[this.state.activeQuestion].question}
             onAnswerClick={this.onAnswerClickHandler}
             quizLength={this.state.quiz.length}
-            answerNumber={this.state.activeQuastion + 1}
+            answerNumber={this.state.activeQuestion + 1}
             state={this.state.answerState}
           />
         </div>
