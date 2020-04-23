@@ -3,6 +3,8 @@
 @import "./components/ActiveQuiz/AnswerList/AnswerItem/AnswerItem.css";
 @import "./containers/Quiz/Quiz.css";
 @import "./hoc/Layout/Layout.css";
+@import "./components/FinishedQuiz/FinishedQuiz.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css";
 
 body {
   margin: 0;
