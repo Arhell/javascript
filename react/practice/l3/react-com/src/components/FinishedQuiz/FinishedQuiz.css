@@ -17,10 +17,10 @@
   margin-left: 10px;
 }
 
-.success {
+.FinishedQuiz .success {
   color: rgba(161, 240, 69, .7);
 }
 
-.error {
+.FinishedQuiz .error {
   color: rgba(240, 87, 108, .7);
 }

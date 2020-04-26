@@ -1,27 +1,40 @@
 import React from "react";
 
 const FinishedQuiz = props => {
+  const successCount = Object.keys(props.results).reduce((total, key) => {
+    if(props.results[key] === 'success') {
+      total++
+    }
+
+    return total
+  },0)
+
   return (
     <div className="FinishedQuiz">
       <ul>
-        <li>
-          <strong>1. </strong>
-          some text
-          <i className="fa fa-times error" />
-        </li>
-        <li>
-          <strong>1. </strong>
-          some text
-          <i className="fa fa-check success" />
-        </li>
+        { props.quiz.map((quizItem, index) => {
+          const cls = [
+            'fa',
+            props.results[quizItem.id] === 'error' ? 'fa-times' : 'fa-check',
+            props.results[quizItem.id]
+          ]
+
+          return(
+          <li key={index}>
+            <strong>{index + 1}</strong>. &nbsp;
+            {quizItem.question}
+            <i className={cls.join(' ')}/>
+          </li>
+          )
+        }) }
       </ul>
 
       <p>
-        right 3 10
+        right {successCount} {props.quiz.length}
       </p>
 
       <div>
-        <button>Text</button>
+        <button onClick={props.onRetry}>Retry</button>
       </div>
     </div>
   )
