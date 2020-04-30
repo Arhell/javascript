@@ -6,6 +6,7 @@
 @import "./components/FinishedQuiz/FinishedQuiz.css";
 @import "./components/UI/Button/Button.css";
 @import "./components/Navigation/MenuToggle/MenuToggle.css";
+@import "./components/Navigation/Drawer/Drawer.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css";
 
 body {
