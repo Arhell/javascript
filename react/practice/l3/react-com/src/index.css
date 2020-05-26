@@ -2,6 +2,7 @@
 @import "./components/ActiveQuiz/AnswerList/AnswerList.css";
 @import "./components/ActiveQuiz/AnswerList/AnswerItem/AnswerItem.css";
 @import "./containers/Quiz/Quiz.css";
+@import "./containers/QuizList/QuizList.css";
 @import "./hoc/Layout/Layout.css";
 @import "./components/FinishedQuiz/FinishedQuiz.css";
 @import "./components/UI/Button/Button.css";
