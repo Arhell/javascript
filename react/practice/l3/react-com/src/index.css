@@ -4,6 +4,7 @@
 @import "./containers/Quiz/Quiz.css";
 @import "./containers/QuizList/QuizList.css";
 @import "./containers/Auth/Auth.css";
+@import "./containers/QuizCreator/QuizCreator.css";
 @import "./hoc/Layout/Layout.css";
 @import "./components/FinishedQuiz/FinishedQuiz.css";
 @import "./components/UI/Button/Button.css";
