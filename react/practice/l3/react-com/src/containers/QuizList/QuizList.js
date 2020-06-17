@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {NavLink} from 'react-router-dom'
+import axios from 'axios'
 
 export default class QuizList extends Component {
 
@@ -14,6 +15,12 @@ export default class QuizList extends Component {
           </NavLink>
         </li>
       )
+    })
+  }
+
+  componentDidMount() {
+    axios.get('').then(response => {
+      console.log(response)
     })
   }
 
