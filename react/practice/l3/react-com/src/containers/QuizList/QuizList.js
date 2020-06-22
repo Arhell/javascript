@@ -4,24 +4,42 @@ import axios from 'axios'
 
 export default class QuizList extends Component {
 
+  state = {
+    quizes: []
+  }
+
   renderQuizes() {
-    return [1,2,3].map((quiz, index) => {
+    return this.state.quizes.map( quiz => {
       return (
         <li
-          key={index}
+          key={quiz.id}
         >
-          <NavLink to={'/quiz/' + quiz}>
-            test {quiz}
+          <NavLink to={'/quiz/' + quiz.id}>
+            {quiz.name}
           </NavLink>
         </li>
       )
     })
   }
 
-  componentDidMount() {
-    axios.get('').then(response => {
-      console.log(response)
-    })
+  async componentDidMount() {
+    try {
+      const response = await axios.get('')
+
+      const quizes = []
+      Object.keys(response.data).forEach((key, index) => {
+        quizes.push({
+          id: key,
+          name: `Test # ${index + 1}`
+        })
+      })
+
+      this.setState({
+        quizes
+      })
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   render() {
