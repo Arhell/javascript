@@ -2,7 +2,7 @@ document.querySelector('#load').addEventListener('click', load)
 
 function load() {
   var url = 'https://jsonplaceholder.typicode.com/users'
-  console.log('Load')
+
   fetch(url)
     .then(function (response) {
       return response.json()
