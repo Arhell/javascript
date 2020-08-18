@@ -1,1 +1,3 @@
-console.log('test')
+async function add() {
+  await fetch('test')
+}
