@@ -1,3 +1,4 @@
-async function add() {
-  await fetch('test')
-}
+import {Header} from './components/header'
+
+const header = new Header('header')
+
