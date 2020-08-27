@@ -1,5 +1,6 @@
 import {Component} from "../main/component";
 import {Form} from '../main/form'
+import {Validation} from "../main/validation";
 
 export class Create extends Component{
   constructor(id) {
@@ -10,8 +11,8 @@ export class Create extends Component{
     this.$el.addEventListener('submit', submitHandler.bind(this))
 
     this.form = new Form(this.$el, {
-      title: [],
-      fulltext: []
+      title: [Validation.required],
+      fulltext: [Validation.required, Validation.minLength(10)]
     })
   }
 }
@@ -19,8 +20,13 @@ export class Create extends Component{
 function submitHandler(event) {
   event.preventDefault()
 
-  const formData = {
-    type: this.$el.type.value,
-    ...this.form.value()
+  if(this.form.isValid()) {
+    const formData = {
+      type: this.$el.type.value,
+      ...this.form.value()
+    }
+  } else {
+    console.warn('invalid')
   }
+
 }
