@@ -1,6 +1,7 @@
 import {Component} from "../main/component";
 import {Form} from '../main/form'
 import {Validation} from "../main/validation";
+import {api} from '../services/api'
 
 export class Create extends Component{
   constructor(id) {
@@ -17,19 +18,20 @@ export class Create extends Component{
   }
 }
 
-function submitHandler(event) {
+async function submitHandler(event) {
   event.preventDefault()
 
   if(this.form.isValid()) {
     const formData = {
       type: this.$el.type.value,
+      date: new Date().toLocaleDateString(),
       ...this.form.value()
     }
 
-    this.form.clear()
+    await api.createPost(formData)
 
-  } else {
-    console.warn('invalid')
+    this.form.clear()
+    alert('Done')
   }
 
 }
