@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $('<div />').css({
+    margin: '20px auto',
+    width: 200,
+    height: 150,
+    borderRadius: '50%',
+    backgroundColor: 'red',
+    transition: '.3s transform ease-in'
+  }).hover(function () {
+    $(this).css('transform', 'scale(1.1)')
+  }, function () {
+    $(this).css('transform', 'scale(1)')
+  }).click(function () {
+    const $clone = $(this).clone()
+
+    $clone.css({
+      position: 'relative',
+      top: '75',
+      backgroundColor: 'green'
+    })
+
+    $clone.click(() => $clone.fadeOut())
+
+    $(document.body).append($clone)
+  })
+  .appendTo($(document.body))
+</script>
+</body>
+</html>
