@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  axios.get('https://jsonplaceholder.typicode.com/todos/1')
+    .then(response => response.data)
+    .then(data => console.log(data))
+</script>
+</body>
+</html>
