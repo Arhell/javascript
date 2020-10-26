@@ -37,3 +37,43 @@ for (let i = 0; i < num.length; i++) {
 }
 
 console.log(add)
+
+const add2 = num.filter(person => person.age >= 1)
+
+console.log(add2)
+
+let amount = 0
+for (let i = 0; i < num.length; i++) {
+  amount += num[i].budget
+}
+
+console.log(amount)
+
+
+const amount2 = num.reduce((total, num) => total + num.budget, 0)
+
+console.log(amount2)
+
+const num3 = num.find(num => num.name === '3')
+
+console.log(num3)
+
+
+const num4 = num.findIndex(num => num.name === '3')
+
+console.log(num4)
+
+
+const newNum2 = num
+  .filter(num => num.budget > 2)
+  .map(num => {
+    return {
+      info: `${num.name} (${num.age})`,
+      budget: Math.sqrt(num.budget)
+    }
+  })
+  .reduce((total, num) => {
+    total + num.budget
+  }, 0)
+
+console.log(newNum2)
