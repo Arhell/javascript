@@ -60,3 +60,21 @@ console.log(array2)
 
 const mapObj = Object.fromEntries(map.entries())
 console.log(mapObj)
+
+const users = [
+  {name: '1'},
+  {name: '2'},
+  {name: '3'},
+]
+
+const visit = new Map()
+visit
+  .set(users[0], new Date())
+  .set(users[1], new Date().getTime() + 1000 * 60)
+  .set(users[2], new Date().getTime() + 5000 * 60)
+
+function lastVisit(user) {
+  return visit.get(user)
+}
+
+console.log(lastVisit(users[1]))
