@@ -143,3 +143,17 @@ name = null
 console.log(cache.get(name))
 console.log(cache.has(name2))
 
+const users2 = [
+  {name: '1'},
+  {name: '2'},
+  {name: '3'},
+]
+
+const visit = new WeakSet()
+
+visit.add(users2[0]).add(users2[1])
+
+users2.splice(1,1)
+
+console.log(visit.has(users2[0]))
+console.log(visit.has(users2[1]))
