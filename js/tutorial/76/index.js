@@ -101,3 +101,45 @@ function uniqValues(array) {
 
 console.log(uniqValues([1,1,2,2,4,4,4,4,4,5,6,6,6]))
 
+let obj = {
+  name: 'weakmap'
+}
+
+const arr = [obj]
+
+console.log(obj)
+
+const map = new WeakMap([
+  [obj, 'obj data']
+])
+
+obj = null
+
+console.log(map.has(obj))
+
+const cache = new WeakMap()
+
+function cacheUser(user) {
+  if(cache.has(user)) {
+    cache.set(user, Date.now())
+  }
+
+  return cache.get(user)
+}
+
+let name = {
+  name: 'Name'
+}
+
+let name2 = {
+  name: 'Name2'
+}
+
+cacheUser(name)
+cacheUser(name2)
+
+name = null
+
+console.log(cache.get(name))
+console.log(cache.has(name2))
+
