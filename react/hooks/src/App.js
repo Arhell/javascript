@@ -1,54 +1,32 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import './App.css';
-
-function computeInitCounter() {
-  console.log('Some text')
-  return Math.trunc(Math.random() * 20)
-}
 
 function App() {
 
-  // const [counter, setCounter] = useState(0)
-  // const [counter, setCounter] = useState(computeInitCounter())
-  const [counter, setCounter] = useState(() => {
-    return computeInitCounter()
-  })
+  const [type, setType] = useState('users')
 
-  const [state, setState] = useState({
-    title: 'Text',
-    date: Date.now()
-  })
+  const [data, setData] = useState([])
 
-  function increment() {
-    // setCounter(counter + 1)
-    setCounter((prevCounter) => {
-      return prevCounter + 1
-    })
-    // setCounter((prev) => prev + 1)
-  }
+  // useEffect(() => {
+  //   console.log('render')
+  // })
 
-  function decrement() {
-    setCounter(counter - 1)
-  }
-
-  function updateTitle() {
-    setState(prev => {
-      return {
-        ...prev,
-        title: 'New text'
-      }
-    })
-  }
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/${type}`)
+      .then(response => response.json())
+      .then(json => setData(json))
+  }, [type])
 
   return (
     <div>
-      <h1>Counter: {counter}</h1>
-      <button onClick={increment}>Add</button>
-      <button onClick={decrement}>Remove</button>
-      <button onClick={updateTitle}>Change</button>
+      <h1>Text: {type}</h1>
+
+      <button onClick={() => setType('users')}>Name</button>
+      <button onClick={() => setType('todos')}>Todo</button>
+      <button onClick={() => setType('posts')}>Posts</button>
 
       <pre>
-        {JSON.stringify(state, null, 2)}
+        {JSON.stringify(data, null, 2)}
       </pre>
     </div>
   );
