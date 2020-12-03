@@ -31,3 +31,30 @@ const divs = document.querySelectorAll('div')
 const nodes = [...divs]
 console.log(divs, Array.isArray(divs))
 console.log(nodes, Array.isArray(nodes))
+
+
+function sum(a, b, ...rest) {
+  return a + b + rest.reduce((a, i) => a + i ,0)
+}
+
+const numbers = [1, 2, 3, 4, 5]
+
+console.log(sum(...numbers))
+
+// const a = numbers[0]
+// const b = numbers[1]
+
+const [a, b, ...other] = numbers
+
+console.log(a, b, other)
+
+const person = {
+  name: 'Name',
+  age: 30,
+  city: 'City',
+  country: 'Country'
+}
+
+const {name, age, ...address} = person
+
+console.log(name, age, address)
