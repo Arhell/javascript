@@ -13,6 +13,15 @@ const obj = {
 localStorage.setItem('person', JSON.stringify(obj))
 
 const raw = localStorage.getItem('person')
-raw.name = 'Name'
+const person = JSON.parse(raw)
+person.name = 'Name'
 
-console.log(raw)
+console.log(person)
+
+window.addEventListener('storage', event => {
+  console.log(event)
+})
+
+window.onstorage = () => {}
+
+
