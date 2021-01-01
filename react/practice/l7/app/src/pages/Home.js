@@ -2,6 +2,7 @@ import React, {Fragment, useContext, useEffect} from "react";
 import {Form} from '../components/form'
 import {Notes} from '../components/Notes'
 import {FirebaseContext} from "../context/firebase/firebaseContext";
+import {Loader} from "../components/Loader";
 
 export const Home = () => {
   const {loading, notes, fetchNotes} = useContext(FirebaseContext)
@@ -15,7 +16,10 @@ export const Home = () => {
         <Form />
         <hr />
 
-        <Notes notes={notes}/>
+        {loading
+          ? <Loader />
+          : <Notes notes={notes}/>
+        }
     </Fragment>
   )
 }
