@@ -9,7 +9,7 @@ export const Notes = ({notes,}) => {
 					<div>
 						<strong>{note.title}</strong>
 
-						<small>{new Date().toLocaleDateString()}</small>
+						<small>{note.date}</small>
 					</div>
 
 
