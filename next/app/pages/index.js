@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import Head from 'next/head'
+import {MainLayout} from "../components/MainLayout";
 
 export default function Index() {
 	return (
-		<>
+		<MainLayout>
 			<Head>
 				<title>Title</title>
 				<meta name="Keywords" content="Keywords" />
@@ -22,6 +23,6 @@ export default function Index() {
 					<a>Posts</a>
 				</Link>
 			</p>
-		</>
+		</MainLayout>
 	)
 }
