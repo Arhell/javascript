@@ -4,13 +4,7 @@ import {MainLayout} from "../components/MainLayout";
 
 export default function Index() {
 	return (
-		<MainLayout>
-			<Head>
-				<title>Title</title>
-				<meta name="Keywords" content="Keywords" />
-				<meta name="description" content="description" />
-			</Head>
-
+		<MainLayout title={'Home'}>
 			<h1>Text</h1>
 			<p>
 				<Link href={'/about'}>
