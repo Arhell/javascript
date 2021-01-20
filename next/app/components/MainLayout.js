@@ -10,9 +10,9 @@ export function MainLayout ({children, title= 'App'}) {
         <meta name="description" content="description" />
       </Head>
       <nav>
-        <Link to={'/'}>Home</Link>
-        <Link to={'/about'}>About</Link>
-        <Link to={'/posts'}>Posts</Link>
+        <Link href={'/'}><a>Home</a></Link>
+        <Link to={'/about'}><a>About</a></Link>
+        <Link to={'/posts'}><a>Posts</a></Link>
       </nav>
       <main>
         {children}
