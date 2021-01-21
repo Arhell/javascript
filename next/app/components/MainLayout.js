@@ -11,8 +11,8 @@ export function MainLayout ({children, title= 'App'}) {
       </Head>
       <nav>
         <Link href={'/'}><a>Home</a></Link>
-        <Link to={'/about'}><a>About</a></Link>
-        <Link to={'/posts'}><a>Posts</a></Link>
+        <Link href={'/about'}><a>About</a></Link>
+        <Link href={'/posts'}><a>Posts</a></Link>
       </nav>
       <main>
         {children}
