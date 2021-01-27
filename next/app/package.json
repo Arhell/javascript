@@ -6,13 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "mock": "json-server -w db.json -p 4200 -d 450"
+    "mock": "json-server -w db.json -p 4200 -d 450",
+    "serve": "concurrently \"npm run dev\" \"npm run mock\""
   },
   "dependencies": {
     "json-server": "^0.16.3",
     "next": "10.0.5",
+    "nextjs-progressbar": "0.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "sass": "^1.32.5"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
   }
 }

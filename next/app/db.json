@@ -15,5 +15,8 @@
       "title": "Title3",
       "body": "Text3"
     }
-  ]
+  ],
+  "about": {
+    "title": "title"
+  }
 }
