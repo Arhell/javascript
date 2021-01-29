@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import {MainLayout} from "../components/MainLayout";
+import Link from 'next/link'
 
 export default function Posts({posts: serverPosts}) {
 	const [posts, setPosts] = useState(serverPosts)
@@ -30,7 +31,7 @@ export default function Posts({posts: serverPosts}) {
 			<ul>
 				{posts.map(post => (
 					<li key={post.id}>
-						<Link href={`/posts/[id]`} as={`/post/${post.id}`}>
+						<Link href={`/post/[id]`} as={`/post/${post.id}`}>
 							<a>
 								{post.title}
 							</a>
