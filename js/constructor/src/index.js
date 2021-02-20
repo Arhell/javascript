@@ -71,7 +71,7 @@ function columns(block) {
 function image(block) {
   return `
     <div class="row">
-      <img src="${block.value}" />
+      <img src="${block.value}">
     </div>
   `
 }
