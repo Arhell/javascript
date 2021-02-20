@@ -8,12 +8,15 @@ const model = [
     value: 'Text2'
   },
   {
-    type: columns,
+    type: 'columns',
     value: [
       '123',
       '456',
       '789'
     ]
+  },
+  {
+    type: 'image', value: './assets/img.jpg'
   }
 ]
 
@@ -28,6 +31,8 @@ model.forEach(block => {
     html = text(block)
   } else if (block.type === 'columns') {
     html = columns(block)
+  } else if (block.type === 'image') {
+    html = image(block)
   }
 
   $site.insertAdjacentHTML('beforeend', html)
@@ -59,6 +64,14 @@ function columns(block) {
   return `
     <div class="row">
       ${html.join('')}
+    </div>
+  `
+}
+
+function image(block) {
+  return `
+    <div class="row">
+      <img src="${block.value}" />
     </div>
   `
 }
