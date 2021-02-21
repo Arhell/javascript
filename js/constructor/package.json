@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "dev": "parcel ./src/index.html -p 3000 --open"
+    "dev": "parcel ./src/index.html -p 3000 --open",
+    "build": "parcel build ./src/index.html --no-source-maps"
   },
   "author": "",
   "license": "ISC",
