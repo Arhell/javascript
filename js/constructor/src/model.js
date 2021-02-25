@@ -3,7 +3,16 @@ import image from "./assets/img.jpg"
 export const model = [
   {
     type: 'title',
-    value: 'Text'
+    value: 'Text',
+    options: {
+      tag: 'h2',
+      styles: {
+        background: 'red',
+        color: '#fff',
+        padding: '1rem',
+        'text-align': 'center'
+      }
+    }
   },
   {
     type: 'text',
