@@ -7,10 +7,6 @@ export function col(content) {
 }
 
 export function css(styles = {}) {
-  const keys = Object.keys(styles)
-  const arr = keys.map(key => {
-    return `${key}: ${styles[key]}`
-  })
-
-  return arr.join(';')
+  const toStr = key => `${key}: ${styles[key]}`
+  return Object.keys(styles).map(toStr).join(';')
 }
