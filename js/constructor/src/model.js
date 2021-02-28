@@ -1,8 +1,8 @@
 import image from "./assets/img.jpg"
-import {Block} from './classes/blocks'
+import {TextBlock, TitleBlock, ColumnsBlock, ImageBlock} from './classes/blocks'
 
 export const model = [
-  new Block('title', 'Text',{
+  new TitleBlock( 'Text',{
     tag: 'h2',
     styles: {
       background: 'red',
@@ -12,13 +12,13 @@ export const model = [
     }
   }),
 
-  new Block('title','Text', {
+  new TextBlock('Text', {
     styles: {
       padding: '1rem'
     }
   }),
 
-  new Block('columns',
+  new ColumnsBlock(
     [
           '123',
           '456',
@@ -31,7 +31,7 @@ export const model = [
         }
     }),
 
-  new Block('image', image, {
+  new ImageBlock( image, {
     styles: {
       padding: '2rem 0',
       display: 'flex',
