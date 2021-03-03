@@ -4,6 +4,7 @@ export class Site {
   }
 
   render(model) {
+    this.$el.innerHTML = ''
     model.forEach(block => {
       site.insertAdjacentHTML('beforeend', block.toHtml())
     })
