@@ -1,6 +1,6 @@
 import './List.scss';
 
-const List = ({ items }) => {
+const List = ({ items, isRemovable }) => {
   return (
     <ul className="list">
       {items.map((item, index) => (
