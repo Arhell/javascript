@@ -1,9 +1,11 @@
 .list {
   margin-bottom: 30px;
 
-  &__icon-plus {
-    path {
-      stroke: #7c7c7c;
+  &__add-button {
+    opacity: .4;
+
+    &:hover {
+      opacity: 1;
     }
   }
 

@@ -1,10 +1,13 @@
+import classNames from 'classnames';
 import './List.scss';
 
 const List = ({ items, isRemovable }) => {
   return (
     <ul className="list">
       {items.map((item, index) => (
-        <li className={item.active ? 'active' : ''} key={index}>
+        <li
+          className={classNames(item.className, {'active': item.active})}
+          key={index}>
           <i>
             {item.icon
               ? item.icon
