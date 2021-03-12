@@ -1,5 +1,5 @@
 import List from './components/List';
-import AddListButton from './components/AddButtonList'
+import AddList from './components/AddList'
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
           isRemovable
         />
 
-        <AddListButton />
+        <AddList />
       </div>
       <div className="todo__tasks">
         123
