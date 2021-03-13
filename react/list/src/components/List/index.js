@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import './List.scss';
 
+import Badge from "../Badge";
+
 const List = ({ items, isRemovable, onClick }) => {
   return (
     <ul
@@ -14,7 +16,7 @@ const List = ({ items, isRemovable, onClick }) => {
           <i>
             {item.icon
               ? item.icon
-              : <i className={`badge badge--${item.color}`} />
+              : <Badge color={item.color}/>
             }
           </i>
           <span>{item.name}</span>
