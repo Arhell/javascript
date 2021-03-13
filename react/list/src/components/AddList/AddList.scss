@@ -14,11 +14,18 @@
   }
 
   .badge {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    &.active {
+      border: 2px solid #525252;
+    }
   }
 
   .add-list__popup-colors {
     margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
   }
 }

@@ -6,6 +6,7 @@ import './AddList.scss'
 
 const AddList = ({colors}) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(colors[0].id);
 
   return (
     <div className="add-list">
@@ -29,13 +30,22 @@ const AddList = ({colors}) => {
         <div className="add-list__popup">
           <input className="field" type="text" placeholder="название списка"/>
           <div className="add-list__popup-colors">
-            <Badge color="green"/>
+            {
+              colors.map(color => (
+                <Badge
+                  onClick={()=>setSelectedColor(color.id)}
+                  key={color.id}
+                  color={color.name}
+                  className={selectedColor === color.id && 'active'}
+                />
+              ))
+            }
           </div>
           <button className="button">Добавить</button>
         </div>
       }
     </div>
   )
-}
+};
 
 export default AddList
