@@ -2,6 +2,8 @@ import { useState } from 'react';
 import List from "../List";
 import Badge from "../Badge";
 
+import closeIcon from '../../assets/img/close.svg'
+
 import './AddList.scss'
 
 const AddList = ({colors}) => {
@@ -28,6 +30,11 @@ const AddList = ({colors}) => {
       {
         visiblePopup && 
         <div className="add-list__popup">
+          <img
+            onClick={() => setVisiblePopup(false)}
+            src={closeIcon}
+            className="add-list__popup-close-btn" alt="icon"
+          />
           <input className="field" type="text" placeholder="название списка"/>
           <div className="add-list__popup-colors">
             {

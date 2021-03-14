@@ -1,11 +1,14 @@
 .add-list {
   .add-list__popup {
+    position: relative;
     width: 235px;
     height: 150px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, .05);
     padding: 18px;
+    top: -25px;
+    left: 10px;
   }
 
   .button {
@@ -27,5 +30,13 @@
     margin-top: 12px;
     display: flex;
     justify-content: space-between;
+  }
+
+  .add-list__popup-close-btn {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    cursor: pointer;
+
   }
 }
