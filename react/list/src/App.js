@@ -1,9 +1,17 @@
+import {useState} from 'react'
 import List from './components/List';
 import AddList from './components/AddList'
 
 import DB from './assets/db.json'
 
 function App() {
+  const [lists, setlists] = useState(
+    DB.lists.map(item => {
+      item.color = DB.colors.filter(color => color.id === item.colorId)[0].name
+      return item
+    })
+  )
+
   return (
     <div className="todo">
       <div className="todo__sidebar">
@@ -18,10 +26,7 @@ function App() {
           ]}
         />
         <List
-          items={DB.lists.map(item => {
-            item.color = DB.colors.filter(color => color.id === item.colorId)[0].name
-            return item
-          })}
+          items={lists}
           isRemovable
         />
 

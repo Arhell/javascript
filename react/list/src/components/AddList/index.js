@@ -9,6 +9,7 @@ import './AddList.scss'
 const AddList = ({colors}) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [selectedColor, setSelectedColor] = useState(colors[0].id);
+  const [inputValue, setInputValue] = useState('');
 
   return (
     <div className="add-list">
@@ -35,7 +36,15 @@ const AddList = ({colors}) => {
             src={closeIcon}
             className="add-list__popup-close-btn" alt="icon"
           />
-          <input className="field" type="text" placeholder="название списка"/>
+
+          <input
+            value={inputValue}
+            onChange={event => setInputValue(event.target.value)}
+            className="field"
+            type="text"
+            placeholder="название списка"
+          />
+
           <div className="add-list__popup-colors">
             {
               colors.map(color => (
