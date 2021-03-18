@@ -5,7 +5,7 @@ import AddList from './components/AddList'
 import DB from './assets/db.json'
 
 function App() {
-  const [lists, setlists] = useState(
+  const [lists, setLists] = useState(
     DB.lists.map(item => {
       item.color = DB.colors.filter(color => color.id === item.colorId)[0].name
       return item
@@ -17,6 +17,7 @@ function App() {
       ...lists,
       obj
     ]
+    setLists(newList)
   }
 
   return (
