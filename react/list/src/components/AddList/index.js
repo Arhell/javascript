@@ -6,10 +6,18 @@ import closeIcon from '../../assets/img/close.svg'
 
 import './AddList.scss'
 
-const AddList = ({colors}) => {
+const AddList = ({colors, onAdd}) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [selectedColor, setSelectedColor] = useState(colors[0].id);
   const [inputValue, setInputValue] = useState('');
+
+  const addList = () => {
+    if(!inputValue) {
+      alert("Error")
+      return;
+    }
+    onAdd({"id": Math.random(),"name": inputValue,"colorId": selectedColor})
+  }
 
   return (
     <div className="add-list">
@@ -57,7 +65,12 @@ const AddList = ({colors}) => {
               ))
             }
           </div>
-          <button className="button">Добавить</button>
+          <button
+            onClick={addList}
+            className="button"
+          >
+            Добавить
+          </button>
         </div>
       }
     </div>
