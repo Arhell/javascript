@@ -18,6 +18,9 @@ const AddList = ({colors, onAdd}) => {
     }
     const color = colors.filter(current => current.id === selectedColor)[0].name
     onAdd({id: Math.random(), name: inputValue, color })
+    setVisiblePopup(false)
+    setInputValue('')
+    setSelectedColor(colors[0].id)
   }
 
   return (
