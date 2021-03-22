@@ -42,7 +42,11 @@ function App() {
         <AddList onAdd={onAddList} colors={DB.colors}/>
       </div>
       <div className="todo__tasks">
-        123
+       <div className="tasks">
+         <h2 className="tasks-title">
+           Text
+         </h2>
+       </div>
       </div>
     </div>
   );

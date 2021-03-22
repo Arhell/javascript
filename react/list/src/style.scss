@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -15,16 +17,14 @@
 }
 
 .todo {
-  position: absolute;
-  left: 50%;
-  top: 50%;
+  margin: auto;
   width: 790px;
   height: 530px;
-  transform: translate(-50%, -50%);
   box-shadow: 1px 2px 20px #f3f3f3;
   border-radius: 10px;
   border: 1px solid #f1f1f1;
   font-size: 14px;
+  display: flex;
 
   .todo__sidebar {
     background-color: #f4f6f8;
@@ -32,6 +32,11 @@
     height: 100%;
     border-right: 1px solid #f1f1f1;
     padding: 60px 20px;
+  }
+
+  &__tasks {
+    flex: 1;
+    padding: 60px;
   }
 }
 
@@ -59,5 +64,15 @@
 
   &:active {
     background-color: darken(#4dd599, 10%);
+  }
+}
+
+.tasks {
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 39px;
+    color: #64c4ed;
   }
 }
