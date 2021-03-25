@@ -1,17 +1,20 @@
-import {useState} from 'react'
-import List from './components/List';
-import AddList from './components/AddList'
-import Tasks from "./components/Tasks";
-
-import DB from './assets/db.json'
+import {useState, useEffect} from 'react'
+import axios from "axios";
+import { List, AddList, Tasks } from './components'
 
 function App() {
-  const [lists, setLists] = useState(
-    DB.lists.map(item => {
-      item.color = DB.colors.filter(color => color.id === item.colorId)[0].name
-      return item
+
+  const [lists, setLists] = useState(null)
+  const [colors, setColors] = useState(null)
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/lists?_expand=color').then(({data}) => {
+      setLists(data)
     })
-  )
+    axios.get('http://localhost:3001/colors').then(({data}) => {
+      setColors(data)
+    })
+  }, [])
 
   const onAddList = (obj) => {
     const newList = [
@@ -34,13 +37,20 @@ function App() {
             }
           ]}
         />
-        <List
-          items={lists}
-          isRemovable
-          onRemove={(list) => alert('123')}
-        />
+        {lists ? (
+          <List
+            items={lists}
+            onRemove={id => {
+              const newLists = lists.filter(item => item.id !== id);
+              setLists(newLists);
+            }}
+            isRemovable
+          />
+        ) : (
+          'Загрузка...'
+        )}
 
-        <AddList onAdd={onAddList} colors={DB.colors}/>
+        <AddList onAdd={onAddList} colors={colors}/>
       </div>
       <div className="todo__tasks">
        <Tasks />
