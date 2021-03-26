@@ -5,6 +5,7 @@ import Badge from "../Badge";
 import closeIcon from '../../assets/img/close.svg'
 
 import './AddList.scss'
+import axios from "axios";
 
 const AddList = ({colors, onAdd}) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
@@ -28,8 +29,13 @@ const AddList = ({colors, onAdd}) => {
       alert("Error")
       return;
     }
-    const color = colors.filter(current => current.id === selectedColor)[0].name
-    onAdd({id: Math.random(), name: inputValue, color })
+    axios.post('http://localhost:3001/lists', {
+      name: inputValue, colorId: selectedColor
+    }).then(({data}) => {
+      const color = colors.filter(current => current.id === selectedColor)[0].name
+      const listObj = {...data, color: {name: color}}
+      onAdd(listObj)
+    })
     onClose()
   }
 
