@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import './List.scss';
+import axios from "axios";
 
 import removeIcon from '../../assets/img/remove.svg'
 
@@ -8,8 +9,10 @@ import Badge from "../Badge";
 const List = ({ items, isRemovable, onClick, onRemove }) => {
 
   const removeList = (item) => {
-    if (window.confirm('Some text')) {
-      onRemove(item)
+    if (window.confirm('Удалить')) {
+      axios.delete('http://localhost:3001/lists/' + item.id).then(() => {
+        onRemove(item.id);
+      });
     }
   }
 

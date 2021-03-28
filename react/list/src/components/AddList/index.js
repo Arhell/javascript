@@ -10,6 +10,7 @@ import axios from "axios";
 const AddList = ({colors, onAdd}) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [selectedColor, setSelectedColor] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
@@ -29,14 +30,17 @@ const AddList = ({colors, onAdd}) => {
       alert("Error")
       return;
     }
+    setIsLoading(true)
     axios.post('http://localhost:3001/lists', {
       name: inputValue, colorId: selectedColor
     }).then(({data}) => {
       const color = colors.filter(current => current.id === selectedColor)[0].name
       const listObj = {...data, color: {name: color}}
       onAdd(listObj)
+      onClose()
+    }).finally(() => {
+      setIsLoading(false)
     })
-    onClose()
   }
 
   return (
@@ -89,7 +93,7 @@ const AddList = ({colors, onAdd}) => {
             onClick={addList}
             className="button"
           >
-            Добавить
+            {isLoading ? 'Добавление...' : 'Добавить'}
           </button>
         </div>
       }
