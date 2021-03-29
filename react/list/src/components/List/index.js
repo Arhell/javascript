@@ -6,7 +6,7 @@ import removeIcon from '../../assets/img/remove.svg'
 
 import Badge from "../Badge";
 
-const List = ({ items, isRemovable, onClick, onRemove }) => {
+const List = ({ items, isRemovable, onClick, onRemove, onClickItem, activeItem }) => {
 
   const removeList = (item) => {
     if (window.confirm('Удалить')) {
@@ -23,7 +23,10 @@ const List = ({ items, isRemovable, onClick, onRemove }) => {
     >
       {items.map((item, index) => (
         <li
-          className={classNames(item.className, {'active': item.active})}
+          className={classNames(item.className, {
+            'active': activeItem && activeItem.id === item.id
+          })}
+          onClick={onClickItem ? () => onClickItem(item) : null}
           key={index}>
           <i>
             {item.icon
@@ -31,7 +34,10 @@ const List = ({ items, isRemovable, onClick, onRemove }) => {
               : <Badge color={item.color.name}/>
             }
           </i>
-          <span>{item.name}</span>
+          <span>
+            {item.name}
+            {item.tasks && item.tasks.length > 0 && ` (${item.tasks.length})`}
+          </span>
           {isRemovable &&
           <img
             className="list__remove-icon"
