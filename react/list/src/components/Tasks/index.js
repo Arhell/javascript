@@ -13,6 +13,8 @@ const Tasks = ({list}) => {
           <img src={EditIcon} alt="edit icon"/>
         </h2>
         <div className="tasks__items">
+          {!list.tasks.length && <h2>No tasks</h2>}
+
           {
             list.tasks.map(task => (
               <div key={task.id} className="tasks__items-row">
