@@ -2,15 +2,21 @@ import EditIcon from '../../assets/img/edit.svg'
 
 import './tasks.scss'
 
-const Tasks = ({list}) => {
-  console.log(list)
+const Tasks = ({list, onEditTitle}) => {
+
+  const editTitle = () => {
+    const newTitle = window.prompt('Название списка', list.name)
+    if (newTitle) {
+      onEditTitle(list.id)
+    }
+  }
 
   return (
     <div>
       <div className="tasks">
         <h2 className="tasks-title">
           {list.name}
-          <img src={EditIcon} alt="edit icon"/>
+          <img onClick={editTitle} src={EditIcon} alt="edit icon"/>
         </h2>
         <div className="tasks__items">
           {!list.tasks.length && <h2>No tasks</h2>}
