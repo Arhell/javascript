@@ -1,13 +1,19 @@
 import EditIcon from '../../assets/img/edit.svg'
 
 import './tasks.scss'
+import axios from "axios";
 
 const Tasks = ({list, onEditTitle}) => {
 
   const editTitle = () => {
     const newTitle = window.prompt('Название списка', list.name)
     if (newTitle) {
-      onEditTitle(list.id)
+      onEditTitle(list.id, newTitle)
+      axios.patch('http://localhost:3001/lists' + list.id, {
+        name: newTitle
+      }).catch(() => {
+        alert('Error')
+      })
     }
   }
 
