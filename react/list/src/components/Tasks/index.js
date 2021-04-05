@@ -2,6 +2,7 @@ import EditIcon from '../../assets/img/edit.svg'
 
 import './tasks.scss'
 import axios from "axios";
+import AddTaskForm from './AddTaskForm'
 
 const Tasks = ({list, onEditTitle}) => {
 
@@ -43,7 +44,7 @@ const Tasks = ({list, onEditTitle}) => {
             ))
           }
 
-
+          <AddTaskForm />
         </div>
       </div>
     </div>
