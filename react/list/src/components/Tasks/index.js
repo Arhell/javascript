@@ -4,7 +4,7 @@ import './tasks.scss'
 import axios from "axios";
 import AddTaskForm from './AddTaskForm'
 
-const Tasks = ({list, onEditTitle}) => {
+const Tasks = ({list, onEditTitle, onAddTask}) => {
 
   const editTitle = () => {
     const newTitle = window.prompt('Название списка', list.name)
@@ -44,7 +44,7 @@ const Tasks = ({list, onEditTitle}) => {
             ))
           }
 
-          <AddTaskForm />
+          <AddTaskForm list={list} onAddTask={onAddTask}/>
         </div>
       </div>
     </div>

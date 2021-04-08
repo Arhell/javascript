@@ -2,11 +2,23 @@ import {useState} from 'react'
 
 import addIcon from '../../assets/img/add.svg'
 
-const AddTaskForm = () => {
+const AddTaskForm = ({list, onAddTask}) => {
   const [visibleForm, setVisibleForm] = useState(false)
+  const [inputValue, setInputValue] = useState("")
 
   const toggleFormVisible = () => {
     setVisibleForm(!visibleForm)
+    setInputValue('')
+  }
+
+  const addTask = () => {
+    const obl = {
+      listId: list.id,
+      text: inputValue,
+      completed: false
+    }
+    onAddTask(list.id, obl)
+    toggleFormVisible()
   }
 
   return (
@@ -23,11 +35,13 @@ const AddTaskForm = () => {
         : (
           <div className="tasks__form-block">
             <input
+              value={inputValue}
               className="field"
               type="text"
               placeholder="Текст задачи"
+              onChange={e => setInputValue(e.target.value)}
             />
-            <button className="button">Добавить задачу</button>
+            <button onClick={addTask} className="button">Добавить задачу</button>
             <button className="button button--grey" onClick={toggleFormVisible}>Отмена</button>
           </div>
         )

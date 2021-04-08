@@ -18,10 +18,17 @@ function App() {
   }, [])
 
   const onAddList = (obj) => {
-    const newList = [
-      ...lists,
-      obj
-    ]
+    const newList = [...lists, obj]
+    setLists(newList)
+  }
+
+  const onAddTask = (listId, taskObj) => {
+    const newList = lists.map(item => {
+      if (item.id === listId) {
+        item.tasks = [...item.tasks, taskObj]
+      }
+      return item
+    })
     setLists(newList)
   }
 
@@ -72,6 +79,7 @@ function App() {
           <Tasks
             list={activeItem}
             onEditTitle={onEditListTitle}
+            onAddTask={onAddTask}
           />}
       </div>
     </div>
