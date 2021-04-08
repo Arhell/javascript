@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import axios from "axios";
 
 import addIcon from '../../assets/img/add.svg'
 
@@ -12,13 +13,16 @@ const AddTaskForm = ({list, onAddTask}) => {
   }
 
   const addTask = () => {
-    const obl = {
+    const obj = {
       listId: list.id,
       text: inputValue,
       completed: false
     }
-    onAddTask(list.id, obl)
-    toggleFormVisible()
+
+    axios.post('http://localhost:3001/tasks', obj).then((data) => {
+      onAddTask(list.id, data)
+      toggleFormVisible()
+    })
   }
 
   return (
