@@ -6,6 +6,7 @@ import addIcon from '../../assets/img/add.svg'
 const AddTaskForm = ({list, onAddTask}) => {
   const [visibleForm, setVisibleForm] = useState(false)
   const [inputValue, setInputValue] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   const toggleFormVisible = () => {
     setVisibleForm(!visibleForm)
@@ -19,9 +20,16 @@ const AddTaskForm = ({list, onAddTask}) => {
       completed: false
     }
 
+    setIsLoading(true)
+
     axios.post('http://localhost:3001/tasks', obj).then((data) => {
       onAddTask(list.id, data)
       toggleFormVisible()
+    }).catch(() => {
+      alert('Error')
+    })
+      .finally(() => {
+      setIsLoading(false)
     })
   }
 
@@ -45,7 +53,9 @@ const AddTaskForm = ({list, onAddTask}) => {
               placeholder="Текст задачи"
               onChange={e => setInputValue(e.target.value)}
             />
-            <button onClick={addTask} className="button">Добавить задачу</button>
+            <button disabled={isLoading} onClick={addTask} className="button">
+              {isLoading ? 'Add...' : 'Добавить задачу'}
+            </button>
             <button className="button button--grey" onClick={toggleFormVisible}>Отмена</button>
           </div>
         )
