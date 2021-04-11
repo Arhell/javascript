@@ -64,7 +64,7 @@ function App() {
               setLists(newLists);
             }}
             onClickItem={item => {
-              setActiveItem(item)
+              setActiveItem(item);
             }}
             activeItem={activeItem}
             isRemovable

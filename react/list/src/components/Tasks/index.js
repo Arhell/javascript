@@ -10,7 +10,7 @@ const Tasks = ({list, onEditTitle, onAddTask}) => {
     const newTitle = window.prompt('Название списка', list.name)
     if (newTitle) {
       onEditTitle(list.id, newTitle)
-      axios.patch('http://localhost:3001/lists' + list.id, {
+      axios.patch('http://localhost:3001/lists/' + list.id, {
         name: newTitle
       }).catch(() => {
         alert('Error')
