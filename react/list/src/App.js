@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from "axios";
 import { List, AddList, Tasks } from './components'
+import { Route } from 'react-router-dom'
 
 function App() {
 
@@ -76,13 +77,24 @@ function App() {
         <AddList onAdd={onAddList} colors={colors}/>
       </div>
       <div className="todo__tasks">
-        {lists && activeItem && (
-          <Tasks
-            list={activeItem}
-            onAddTask={onAddTask}
-            onEditTitle={onEditListTitle}
-          />
-        )}
+        <Route exact path="/">
+          {
+            lists && lists.map(list => <Tasks
+              list={list}
+              onAddTask={onAddTask}
+              onEditTitle={onEditListTitle}
+            />)
+          }
+         </Route>
+        <Route path="/lists/:id">
+          {lists && activeItem && (
+            <Tasks
+              list={activeItem}
+              onAddTask={onAddTask}
+              onEditTitle={onEditListTitle}
+            />
+          )}
+        </Route>
       </div>
     </div>
   );
