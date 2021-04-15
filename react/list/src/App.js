@@ -1,13 +1,14 @@
 import {useState, useEffect} from 'react'
 import axios from "axios";
 import { List, AddList, Tasks } from './components'
-import { Route } from 'react-router-dom'
+import { Route, useHistory } from 'react-router-dom'
 
 function App() {
 
   const [lists, setLists] = useState(null)
   const [colors, setColors] = useState(null)
   const [activeItem, setActiveItem] = useState(null)
+  let history = useHistory()
 
   useEffect(() => {
     axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({data}) => {
@@ -43,10 +44,21 @@ function App() {
     setLists(newList);
   };
 
+  useEffect(() => {
+    const listId = history.location.pathname.split('lists/')[1]
+    if(lists) {
+      const list = lists.find(list => list.id === Number(listId))
+      setActiveItem(list)
+    }
+  }, [lists, history.location.pathname])
+
   return (
     <div className="todo">
       <div className="todo__sidebar">
         <List
+          onClickItem={list => {
+            history.push('/')
+          }}
           items={[
             {
               active: true,
@@ -64,8 +76,8 @@ function App() {
               const newLists = lists.filter(item => item.id !== id);
               setLists(newLists);
             }}
-            onClickItem={item => {
-              setActiveItem(item);
+            onClickItem={list => {
+              history.push(`/lists/${list.id}`)
             }}
             activeItem={activeItem}
             isRemovable
