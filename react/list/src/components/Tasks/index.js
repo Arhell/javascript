@@ -4,7 +4,7 @@ import './tasks.scss'
 import axios from "axios";
 import AddTaskForm from './AddTaskForm'
 
-const Tasks = ({list, onEditTitle, onAddTask}) => {
+const Tasks = ({list, onEditTitle, onAddTask, withoutEmpty}) => {
 
   const editTitle = () => {
     const newTitle = window.prompt('Название списка', list.name)
@@ -19,14 +19,13 @@ const Tasks = ({list, onEditTitle, onAddTask}) => {
   }
 
   return (
-    <div>
-      <div className="tasks">
-        <h2 className="tasks-title">
+    <div className="tasks">
+        <h2 style={{ color: list.color.hex }} className="tasks-title">
           {list.name}
           <img onClick={editTitle} src={EditIcon} alt="edit icon"/>
         </h2>
         <div className="tasks__items">
-          {!list.tasks.length && <h2>No tasks</h2>}
+          {!withoutEmpty && !list.tasks.length && <h2>No tasks</h2>}
 
           {
             list.tasks.map(task => (
@@ -47,7 +46,6 @@ const Tasks = ({list, onEditTitle, onAddTask}) => {
           <AddTaskForm list={list} onAddTask={onAddTask}/>
         </div>
       </div>
-    </div>
   )
 }
 

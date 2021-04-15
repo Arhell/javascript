@@ -81,6 +81,7 @@ function App() {
           {
             lists && lists.map(list => <Tasks
               list={list}
+              key={list.id}
               onAddTask={onAddTask}
               onEditTitle={onEditListTitle}
             />)
@@ -92,6 +93,7 @@ function App() {
               list={activeItem}
               onAddTask={onAddTask}
               onEditTitle={onEditListTitle}
+              withoutEmpty
             />
           )}
         </Route>
