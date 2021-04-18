@@ -19,6 +19,15 @@ const Tasks = ({list, onEditTitle, onAddTask, withoutEmpty}) => {
     }
   }
 
+  const onRemove = (taskId) => {
+    if(window.confirm('Remove')) {
+      axios.delete('http://localhost:3001/tasks/' + taskId)
+        .catch(() => {
+          alert('Error')
+      })
+    }
+  }
+
   return (
     <div className="tasks">
         <h2 style={{ color: list.color.hex }} className="tasks-title">

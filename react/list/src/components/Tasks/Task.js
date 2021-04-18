@@ -1,4 +1,4 @@
-const Task = ({ id, text }) => {
+const Task = ({ id, text, onRemove, onEdit }) => {
 
   return (
     <div key={id} className="tasks__items-row">
