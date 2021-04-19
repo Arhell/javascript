@@ -1,4 +1,4 @@
-const Task = ({ id, text, onRemove, onEdit }) => {
+const Task = ({ id, text, list, onRemove, onEdit }) => {
 
   return (
     <div key={id} className="tasks__items-row">
@@ -10,7 +10,7 @@ const Task = ({ id, text, onRemove, onEdit }) => {
           </svg>
         </label>
       </div>
-      <input readOnly value={text}/>
+      <p>{text}</p>
       <div className="tasks__items-row-actions">
         <div onClick={() => onEdit(list.id, { id, text })}>
           <svg

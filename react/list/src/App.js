@@ -34,6 +34,22 @@ function App() {
     setLists(newList);
   };
 
+  const onRemoveTask = (listId, taskId) => {
+    if(window.confirm('Remove')) {
+      const newList = lists.map(item => {
+        if(item.id === listId) {
+          item.tasks = item.tasks.filter(task => task.id !== taskId)
+        }
+        return item
+      })
+      setLists(newList)
+      axios.delete('http://localhost:3001/tasks/' + taskId)
+        .catch(() => {
+          alert('Error')
+        })
+    }
+  }
+
   const onEditListTitle = (id, title) => {
     const newList = lists.map(item => {
       if (item.id === id) {
@@ -96,6 +112,7 @@ function App() {
               key={list.id}
               onAddTask={onAddTask}
               onEditTitle={onEditListTitle}
+              withoutEmpty
             />)
           }
          </Route>
@@ -105,7 +122,7 @@ function App() {
               list={activeItem}
               onAddTask={onAddTask}
               onEditTitle={onEditListTitle}
-              withoutEmpty
+              onRemoveTask={onRemoveTask}
             />
           )}
         </Route>

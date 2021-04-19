@@ -5,7 +5,7 @@ import axios from "axios";
 import AddTaskForm from './AddTaskForm'
 import Task from "./Task";
 
-const Tasks = ({list, onEditTitle, onAddTask, withoutEmpty}) => {
+const Tasks = ({list, onEditTitle, onAddTask, onRemoveTask,withoutEmpty}) => {
 
   const editTitle = () => {
     const newTitle = window.prompt('Название списка', list.name)
@@ -15,15 +15,6 @@ const Tasks = ({list, onEditTitle, onAddTask, withoutEmpty}) => {
         name: newTitle
       }).catch(() => {
         alert('Error')
-      })
-    }
-  }
-
-  const onRemove = (taskId) => {
-    if(window.confirm('Remove')) {
-      axios.delete('http://localhost:3001/tasks/' + taskId)
-        .catch(() => {
-          alert('Error')
       })
     }
   }
@@ -39,7 +30,7 @@ const Tasks = ({list, onEditTitle, onAddTask, withoutEmpty}) => {
 
           {
             list.tasks.map(task => (
-              <Task key={task.id} {...task} />
+              <Task key={task.id} list={list} onRemove={onRemoveTask} {...task} />
             ))
           }
 
