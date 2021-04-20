@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from "axios";
 import { List, AddList, Tasks } from './components'
-import { Route, useHistory } from 'react-router-dom'
+import { Route, useHistory, useLocation } from 'react-router-dom'
 
 function App() {
 
@@ -9,6 +9,7 @@ function App() {
   const [colors, setColors] = useState(null)
   const [activeItem, setActiveItem] = useState(null)
   let history = useHistory()
+  let location = useLocation()
 
   useEffect(() => {
     axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({data}) => {
@@ -107,11 +108,12 @@ function App() {
   }
 
   useEffect(() => {
-    const listId = history.location.pathname.split('lists/')[1]
+    const listId = location.pathname.split('lists/')[1]
     if(lists) {
       const list = lists.find(list => list.id === Number(listId))
       setActiveItem(list)
     }
+    // eslint-disable-next-line
   }, [lists, history.location.pathname])
 
   return (
