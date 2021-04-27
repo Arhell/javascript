@@ -2,13 +2,16 @@ const express = require('express')
 
 const app = express()
 
-const rooms = {
-  'rooms': [],
-  'messages': ['hello'],
-}
+const rooms = new Map()
 
-app.get('/rooms', function (req, res) {
-  res.json()
+app.get('/rooms', (req, res) => {
+  rooms.set('hello', '')
+  res.json(rooms)
 })
 
-app.listen(9000)
+app.listen(9000, (err) => {
+  if(err) {
+    throw Error(err)
+  }
+  console.log('server')
+})
