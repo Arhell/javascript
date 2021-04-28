@@ -1,6 +1,10 @@
+import JoinBlock from "./components/JoinBlock";
+
 function App() {
   return (
-   <h1>123</h1>
+   <div className="wrapper">
+     <JoinBlock/>
+   </div>
   );
 }
 
