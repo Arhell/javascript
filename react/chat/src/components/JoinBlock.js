@@ -10,7 +10,10 @@ function JoinBlock() {
     if(!roomId || !userName) {
       return alert("Error")
     }
-    axios.post('/rooms')
+    axios.post('/rooms', {
+      roomId,
+      userName
+    })
   }
 
   return (
