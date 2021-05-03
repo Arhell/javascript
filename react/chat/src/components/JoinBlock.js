@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import socket from '../socket'
 import axios from 'axios'
 
 function JoinBlock({onLogin}) {
@@ -11,14 +10,15 @@ function JoinBlock({onLogin}) {
     if(!roomId || !userName) {
       return alert("Error")
     }
+    const obj = {
+      roomId,
+      userName
+    }
 
     setLoading(true)
 
-    await axios.post('/rooms', {
-      roomId,
-      userName
-    })
-    onLogin
+    await axios.post('/rooms', obj)
+    onLogin(obj)
   }
 
   return (
