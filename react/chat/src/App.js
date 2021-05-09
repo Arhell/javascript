@@ -3,6 +3,7 @@ import JoinBlock from "./components/JoinBlock";
 import Chat from "./components/Chat";
 import reducer from "./reducer";
 import socket from './socket'
+import axios from "axios";
 
 
 function App() {
@@ -14,12 +15,14 @@ function App() {
     messages: []
   })
 
-  const onLogin = (obj) => {
+  const onLogin = async (obj) => {
     dispatch({
       type: 'JOINED',
       payload: obj
     })
     socket.emit('ROOM:JOIN', obj)
+    const {data} = await axios.get(`/rooms/${obj.roomId}`)
+    setUsers(data.users)
   }
 
   const setUsers = (users) => {
@@ -30,8 +33,6 @@ function App() {
   }
 
   useEffect(() => {
-    socket.on('ROOM:JOINED', setUsers)
-
     socket.on('ROOM:SET_USERS', setUsers)
   }, [])
 
