@@ -12,16 +12,15 @@ const io = require('socket.io')(server, {
 });
 
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
 
 const rooms = new Map()
 
 app.get('/rooms/:id', (req, res) => {
-  const roomId = req.query.id
-  const obj = {
+  const { id: roomId } = req.params
+  const obj = rooms.has(roomId) ? {
     users: [...rooms.get(roomId).get('users').values()],
     messages: [...rooms.get(roomId).get('messages').values()],
-  }
+  } : { users: [], messages: [] }
   res.json(obj)
 })
 
