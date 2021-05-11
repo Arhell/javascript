@@ -1,12 +1,29 @@
-import {useState, } from 'react'
+import {useRef, useState,} from 'react'
+import socket from "../socket";
 
-function Chat({ users, messages }) {
+function Chat({ users, messages, userName, roomId, onAddMessage }) {
   const [messageValue, setMessageValue] = useState('');
+  const messagesRef = useRef(null)
+
+  const onSendMessage = () => {
+    socket.emit('ROOM:NEW_MESSAGE', {
+      userName,
+      roomId,
+      text: messageValue
+    })
+    onAddMessage({
+      userName,
+      text: messageValue
+    })
+    setMessageValue('')
+  }
 
   return (
     <div className="chat">
       <div className="chat-users">
-        <b>Онлайн ({users.length}):</b>
+        Room: <b>{roomId}</b>
+        <hr />
+        <b>Online ({users.length}):</b>
         <ul>
           {users.map((name, index) => (
             <li key={name + index}>{name}</li>
@@ -14,7 +31,7 @@ function Chat({ users, messages }) {
         </ul>
       </div>
       <div className="chat-messages">
-        <div className="messages">
+        <div ref={messagesRef} className="messages">
           {
             messages.map(message => (
               <div className="message">
@@ -32,7 +49,7 @@ function Chat({ users, messages }) {
             onChange={(e) => setMessageValue(e.target.value)}
             className="form-control"
             rows="3" />
-          <button type="button" className="btn btn-primary">
+          <button onClick={onSendMessage} type="button" className="btn btn-primary">
             Send
           </button>
         </form>

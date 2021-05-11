@@ -32,14 +32,16 @@ function App() {
     })
   }
 
+  const addMessage = (message) => {
+    dispatch({
+      type: 'NEW_MESSAGE',
+      payload: message
+    })
+  }
+
   useEffect(() => {
     socket.on('ROOM:SET_USERS', setUsers)
-    socket.on('ROOM:NEW_MESSAGE', message => {
-      dispatch({
-        type: 'NEW_MESSAGE',
-        payload: message
-      })
-    })
+    socket.on('ROOM:NEW_MESSAGE', addMessage)
   }, [])
 
 
@@ -47,7 +49,7 @@ function App() {
 
   return (
    <div className="wrapper">
-     {!state.isAuth ? <JoinBlock onLogin={onLogin}/> : <Chat {...state} />}
+     {!state.isAuth ? <JoinBlock onLogin={onLogin}/> : <Chat {...state} onAddMessage={addMessage} />}
    </div>
   );
 }
