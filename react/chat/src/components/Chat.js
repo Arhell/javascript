@@ -1,6 +1,6 @@
 import {useState, } from 'react'
 
-function Chat({ users, messages,  }) {
+function Chat({ users, messages }) {
   const [messageValue, setMessageValue] = useState('');
 
   return (
@@ -15,12 +15,16 @@ function Chat({ users, messages,  }) {
       </div>
       <div className="chat-messages">
         <div className="messages">
-          <div className="message">
-            <p>text</p>
-            <div>
-              <span>name</span>
-            </div>
-          </div>
+          {
+            messages.map(message => (
+              <div className="message">
+                <p>{message.text}</p>
+                <div>
+                  <span>{message.userName}</span>
+                </div>
+              </div>
+            ))
+          }
         </div>
         <form>
           <textarea
