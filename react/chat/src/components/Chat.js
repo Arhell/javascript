@@ -1,4 +1,4 @@
-import {useRef, useState,} from 'react'
+import {useEffect, useRef, useState,} from 'react'
 import socket from "../socket";
 
 function Chat({ users, messages, userName, roomId, onAddMessage }) {
@@ -17,6 +17,10 @@ function Chat({ users, messages, userName, roomId, onAddMessage }) {
     })
     setMessageValue('')
   }
+
+  useEffect(() => {
+    messagesRef.current.scrollTo(0, 99999)
+  }, [messages])
 
   return (
     <div className="chat">
