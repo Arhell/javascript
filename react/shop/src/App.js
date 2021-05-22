@@ -1,5 +1,4 @@
-import Header from "./components/Header";
-import Categories from "./components/Categories";
+import {Header, Categories} from "./components";
 
 function App() {
   return (
@@ -8,7 +7,15 @@ function App() {
       <div className="content">
         <div className="container">
           <div className="content__top">
-           <Categories />
+          <Categories
+            items={[
+            'Мясные',
+            'Вегетарианская',
+            'Гриль',
+            'Острые',
+            'Закрытые',
+          ]}>
+          </Categories>
             <div className="sort">
               <div className="sort__label">
                 <svg
