@@ -1,4 +1,4 @@
-import logo from "./assets/img/pizza-logo.svg";
+import logo from "../assets/img/pizza-logo.svg";
 import {Button} from "./index";
 
 const Header = () => {
