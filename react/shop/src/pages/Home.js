@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setCategory, setSortBy} from "../redux/actions/filters"
 import {useCallback, useEffect} from "react";
 import {fetchPizzas} from "../redux/actions/pizzas";
+import {addPizzaToCart} from "../redux/actions/cart";
 
 const categoryNames = ['Мясные','Вегетарианская','Гриль','Острые','Закрытые']
 const sortItems = [
@@ -33,6 +34,10 @@ function Home() {
     // eslint-disable-next-line
   }, [])
 
+  const handleAddPizzaToCart = obj => {
+    dispatch(addPizzaToCart(obj))
+  }
+
   return (
     <div className="container">
       <div className="content__top">
@@ -51,7 +56,12 @@ function Home() {
       <div className="content__items">
         {isLoaded
           ? (items.map((obj) => (
-            <PizzaBlock key={obj.id} isLoading={true} {...obj} />
+            <PizzaBlock
+              onClickAddPizza={handleAddPizzaToCart}
+              key={obj.id}
+              isLoading={true}
+              {...obj}
+            />
           )))
           : Array(12)
             .fill(0)
