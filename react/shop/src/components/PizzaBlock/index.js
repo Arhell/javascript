@@ -3,7 +3,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types"
 import Button from "../Button";
 
-function Index({id, name, imageUrl, price, types, sizes, onClickAddPizza}) {
+function Index({id, name, imageUrl, price, types, sizes, onClickAddPizza, addedCount}) {
   const availableTypes = ['тонкое', 'традиционное']
   const availableSizes = [26, 30, 40]
 
@@ -86,7 +86,7 @@ function Index({id, name, imageUrl, price, types, sizes, onClickAddPizza}) {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
+          {addedCount && <i>{addedCount}</i>}
         </Button>
       </div>
     </div>
@@ -100,6 +100,7 @@ Index.propTypes = {
   types: PropTypes.arrayOf(PropTypes.number),
   sizes: PropTypes.arrayOf(PropTypes.number),
   onAddPizza: PropTypes.func,
+  addedCount: PropTypes.number,
 }
 
 Index.defaultProps = {
