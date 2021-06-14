@@ -35,9 +35,9 @@ function Home() {
     // eslint-disable-next-line
   }, [])
 
-  const handleAddPizzaToCart = obj => {
+  const handleAddPizzaToCart = (obj) => {
     dispatch(addPizzaToCart(obj))
-  }
+  };
 
   return (
     <div className="container">
