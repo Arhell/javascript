@@ -1,4 +1,4 @@
-function CartItem({name, type, size, totalPrice}) {
+function CartItem({name, type, size, totalPrice, totalCount}) {
 
   return (
     <div className="cart__item">
@@ -25,7 +25,7 @@ function CartItem({name, type, size, totalPrice}) {
           </svg>
 
         </div>
-        <b>2</b>
+        <b>{totalCount}</b>
         <div className="button button--outline button--circle cart__item-count-plus">
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
