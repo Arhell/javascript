@@ -1,6 +1,6 @@
 import {CartItem} from "../components";
 import {useDispatch, useSelector} from "react-redux";
-import {clearCart} from "../redux/actions/cart";
+import {clearCart, removeCartItem} from "../redux/actions/cart";
 
 import emptyCart from "../assets/img/empty-cart.png"
 import {Link} from "react-router-dom";
@@ -17,6 +17,12 @@ function Cart() {
   const onClearCart = () => {
     if(window.confirm('Вы действительно хотите очистить корзину?')) {
       dispatch(clearCart())
+    }
+  }
+
+  const onRemoveItem = (id) => {
+    if (window.confirm('Вы действительно хотите удалить?')) {
+      dispatch(removeCartItem(id))
     }
   }
 
@@ -59,12 +65,14 @@ function Cart() {
             <div className="content__items">
               {
                 addedPizzas.map(obj => <CartItem
+                  id={obj.id}
                   name={obj.name}
                   type={obj.type}
                   size={obj.size}
                   totalPrice={items[obj.id].totalPrice}
                   key={obj.id}
                   totalCount={items[obj.id].items.length}
+                  onRemove={onRemoveItem}
                 />)
               }
             </div>
