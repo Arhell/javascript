@@ -1,6 +1,6 @@
-import {CartItem} from "../components";
+import {Button, CartItem} from "../components";
 import {useDispatch, useSelector} from "react-redux";
-import {clearCart, removeCartItem} from "../redux/actions/cart";
+import {clearCart, removeCartItem, plusCartItem, minusCartItem} from "../redux/actions/cart";
 
 import emptyCart from "../assets/img/empty-cart.png"
 import {Link} from "react-router-dom";
@@ -24,6 +24,18 @@ function Cart() {
     if (window.confirm('Вы действительно хотите удалить?')) {
       dispatch(removeCartItem(id))
     }
+  }
+
+  const onPlusItem = (id) => {
+    dispatch(plusCartItem(id))
+  }
+
+  const onMinusItem = (id) => {
+    dispatch(minusCartItem(id))
+  }
+
+  const onClickOrder = () => {
+    console.log('ВАШ ЗАКАЗ', items)
   }
 
   return (
@@ -73,6 +85,8 @@ function Cart() {
                   key={obj.id}
                   totalCount={items[obj.id].items.length}
                   onRemove={onRemoveItem}
+                  onMinus={onMinusItem}
+                  onPlus={onPlusItem}
                 />)
               }
             </div>
@@ -90,14 +104,17 @@ function Cart() {
 
                   <span>Вернуться назад</span>
                 </Link>
-                <div className="button pay-btn">
+                <Button
+                  onClick={onClickOrder}
+                  className="pay-btn"
+                >
                   <span>Оплатить сейчас</span>
-                </div>
+                </Button>
               </div>
             </div>
           </div>
           : <div className="cart cart--empty">
-            <h2>Корзина пустая <icon>😕</icon></h2>
+            <h2>Корзина пустая <i>😕</i></h2>
             <p>
               Вероятней всего, вы не заказывали ещё пиццу.<br/>
               Для того, чтобы заказать пиццу, перейди на главную страницу.

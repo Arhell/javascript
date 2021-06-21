@@ -1,8 +1,16 @@
 import Button from "./Button";
 
-function CartItem({id, name, type, size, totalPrice, totalCount, onRemove}) {
+function CartItem({id, name, type, size, totalPrice, totalCount, onRemove, onMinus, onPlus}) {
   const handleRemoveClick = () => {
     onRemove(id)
+  }
+
+  const handlePlusItem = () => {
+    onPlus(id)
+  }
+
+  const handleMinusItem = () => {
+    onMinus(id)
   }
 
   return (
@@ -19,7 +27,11 @@ function CartItem({id, name, type, size, totalPrice, totalCount, onRemove}) {
         <p>{type} тесто, {size} см.</p>
       </div>
       <div className="cart__item-count">
-        <div className="button button--outline button--circle cart__item-count-minus">
+        <Button
+          outline
+          className="button--circle cart__item-count-minus"
+          onClick={handleMinusItem}
+        >
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M5.92001 3.84V5.76V8.64C5.92001 9.17016 5.49017 9.6 4.96001 9.6C4.42985 9.6 4.00001 9.17016 4.00001 8.64L4 5.76L4.00001 3.84V0.96C4.00001 0.42984 4.42985 0 4.96001 0C5.49017 0 5.92001 0.42984 5.92001 0.96V3.84Z"
@@ -29,9 +41,13 @@ function CartItem({id, name, type, size, totalPrice, totalCount, onRemove}) {
               fill="#EB5A1E"/>
           </svg>
 
-        </div>
+        </Button>
         <b>{totalCount}</b>
-        <div className="button button--outline button--circle cart__item-count-plus">
+        <Button
+          outline
+          className="button--circle cart__item-count-plus"
+          onClick={handlePlusItem}
+        >
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M5.92001 3.84V5.76V8.64C5.92001 9.17016 5.49017 9.6 4.96001 9.6C4.42985 9.6 4.00001 9.17016 4.00001 8.64L4 5.76L4.00001 3.84V0.96C4.00001 0.42984 4.42985 0 4.96001 0C5.49017 0 5.92001 0.42984 5.92001 0.96V3.84Z"
@@ -41,7 +57,7 @@ function CartItem({id, name, type, size, totalPrice, totalCount, onRemove}) {
               fill="#EB5A1E"/>
           </svg>
 
-        </div>
+        </Button>
       </div>
       <div className="cart__item-price">
         <b>{totalPrice} ₽</b>
