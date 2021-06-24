@@ -1,10 +1,10 @@
-import Button from '@material-ui/core/Button';
+import SignIn from './pages/SignIn';
 
 function App() {
   return (
-    <Button variant="contained" color="primary">
-      Hello World
-    </Button>
+    <div className="App">
+      <SignIn />
+    </div>
   );
 }
 
