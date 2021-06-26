@@ -40,6 +40,7 @@ const theme = createMuiTheme({
         textTransform: 'none',
         fontSize: 16,
         height: 40,
+        fontWeight: 700,
       },
       textPrimary: {
         paddingLeft: 20,
