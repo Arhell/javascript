@@ -3,7 +3,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import {useState} from "react";
+import React, {useState} from "react";
 import {ModalBlock} from "../components/ModalBlock";
 
 export const useStylesSignIn = makeStyles((theme) => ({
@@ -79,7 +79,7 @@ export const useStylesSignIn = makeStyles((theme) => ({
   }
 }))
 
-function SignIn() {
+export const SignIn: React.FC = ():React.ReactElement => {
   const classes = useStylesSignIn()
   const [visibleModal, setVisibleModal] = useState<'signIn' | 'signUp'>()
 
@@ -216,5 +216,3 @@ function SignIn() {
     </div>
   )
 }
-
-export default SignIn
