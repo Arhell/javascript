@@ -2,23 +2,16 @@ import {
   Container,
   createStyles,
   Grid,
-  IconButton, InputBase,
+  InputBase,
   makeStyles, Theme,
-  Typography,
   withStyles,
 } from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import SearchIcon from '@material-ui/icons/Search';
-import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
-import ListAltIcon from '@material-ui/icons/ListAlt';
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import {grey} from "@material-ui/core/colors";
 
 import UserAvatar from '../assets/img/logo192.png'
 
 import {Tweet} from "../components/Tweet";
+import {SideMenu} from "../components/SideMenu";
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
   wrapper: {
@@ -34,10 +27,30 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     listStyle: 'none',
     padding: 0,
     margin: 0,
+    width: 230,
   },
   sideMenuListItem: {
-    display: 'flex',
-    alignItems: 'center'
+    cursor: 'pointer',
+    "&:hover": {
+      "& div": {
+        backgroundColor: 'rgba(29, 161, 242, .1)',
+        "& h6": {
+          color: theme.palette.primary.main
+        },
+        "& svg path": {
+          fill: theme.palette.primary.main
+        },
+      },
+    },
+    "& div": {
+      display: 'inline-flex',
+      alignItems: 'center',
+      padding: '0 25px 0 20px',
+      borderRadius: 30,
+      height: 50,
+      marginBottom: 15,
+      transition: 'background-color .1s ease-in-out'
+    }
   },
   sideMenuListLabel: {
     fontWeight: 700,
@@ -45,7 +58,12 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     marginLeft: 15,
   },
   sideMenuListIcon: {
-    fontSize: 28
+    fontSize: 32,
+    marginLeft: -5,
+  },
+  sideMenuTweetButton: {
+    padding: theme.spacing(3),
+    marginTop: theme.spacing(2)
   },
   tweetsWrapper: {
     borderRadius: 0,
@@ -70,6 +88,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     maxWidth: 450,
+    position: 'relative',
+    left: -12,
   },
   tweetFooterIcon: {
     fontSize: 20,
@@ -106,60 +126,22 @@ export const Home = () => {
     <Container className={classes.wrapper}>
       <Grid container spacing={3}>
         <Grid item xs={3}>
-          <ul className={classes.sideMenuList}>
-            <li className={classes.sideMenuListItem}>
-              <IconButton color="primary" className={classes.logo}>
-                <TwitterIcon className={classes.logoIcon} />
-              </IconButton>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton >
-                <SearchIcon className={classes.sideMenuListIcon} />
-              </IconButton>
-              <Typography variant="h6" className={classes.sideMenuListLabel}>Lorem</Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <NotificationsNoneIcon className={classes.sideMenuListIcon} />
-              </IconButton>
-              <Typography variant="h6" className={classes.sideMenuListLabel}>Lorem</Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <MailOutlineIcon className={classes.sideMenuListIcon} />
-              </IconButton>
-              <Typography variant="h6" className={classes.sideMenuListLabel}>Lorem</Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <BookmarkBorderIcon className={classes.sideMenuListIcon} />
-              </IconButton>
-              <Typography variant="h6" className={classes.sideMenuListLabel}>Lorem</Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <ListAltIcon className={classes.sideMenuListIcon} />
-              </IconButton>
-              <Typography variant="h6" className={classes.sideMenuListLabel}>Lorem</Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <PersonOutlineIcon className={classes.sideMenuListIcon} />
-              </IconButton>
-              <Typography variant="h6" className={classes.sideMenuListLabel}>Lorem</Typography>
-            </li>
-          </ul>
+          <SideMenu classes={classes} />
         </Grid>
         <Grid item xs={6}>
-          <Tweet
-            text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur fugit maxime qui suscipit?"
-            classes={classes}
-            user={{
-              fullName: "Some name",
-              userName: "Name",
-              avatarUrl: UserAvatar
-            }}
-          />
+          {
+            [...new Array(10).fill(
+              <Tweet
+                text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur fugit maxime qui suscipit?"
+                classes={classes}
+                user={{
+                  fullName: "Some name",
+                  userName: "Name",
+                  avatarUrl: UserAvatar
+                }}
+              />
+            )]
+          }
         </Grid>
         <Grid item xs={3}>
           <SearchTextField

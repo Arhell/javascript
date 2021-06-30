@@ -5,7 +5,7 @@ import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineO
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import RepeatOutlinedIcon from "@material-ui/icons/RepeatOutlined";
 import PlayForWorkOutlinedIcon from "@material-ui/icons/PlayForWorkOutlined";
-import {useHomeStyles} from "../../pages/Home";
+import {useHomeStyles} from "../pages/Home";
 
 interface TweetProps {
   text: String
@@ -42,23 +42,23 @@ export const Tweet: React.FC<TweetProps> = ({text, user, classes}: TweetProps): 
             </Typography>
             <div className={classes.tweetFooter}>
               <div>
-                <IconButton color="primary">
+                <IconButton>
                   <ChatBubbleOutlineOutlinedIcon className={classes.tweetFooterIcon} />
                 </IconButton>
                 <span>1</span>
               </div>
               <div>
-                <IconButton color="primary">
+                <IconButton>
                   <FavoriteBorderOutlinedIcon className={classes.tweetFooterIcon} />
                 </IconButton>
               </div>
               <div>
-                <IconButton color="primary">
+                <IconButton>
                   <RepeatOutlinedIcon className={classes.tweetFooterIcon} />
                 </IconButton>
               </div>
               <div>
-                <IconButton color="primary">
+                <IconButton>
                   <PlayForWorkOutlinedIcon className={classes.tweetFooterIcon} />
                 </IconButton>
               </div>

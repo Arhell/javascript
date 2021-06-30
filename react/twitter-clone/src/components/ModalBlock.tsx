@@ -1,6 +1,6 @@
 import {Dialog ,DialogContent, DialogTitle, IconButton,} from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import {useStylesSignIn} from "../../pages/SignIn";
+import {useStylesSignIn} from "../pages/SignIn";
 
 interface ModalBlockProps {
   title: string,
