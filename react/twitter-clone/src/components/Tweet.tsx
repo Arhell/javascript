@@ -1,5 +1,5 @@
 
-import {Avatar, Grid, IconButton, Paper, Typography} from "@material-ui/core";
+import {Avatar, IconButton, Paper, Typography} from "@material-ui/core";
 import classNames from "classnames";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
@@ -21,50 +21,44 @@ export const Tweet: React.FC<TweetProps> = ({text, user, classes}: TweetProps): 
   return (
     <Paper className={classes.tweetsWrapper} variant="outlined">
       <Paper className={classes.tweetsHeader} variant="outlined">
-        <Typography variant="h6">123</Typography>
+        <Typography variant="h6">Main</Typography>
       </Paper>
 
       <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined">
-        <Grid container spacing={3}>
-          <Grid item xs={1}>
-            {/* @ts-ignore */}
-            <Avatar classes={classes.tweetAvatar} alt={`Avatar ${user.userName}`} src={user.avatarUrl} />
-          </Grid>
-          <Grid item xs={11}>
-            <Typography>
-              <strong>{user.fullName}</strong>
-              <span className={classes.tweetsUserName}>&nbsp;@{user.userName}</span>
-              <span className={classes.tweetsUserName}>&nbsp;.&nbsp;</span>
-              <span className={classes.tweetsUserName}>1 h</span>
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              {text}
-            </Typography>
-            <div className={classes.tweetFooter}>
-              <div>
-                <IconButton>
-                  <ChatBubbleOutlineOutlinedIcon className={classes.tweetFooterIcon} />
-                </IconButton>
-                <span>1</span>
-              </div>
-              <div>
-                <IconButton>
-                  <FavoriteBorderOutlinedIcon className={classes.tweetFooterIcon} />
-                </IconButton>
-              </div>
-              <div>
-                <IconButton>
-                  <RepeatOutlinedIcon className={classes.tweetFooterIcon} />
-                </IconButton>
-              </div>
-              <div>
-                <IconButton>
-                  <PlayForWorkOutlinedIcon className={classes.tweetFooterIcon} />
-                </IconButton>
-              </div>
-            </div>
-          </Grid>
-        </Grid>
+        {/* @ts-ignore */}
+        <Avatar classes={classes.tweetAvatar} alt={`Avatar ${user.userName}`} src={user.avatarUrl} />
+        <Typography>
+          <strong>{user.fullName}</strong>
+          <span className={classes.tweetsUserName}>&nbsp;@{user.userName}</span>
+          <span className={classes.tweetsUserName}>&nbsp;.&nbsp;</span>
+          <span className={classes.tweetsUserName}>1 h</span>
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          {text}
+        </Typography>
+        <div className={classes.tweetFooter}>
+          <div>
+            <IconButton>
+              <ChatBubbleOutlineOutlinedIcon className={classes.tweetFooterIcon} />
+            </IconButton>
+            <span>1</span>
+          </div>
+          <div>
+            <IconButton>
+              <FavoriteBorderOutlinedIcon className={classes.tweetFooterIcon} />
+            </IconButton>
+          </div>
+          <div>
+            <IconButton>
+              <RepeatOutlinedIcon className={classes.tweetFooterIcon} />
+            </IconButton>
+          </div>
+          <div>
+            <IconButton>
+              <PlayForWorkOutlinedIcon className={classes.tweetFooterIcon} />
+            </IconButton>
+          </div>
+        </div>
       </Paper>
     </Paper>
   )

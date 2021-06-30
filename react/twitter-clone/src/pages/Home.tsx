@@ -5,6 +5,8 @@ import {
   InputBase,
   makeStyles, Theme,
   withStyles,
+  TextareaAutosize,
+  CircularProgress, TextField, Avatar,
 } from "@material-ui/core";
 import {grey} from "@material-ui/core/colors";
 
@@ -12,6 +14,7 @@ import UserAvatar from '../assets/img/logo192.png'
 
 import {Tweet} from "../components/Tweet";
 import {SideMenu} from "../components/SideMenu";
+import theme from "../theme";
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
   wrapper: {
@@ -24,10 +27,12 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     fontSize: 36,
   },
   sideMenuList: {
+    position: 'sticky',
+    top: 0,
     listStyle: 'none',
     padding: 0,
     margin: 0,
-    width: 230,
+    maxWidth: 230,
   },
   sideMenuListItem: {
     cursor: 'pointer',
@@ -84,6 +89,87 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   tweetsUserName: {
     color: grey[500]
   },
+  rightSide: {
+    paddingTop: 20,
+    position: 'sticky',
+    top: 0
+  },
+  rightSideBlock: {
+    backgroundColor: '#f5f8fa',
+    borderRadius: 15,
+    marginTop: 20,
+    '& .MuiList-root': {
+      paddingTop: 0,
+    }
+  },
+  rightSideHeader: {
+    borderTop: 0,
+    borderLeft: 0,
+    borderRight: 0,
+    backgroundColor: 'transparent',
+    padding: '13px 18px',
+    '& b': {
+      fontSize: 20,
+      fontWeight: 800,
+
+    }
+  },
+  rightSideBlockItem: {
+    cursor: 'pointer',
+    '& .MuiTypography-body1': {
+      fontWeight: 700
+    },
+    '& .MuiListItemAvatar-root': {
+      minWidth: 50,
+    },
+    '& .MuiListItemText-root': {
+      margin: 0,
+    },
+    '& :hover': {
+      backgroundColor: '#edf3f6'
+    }
+  },
+  addForm: {
+    padding: 20,
+  },
+  addFormBody: {
+    display: 'flex',
+    width: '100%',
+  },
+  addFormBottom: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  addFormBottomActions: {
+    marginTop: 10,
+    paddingLeft: 70,
+  },
+  addFormTextarea: {
+    width: '100%',
+    border: 0,
+    fontSize: 20,
+    outline: 'none',
+    resize: 'none',
+    fontFamily: 'inherit',
+  },
+  addFormBottomLine: {
+    height: 12,
+    backgroundColor: '#e6ecf0'
+  },
+  addFormCircleProgress: {
+    position: 'relative',
+    width: 20,
+    height: 20,
+    margin: '0 10px',
+    '& .MuiCircularProgress-root': {
+      position: 'absolute',
+    }
+  },
+  addFormBottomRight: {
+    display: 'flex',
+    alignItems: 'center',
+  },
   tweetFooter: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -108,27 +194,65 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-const SearchTextField = withStyles(
-  createStyles({
-    input: {
+const SearchTextField = withStyles((theme: Theme) => ({
+  root: {
+    '& .MuiOutlineInput-root': {
       borderRadius: 30,
       backgroundColor: '#e6ecf0',
-      height: 45,
-      padding: 0
-    }
-  })
-)(InputBase)
+      padding: 0,
+      paddingLeft: 15,
+      '& .Mui-focused': {
+        backgroundColor: '#fff',
+        '& fieldset': {
+          borderWidth: 1,
+          backgroundColor: theme.palette.primary.main
+        },
+        '& svg path': {
+          fill: theme.palette.primary.main
+        },
+      },
+      '&:hover': {
+        '& fieldset': {
+          backgroundColor: 'transparent'
+        }
+      },
+      '& fieldset': {
+        borderColor: 'transparent',
+        borderWidth: 1
+      },
+    },
+    '& .MuiOutlineInput-input': {
+      padding: '12px 14px 14px 5px'
+    },
+  }
+}))(TextField)
 
-export const Home = () => {
+export const Home = ():React.ReactElement => {
   const classes = useHomeStyles()
 
   return (
     <Container className={classes.wrapper}>
       <Grid container spacing={3}>
-        <Grid item xs={3}>
+        <Grid item sm={1} md={3}>
           <SideMenu classes={classes} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item sm={8} md={6}>
+          <div className={classes.addForm}>
+            <div className={classes.addFormBody}>
+              <Avatar
+                className={classes.tweetAvatar}
+                alt='alt'
+                src={UserAvatar}
+              />
+              <TextareaAutosize
+                className={classes.addFormTextarea}
+                placeholder="Text"
+              />
+            </div>
+            <div className={classes.addFormBottom}>
+              <div ></div>
+            </div>
+          </div>
           {
             [...new Array(10).fill(
               <Tweet
