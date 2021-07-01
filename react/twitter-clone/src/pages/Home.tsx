@@ -1,20 +1,28 @@
 import {
   Container,
-  createStyles,
   Grid,
-  InputBase,
-  makeStyles, Theme,
+  makeStyles,
+  Theme,
   withStyles,
   TextareaAutosize,
-  CircularProgress, TextField, Avatar,
+  TextField,
+  Avatar,
+  IconButton,
+  CircularProgress,
+  Button,
+  InputAdornment,
+  Paper,
+  List,
+  ListItem,
+  ListItemText,
+  Typography, Divider, ListItemAvatar,
 } from "@material-ui/core";
 import {grey} from "@material-ui/core/colors";
-
 import UserAvatar from '../assets/img/logo192.png'
-
 import {Tweet} from "../components/Tweet";
 import {SideMenu} from "../components/SideMenu";
-import theme from "../theme";
+import classNames from "classnames";
+import SearchIcon from "@material-ui/icons/Search";
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
   wrapper: {
@@ -173,9 +181,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   tweetFooter: {
     display: 'flex',
     justifyContent: 'space-between',
-    maxWidth: 450,
     position: 'relative',
-    left: -12,
   },
   tweetFooterIcon: {
     fontSize: 20,
@@ -191,6 +197,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   tweetAvatar: {
     width: theme.spacing(5),
     height: theme.spacing(5),
+    marginRight: 15
   }
 }))
 
@@ -227,6 +234,14 @@ const SearchTextField = withStyles((theme: Theme) => ({
   }
 }))(TextField)
 
+function ImageOutlinedIcon() {
+  return null;
+}
+
+function EmojiIcon(props: { style: { fontSize: number } }) {
+  return null;
+}
+
 export const Home = ():React.ReactElement => {
   const classes = useHomeStyles()
 
@@ -250,28 +265,126 @@ export const Home = ():React.ReactElement => {
               />
             </div>
             <div className={classes.addFormBottom}>
-              <div ></div>
+              <div className={classNames(classes.tweetFooter)}>
+                <IconButton color="primary">
+                  {/* @ts-ignore */}
+                  <ImageOutlinedIcon style={{fontSize: 26}} />
+                </IconButton>
+                <IconButton color="primary">
+                  <EmojiIcon style={{fontSize: 26}} />
+                </IconButton>
+              </div>
+              <div className={classes.addFormBottomRight}>
+                <span>280</span>
+                <div className={classes.addFormCircleProgress}>
+                  <CircularProgress variant="determinate" size={20} />
+                  <CircularProgress
+                    style={{color: 'rgba(0,0,0,.1)'}}
+                    variant="determinate"
+                    size={20}
+                    thickness={4}
+                    value={100}
+                  />
+                </div>
+                <Button color="primary" variant="contained">
+                  Tweet
+                </Button>
+              </div>
             </div>
           </div>
-          {
-            [...new Array(10).fill(
-              <Tweet
-                text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur fugit maxime qui suscipit?"
-                classes={classes}
-                user={{
-                  fullName: "Some name",
-                  userName: "Name",
-                  avatarUrl: UserAvatar
-                }}
-              />
-            )]
-          }
+          <div className={classes.addFormBottomLine} />
+            <Tweet
+              text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur fugit maxime qui suscipit?"
+              classes={classes}
+              user={{
+                fullName: "Some name",
+                userName: "Name",
+                avatarUrl: UserAvatar
+              }}
+            />
         </Grid>
-        <Grid item xs={3}>
-          <SearchTextField
-            fullWidth
-            placeholder="Search"
-          />
+        <Grid item sm={3} md={3}>
+          <div className={classes.rightSide}>
+            <SearchTextField
+              fullWidth
+              placeholder="Search"
+              variant="outlined"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                )
+              }}
+            />
+            <Paper className={classes.rightSideBlock}>
+              <Paper className={classes.rightSideHeader} variant="outlined">
+                <b>Theme</b>
+              </Paper>
+              <List>
+                <ListItem className={classes.rightSideBlockItem}>
+                  <ListItemText
+                    primary="Text"
+                    secondary={
+                      <Typography component="span" variant="body1">
+                        Tweets: 1312312
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+                <Divider component="li" />
+                <ListItem className={classes.rightSideBlockItem}>
+                  <ListItemText
+                    primary="Text"
+                    secondary={
+                      <Typography component="span" variant="body1">
+                        Tweets: 1312312
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+                <Divider component="li" />
+                <ListItem className={classes.rightSideBlockItem}>
+                  <ListItemText
+                    primary="Text"
+                    secondary={
+                      <Typography component="span" variant="body1">
+                        Tweets: 1312312
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+                <Divider component="li" />
+              </List>
+            </Paper>
+            <Paper className={classes.rightSideBlock} variant="outlined">
+              <Paper className={classes.rightSideHeader}>
+                <b>Lorem ipsum.</b>
+              </Paper>
+              <List>
+                <ListItem className={classes.rightSideBlockItem}>
+                  <ListItemAvatar>
+                    <Avatar
+                      alt='alt'
+                      src={UserAvatar}
+                    />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="lorem"
+                    secondary={
+                      <Typography component="span" variant="body1">
+                        @Lorem
+                      </Typography>
+                    }
+                  />
+                  <Button color="primary">
+                    <SearchIcon />
+                  </Button>
+                </ListItem>
+                <Divider component="li" />
+              </List>
+            </Paper>
+          </div>
         </Grid>
       </Grid>
     </Container>

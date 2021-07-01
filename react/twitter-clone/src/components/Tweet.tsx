@@ -25,17 +25,22 @@ export const Tweet: React.FC<TweetProps> = ({text, user, classes}: TweetProps): 
       </Paper>
 
       <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined">
-        {/* @ts-ignore */}
-        <Avatar classes={classes.tweetAvatar} alt={`Avatar ${user.userName}`} src={user.avatarUrl} />
-        <Typography>
-          <strong>{user.fullName}</strong>
-          <span className={classes.tweetsUserName}>&nbsp;@{user.userName}</span>
-          <span className={classes.tweetsUserName}>&nbsp;.&nbsp;</span>
-          <span className={classes.tweetsUserName}>1 h</span>
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          {text}
-        </Typography>
+        <div style={{display: 'flex'}}>
+          {/* @ts-ignore */}
+          <Avatar classes={classes.tweetAvatar} alt={`Avatar ${user.userName}`} src={user.avatarUrl} />
+          <div>
+            <Typography>
+              <strong>{user.fullName}</strong>
+              <span className={classes.tweetsUserName}>&nbsp;@{user.userName}</span>
+              <span className={classes.tweetsUserName}>&nbsp;.&nbsp;</span>
+              <span className={classes.tweetsUserName}>1 h</span>
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              {text}
+            </Typography>
+          </div>
+        </div>
+
         <div className={classes.tweetFooter}>
           <div>
             <IconButton>
