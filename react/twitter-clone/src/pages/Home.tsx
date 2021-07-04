@@ -4,11 +4,8 @@ import {
   makeStyles,
   Theme,
   withStyles,
-  TextareaAutosize,
   TextField,
   Avatar,
-  IconButton,
-  CircularProgress,
   Button,
   InputAdornment,
   Paper,
@@ -21,8 +18,8 @@ import {grey} from "@material-ui/core/colors";
 import UserAvatar from '../assets/img/logo192.png'
 import {Tweet} from "../components/Tweet";
 import {SideMenu} from "../components/SideMenu";
-import classNames from "classnames";
 import SearchIcon from "@material-ui/icons/Search";
+import {AddTweetForm} from "../components/AddTweetForm";
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
   wrapper: {
@@ -234,14 +231,6 @@ const SearchTextField = withStyles((theme: Theme) => ({
   }
 }))(TextField)
 
-function ImageOutlinedIcon() {
-  return null;
-}
-
-function EmojiIcon(props: { style: { fontSize: number } }) {
-  return null;
-}
-
 export const Home = ():React.ReactElement => {
   const classes = useHomeStyles()
 
@@ -252,56 +241,19 @@ export const Home = ():React.ReactElement => {
           <SideMenu classes={classes} />
         </Grid>
         <Grid item sm={8} md={6}>
-          <div className={classes.addForm}>
-            <div className={classes.addFormBody}>
-              <Avatar
-                className={classes.tweetAvatar}
-                alt='alt'
-                src={UserAvatar}
-              />
-              <TextareaAutosize
-                className={classes.addFormTextarea}
-                placeholder="Text"
-              />
-            </div>
-            <div className={classes.addFormBottom}>
-              <div className={classNames(classes.tweetFooter)}>
-                <IconButton color="primary">
-                  {/* @ts-ignore */}
-                  <ImageOutlinedIcon style={{fontSize: 26}} />
-                </IconButton>
-                <IconButton color="primary">
-                  <EmojiIcon style={{fontSize: 26}} />
-                </IconButton>
-              </div>
-              <div className={classes.addFormBottomRight}>
-                <span>280</span>
-                <div className={classes.addFormCircleProgress}>
-                  <CircularProgress variant="determinate" size={20} />
-                  <CircularProgress
-                    style={{color: 'rgba(0,0,0,.1)'}}
-                    variant="determinate"
-                    size={20}
-                    thickness={4}
-                    value={100}
-                  />
-                </div>
-                <Button color="primary" variant="contained">
-                  Tweet
-                </Button>
-              </div>
-            </div>
-          </div>
-          <div className={classes.addFormBottomLine} />
-            <Tweet
-              text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur fugit maxime qui suscipit?"
-              classes={classes}
-              user={{
-                fullName: "Some name",
-                userName: "Name",
-                avatarUrl: UserAvatar
-              }}
-            />
+          <Paper>
+            <AddTweetForm classes={classes}/>
+            <div className={classes.addFormBottomLine} />
+          </Paper>
+          <Tweet
+            text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur fugit maxime qui suscipit?"
+            classes={classes}
+            user={{
+              fullName: "Some name",
+              userName: "Name",
+              avatarUrl: UserAvatar
+            }}
+          />
         </Grid>
         <Grid item sm={3} md={3}>
           <div className={classes.rightSide}>
