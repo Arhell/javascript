@@ -2,17 +2,11 @@ import {Avatar, Button, CircularProgress, IconButton, TextareaAutosize} from "@m
 import UserAvatar from "../assets/img/logo192.png";
 import classNames from "classnames";
 import {useHomeStyles} from "../pages/Home";
+import MoodIcon from '@material-ui/icons/Mood';
+import CropOriginalIcon from '@material-ui/icons/CropOriginal';
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>
-}
-
-function ImageOutlinedIcon() {
-  return null;
-}
-
-function EmojiIcon(props: { style: { fontSize: number } }) {
-  return null;
 }
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFormProps):React.ReactElement => {
@@ -33,10 +27,10 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFor
         <div className={classNames(classes.tweetFooter, classes.addFormBottomActions)}>
           <IconButton color="primary">
             {/* @ts-ignore */}
-            <ImageOutlinedIcon style={{fontSize: 26}} />
+            <MoodIcon style={{fontSize: 26}} />
           </IconButton>
           <IconButton color="primary">
-            <EmojiIcon style={{fontSize: 26}} />
+            <CropOriginalIcon style={{fontSize: 26}} />
           </IconButton>
         </div>
         <div className={classes.addFormBottomRight}>
