@@ -1,11 +1,10 @@
-
 import {Avatar, IconButton, Paper, Typography} from "@material-ui/core";
 import classNames from "classnames";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import RepeatOutlinedIcon from "@material-ui/icons/RepeatOutlined";
 import PlayForWorkOutlinedIcon from "@material-ui/icons/PlayForWorkOutlined";
-import {useHomeStyles} from "../pages/Home";
+import {useHomeStyles} from "../pages/Home/theme";
 
 interface TweetProps {
   text: String
