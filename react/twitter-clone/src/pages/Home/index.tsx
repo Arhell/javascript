@@ -29,7 +29,10 @@ export const Home = ():React.ReactElement => {
         </Grid>
         <Grid item sm={8} md={6}>
           <Paper variant="outlined">
-            <AddTweetForm classes={classes}/>
+            <div className={classes.addForm}>
+              <AddTweetForm classes={classes}/>
+            </div>
+
             <div className={classes.addFormBottomLine} />
           </Paper>
           <Tweet

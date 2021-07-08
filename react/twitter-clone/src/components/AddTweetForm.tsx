@@ -8,11 +8,12 @@ import CropOriginalIcon from '@material-ui/icons/CropOriginal';
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>
+  maxRows?: number
 }
 
 const MAX_LENGTH = 280
 
-export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFormProps):React.ReactElement => {
+export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: AddTweetFormProps):React.ReactElement => {
   const [text, setText] = useState<string>('')
   const textLimitPercent = Math.round((text.length / MAX_LENGTH) * 100)
   const textCount = MAX_LENGTH - text.length
@@ -29,7 +30,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFor
 
 
   return (
-    <div className={classes.addForm}>
+    <div>
       <div className={classes.addFormBody}>
         <Avatar
           className={classes.tweetAvatar}
@@ -41,6 +42,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFor
           className={classes.addFormTextarea}
           placeholder="Text"
           value={text}
+          rowsMax={maxRows}
         />
       </div>
       <div className={classes.addFormBottom}>
