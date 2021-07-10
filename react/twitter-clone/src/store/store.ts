@@ -1,10 +1,7 @@
-import {createStore} from "redux";
+import {compose, createStore} from "redux";
+import {rootReducer} from "./rootReducer";
 
-const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+export const composeEnhancers =
+  (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-
-function reducer(state = 0, action: any):void {
-  console.log(state, action)
-}
-// @ts-ignore
-export const store = createStore(reducer)
+export const store = createStore(rootReducer)
