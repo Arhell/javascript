@@ -160,6 +160,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'space-between',
     position: 'relative',
   },
+  tweetsCentered: {
+    marginTop: 50,
+    textAlign: 'center'
+  },
   tweetFooterIcon: {
     fontSize: 20,
   },

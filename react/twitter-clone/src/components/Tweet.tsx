@@ -26,7 +26,7 @@ export const Tweet: React.FC<TweetProps> = ({text, user, classes}: TweetProps): 
       <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined">
         <div style={{display: 'flex'}}>
           {/* @ts-ignore */}
-          <Avatar classes={classes.tweetAvatar} alt={`Avatar ${user.userName}`} src={user.avatarUrl} />
+          <Avatar className={classes.tweetAvatar} alt={`Avatar ${user.userName}`} src={user.avatarUrl} />
           <div>
             <Typography>
               <strong>{user.fullName}</strong>

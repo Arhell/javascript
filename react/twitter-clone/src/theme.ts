@@ -1,9 +1,9 @@
 // @ts-nocheck
 
-import {createMuiTheme} from "@material-ui/core";
+import {createTheme} from "@material-ui/core";
 import {red} from "@material-ui/core/colors"
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: [
       'system-ui',

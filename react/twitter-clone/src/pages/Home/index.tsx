@@ -8,6 +8,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  CircularProgress,
   Typography, Divider, ListItemAvatar,
 } from "@material-ui/core";
 import UserAvatar from '../../assets/img/logo192.png'
@@ -17,9 +18,20 @@ import SearchIcon from "@material-ui/icons/Search";
 import {AddTweetForm} from "../../components/AddTweetForm";
 import {useHomeStyles} from "./theme";
 import {SearchTextField} from "../../components/SearchTextField";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {fetchTweets} from "../../store/ducks/tweets/actionCreators";
+import {selectIsTweetsLoading, selectTweetsItems} from "../../store/ducks/tweets/selectors";
 
 export const Home = ():React.ReactElement => {
+  const dispatch = useDispatch()
   const classes = useHomeStyles()
+  const tweets = useSelector(selectTweetsItems)
+  const isLoading = useSelector(selectIsTweetsLoading)
+
+  useEffect(() => {
+    dispatch(fetchTweets())
+  }, [dispatch])
 
   return (
     <Container className={classes.wrapper}>
@@ -35,15 +47,20 @@ export const Home = ():React.ReactElement => {
 
             <div className={classes.addFormBottomLine} />
           </Paper>
-          <Tweet
-            text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur fugit maxime qui suscipit?"
-            classes={classes}
-            user={{
-              fullName: "Some name",
-              userName: "Name",
-              avatarUrl: UserAvatar
-            }}
-          />
+          {
+            isLoading
+              ? <div className={classes.tweetsCentered}><CircularProgress /> </div>
+              : tweets.map(tweet => (
+                <Tweet
+                  // @ts-ignore
+                  key={tweet._id}
+                  text={tweet.text}
+                  classes={classes}
+                  user={tweet.user}
+                />
+            ))
+          }
+
         </Grid>
         <Grid item sm={3} md={3}>
           <div className={classes.rightSide}>
