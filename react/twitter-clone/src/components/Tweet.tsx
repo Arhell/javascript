@@ -18,11 +18,6 @@ interface TweetProps {
 
 export const Tweet: React.FC<TweetProps> = ({text, user, classes}: TweetProps): React.ReactElement => {
   return (
-    <Paper className={classes.tweetsWrapper} variant="outlined">
-      <Paper className={classes.tweetsHeader} variant="outlined">
-        <Typography variant="h6">Main</Typography>
-      </Paper>
-
       <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined">
         <div style={{display: 'flex'}}>
           {/* @ts-ignore */}
@@ -64,6 +59,5 @@ export const Tweet: React.FC<TweetProps> = ({text, user, classes}: TweetProps): 
           </div>
         </div>
       </Paper>
-    </Paper>
   )
 }

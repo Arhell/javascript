@@ -25,6 +25,7 @@ import {selectIsTweetsLoading, selectTweetsItems} from "../../store/ducks/tweets
 import {fetchTags} from "../../store/tags/actionCreators";
 import {Tags} from "../../components/Tags";
 
+
 export const Home = ():React.ReactElement => {
   const dispatch = useDispatch()
   const classes = useHomeStyles()
@@ -43,27 +44,31 @@ export const Home = ():React.ReactElement => {
           <SideMenu classes={classes} />
         </Grid>
         <Grid item sm={8} md={6}>
-          <Paper variant="outlined">
-            <div className={classes.addForm}>
-              <AddTweetForm classes={classes}/>
-            </div>
+          <Paper className={classes.tweetsWrapper} variant="outlined">
+            <Paper className={classes.tweetsHeader} variant="outlined">
+              <Typography variant="h6">Main</Typography>
+              <Paper variant="outlined" className={classes.tweetsHeaderMain}>
+                <div className={classes.addForm}>
+                  <AddTweetForm classes={classes}/>
+                </div>
 
-            <div className={classes.addFormBottomLine} />
+                <div className={classes.addFormBottomLine} />
+              </Paper>
+            </Paper>
+            {
+              isLoading
+                ? <div className={classes.tweetsCentered}><CircularProgress /> </div>
+                : tweets.map(tweet => (
+                  <Tweet
+                    // @ts-ignore
+                    key={tweet._id}
+                    text={tweet.text}
+                    classes={classes}
+                    user={tweet.user}
+                  />
+              ))
+            }
           </Paper>
-          {
-            isLoading
-              ? <div className={classes.tweetsCentered}><CircularProgress /> </div>
-              : tweets.map(tweet => (
-                <Tweet
-                  // @ts-ignore
-                  key={tweet._id}
-                  text={tweet.text}
-                  classes={classes}
-                  user={tweet.user}
-                />
-            ))
-          }
-
         </Grid>
         <Grid item sm={3} md={3}>
           <div className={classes.rightSide}>

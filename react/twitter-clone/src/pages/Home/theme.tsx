@@ -71,6 +71,12 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
       fontWeight: 700
     }
   },
+  tweetsHeaderMain: {
+    marginLeft: '-15px',
+    marginRight: '-15px',
+    border: 'none',
+    marginBottom: '-10px',
+  },
   tweetsUserName: {
     color: grey[500]
   },
