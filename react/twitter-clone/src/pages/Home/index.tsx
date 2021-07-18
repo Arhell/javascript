@@ -22,6 +22,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {fetchTweets} from "../../store/ducks/tweets/actionCreators";
 import {selectIsTweetsLoading, selectTweetsItems} from "../../store/ducks/tweets/selectors";
+import {fetchTags} from "../../store/tags/actionCreators";
+import {Tags} from "../../components/Tags";
 
 export const Home = ():React.ReactElement => {
   const dispatch = useDispatch()
@@ -31,6 +33,7 @@ export const Home = ():React.ReactElement => {
 
   useEffect(() => {
     dispatch(fetchTweets())
+    dispatch(fetchTags())
   }, [dispatch])
 
   return (
@@ -76,46 +79,9 @@ export const Home = ():React.ReactElement => {
                 )
               }}
             />
-            <Paper className={classes.rightSideBlock}>
-              <Paper className={classes.rightSideHeader} variant="outlined">
-                <b>Theme</b>
-              </Paper>
-              <List>
-                <ListItem className={classes.rightSideBlockItem}>
-                  <ListItemText
-                    primary="Text"
-                    secondary={
-                      <Typography component="span" variant="body1">
-                        Tweets: 1312312
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-                <Divider component="li" />
-                <ListItem className={classes.rightSideBlockItem}>
-                  <ListItemText
-                    primary="Text"
-                    secondary={
-                      <Typography component="span" variant="body1">
-                        Tweets: 1312312
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-                <Divider component="li" />
-                <ListItem className={classes.rightSideBlockItem}>
-                  <ListItemText
-                    primary="Text"
-                    secondary={
-                      <Typography component="span" variant="body1">
-                        Tweets: 1312312
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-                <Divider component="li" />
-              </List>
-            </Paper>
+
+            <Tags classes={classes} />
+
             <Paper className={classes.rightSideBlock} variant="outlined">
               <Paper className={classes.rightSideHeader}>
                 <b>Lorem ipsum.</b>
