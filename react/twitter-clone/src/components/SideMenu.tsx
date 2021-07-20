@@ -1,4 +1,4 @@
-import {Button, Hidden, IconButton, Typography} from "@material-ui/core";
+import {Button, Hidden, IconButton, Link, Typography} from "@material-ui/core";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import SearchIcon from "@material-ui/icons/Search";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
@@ -30,9 +30,12 @@ export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps):Reac
   return (
     <ul className={classes.sideMenuList}>
       <li className={classes.sideMenuListItem}>
-        <IconButton color="primary" className={classes.logo}>
-          <TwitterIcon className={classes.logoIcon} />
-        </IconButton>
+      {/*// @ts-ignore*/}
+       <Link to="/home">
+         <IconButton color="primary" className={classes.logo}>
+           <TwitterIcon className={classes.logoIcon} />
+         </IconButton>
+       </Link>
       </li>
       <li className={classes.sideMenuListItem}>
         <div>

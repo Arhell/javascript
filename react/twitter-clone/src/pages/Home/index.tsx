@@ -24,6 +24,7 @@ import {fetchTweets} from "../../store/ducks/tweets/actionCreators";
 import {selectIsTweetsLoading, selectTweetsItems} from "../../store/ducks/tweets/selectors";
 import {fetchTags} from "../../store/tags/actionCreators";
 import {Tags} from "../../components/Tags";
+import {Route} from "react-router-dom";
 
 
 export const Home = ():React.ReactElement => {
@@ -55,19 +56,21 @@ export const Home = ():React.ReactElement => {
                 <div className={classes.addFormBottomLine} />
               </Paper>
             </Paper>
-            {
-              isLoading
-                ? <div className={classes.tweetsCentered}><CircularProgress /> </div>
-                : tweets.map(tweet => (
-                  <Tweet
-                    // @ts-ignore
-                    key={tweet._id}
-                    text={tweet.text}
-                    classes={classes}
-                    user={tweet.user}
-                  />
-              ))
-            }
+            <Route path="/home" exact>
+              {
+                isLoading
+                  ? <div className={classes.tweetsCentered}><CircularProgress /> </div>
+                  : tweets.map(tweet => (
+                    <Tweet
+                      // @ts-ignore
+                      key={tweet._id}
+                      text={tweet.text}
+                      classes={classes}
+                      user={tweet.user}
+                    />
+                  ))
+              }
+            </Route>
           </Paper>
         </Grid>
         <Grid item sm={3} md={3}>
