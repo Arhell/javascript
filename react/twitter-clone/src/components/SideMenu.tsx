@@ -1,4 +1,4 @@
-import {Button, Hidden, IconButton, Link, Typography} from "@material-ui/core";
+import {Button, Hidden, IconButton, Typography} from "@material-ui/core";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import SearchIcon from "@material-ui/icons/Search";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
@@ -11,6 +11,7 @@ import {useHomeStyles} from "../pages/Home/theme";
 import {ModalBlock} from "./ModalBlock";
 import {useState} from "react";
 import {AddTweetForm} from "./AddTweetForm";
+import {Link} from "react-router-dom"
 
 interface SideMenuProps {
   classes: ReturnType<typeof useHomeStyles>

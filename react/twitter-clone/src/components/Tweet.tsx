@@ -5,8 +5,10 @@ import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutline
 import RepeatOutlinedIcon from "@material-ui/icons/RepeatOutlined";
 import PlayForWorkOutlinedIcon from "@material-ui/icons/PlayForWorkOutlined";
 import {useHomeStyles} from "../pages/Home/theme";
+import {Link} from "react-router-dom";
 
 interface TweetProps {
+  _id: String
   text: String
   classes: ReturnType<typeof useHomeStyles>
   user: {
@@ -16,48 +18,50 @@ interface TweetProps {
   }
 }
 
-export const Tweet: React.FC<TweetProps> = ({text, user, classes}: TweetProps): React.ReactElement => {
+export const Tweet: React.FC<TweetProps> = ({_id, text, user, classes}: TweetProps): React.ReactElement => {
   return (
-      <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined">
-        <div style={{display: 'flex'}}>
-          {/* @ts-ignore */}
-          <Avatar className={classes.tweetAvatar} alt={`Avatar ${user.userName}`} src={user.avatarUrl} />
-          <div>
-            <Typography>
-              <strong>{user.fullName}</strong>
-              <span className={classes.tweetsUserName}>&nbsp;@{user.userName}</span>
-              <span className={classes.tweetsUserName}>&nbsp;.&nbsp;</span>
-              <span className={classes.tweetsUserName}>1 h</span>
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              {text}
-            </Typography>
+      <Link to={`/home/tweet/${_id}`} className={classes.tweetLink}>
+        <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined">
+          <div style={{display: 'flex'}}>
+            {/* @ts-ignore */}
+            <Avatar className={classes.tweetAvatar} alt={`Avatar ${user.userName}`} src={user.avatarUrl} />
+            <div>
+              <Typography>
+                <strong>{user.fullName}</strong>
+                <span className={classes.tweetsUserName}>&nbsp;@{user.userName}</span>
+                <span className={classes.tweetsUserName}>&nbsp;.&nbsp;</span>
+                <span className={classes.tweetsUserName}>1 h</span>
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                {text}
+              </Typography>
+            </div>
           </div>
-        </div>
 
-        <div className={classes.tweetFooter}>
-          <div>
-            <IconButton>
-              <ChatBubbleOutlineOutlinedIcon className={classes.tweetFooterIcon} />
-            </IconButton>
-            <span>1</span>
+          <div className={classes.tweetFooter}>
+            <div>
+              <IconButton>
+                <ChatBubbleOutlineOutlinedIcon className={classes.tweetFooterIcon} />
+              </IconButton>
+              <span>1</span>
+            </div>
+            <div>
+              <IconButton>
+                <FavoriteBorderOutlinedIcon className={classes.tweetFooterIcon} />
+              </IconButton>
+            </div>
+            <div>
+              <IconButton>
+                <RepeatOutlinedIcon className={classes.tweetFooterIcon} />
+              </IconButton>
+            </div>
+            <div>
+              <IconButton>
+                <PlayForWorkOutlinedIcon className={classes.tweetFooterIcon} />
+              </IconButton>
+            </div>
           </div>
-          <div>
-            <IconButton>
-              <FavoriteBorderOutlinedIcon className={classes.tweetFooterIcon} />
-            </IconButton>
-          </div>
-          <div>
-            <IconButton>
-              <RepeatOutlinedIcon className={classes.tweetFooterIcon} />
-            </IconButton>
-          </div>
-          <div>
-            <IconButton>
-              <PlayForWorkOutlinedIcon className={classes.tweetFooterIcon} />
-            </IconButton>
-          </div>
-        </div>
-      </Paper>
+        </Paper>
+      </Link>
   )
 }

@@ -1,4 +1,4 @@
-import {RootState} from "../store";
+import {RootState} from "../../store";
 import {LoadingState, TagsState} from "./contracts/state";
 import {createSelector} from "reselect";
 

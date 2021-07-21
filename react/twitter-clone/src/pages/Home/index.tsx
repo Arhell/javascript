@@ -22,9 +22,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {fetchTweets} from "../../store/ducks/tweets/actionCreators";
 import {selectIsTweetsLoading, selectTweetsItems} from "../../store/ducks/tweets/selectors";
-import {fetchTags} from "../../store/tags/actionCreators";
+import {fetchTags} from "../../store/ducks/tags/actionCreators";
 import {Tags} from "../../components/Tags";
 import {Route} from "react-router-dom";
+import {BackButton} from "../../components/BackButton";
+import {FullTweet} from "./Components/FullTweet";
+import {fetchTweetData} from "../../store/ducks/tweet/actionCreators";
 
 
 export const Home = ():React.ReactElement => {
@@ -36,6 +39,7 @@ export const Home = ():React.ReactElement => {
   useEffect(() => {
     dispatch(fetchTweets())
     dispatch(fetchTags())
+    dispatch(fetchTweetData('5f625ff6bd97609c6925e2b4'))
   }, [dispatch])
 
   return (
@@ -47,14 +51,26 @@ export const Home = ():React.ReactElement => {
         <Grid item sm={8} md={6}>
           <Paper className={classes.tweetsWrapper} variant="outlined">
             <Paper className={classes.tweetsHeader} variant="outlined">
-              <Typography variant="h6">Main</Typography>
-              <Paper variant="outlined" className={classes.tweetsHeaderMain}>
-                <div className={classes.addForm}>
-                  <AddTweetForm classes={classes}/>
-                </div>
+              <div style={{display: 'flex', alignItems: 'center'}}>
+                <Route path="/home/:any">
+                  <BackButton />
+                </Route>
+                <Route path="/home/tweet">
+                  <Typography variant="h6">Tweet</Typography>
+                </Route>
+                <Route path={['/home', '/home/search']} exact>
+                  <Typography variant="h6">Tweets</Typography>
+                </Route>
+              </div>
+              <Route path={['/home', '/home/search']} exact>
+                <Paper variant="outlined" className={classes.tweetsHeaderMain}>
+                  <div className={classes.addForm}>
+                    <AddTweetForm classes={classes}/>
+                  </div>
 
-                <div className={classes.addFormBottomLine} />
-              </Paper>
+                  <div className={classes.addFormBottomLine} />
+                </Paper>
+              </Route>
             </Paper>
             <Route path="/home" exact>
               {
@@ -64,13 +80,14 @@ export const Home = ():React.ReactElement => {
                     <Tweet
                       // @ts-ignore
                       key={tweet._id}
-                      text={tweet.text}
                       classes={classes}
-                      user={tweet.user}
+                      {...tweet}
                     />
                   ))
               }
             </Route>
+
+            <Route path="/home/tweet/:id" component={FullTweet} exact />
           </Paper>
         </Grid>
         <Grid item sm={3} md={3}>

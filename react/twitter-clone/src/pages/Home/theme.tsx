@@ -119,10 +119,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     '& :hover': {
       backgroundColor: '#edf3f6'
     },
-    'a': {
-      color: 'inherit',
-      textDecoration: 'none',
-    }
+  },
+  rightSideBlockItemLink: {
+    color: 'inherit',
+    textDecoration: 'none',
   },
   addForm: {
     padding: 20,
@@ -184,6 +184,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     "&:hover": {
       backgroundColor: 'rgb(245,248,250)'
     }
+  },
+  tweetLink: {
+    color: 'inherit',
+    textDecoration: 'none',
   },
   tweetAvatar: {
     width: theme.spacing(5),
