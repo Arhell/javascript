@@ -18,7 +18,7 @@ export interface SetTweetDataLoadingStateActionInterface extends Action<TweetAct
   payload: LoadingState
 }
 
-export interface FetchTweetActionInterface extends Action<TweetActionsType>{
+export interface FetchTweetDataActionInterface extends Action<TweetActionsType>{
   type: TweetActionsType.FETCH_TWEET_DATA
   payload: string
 }

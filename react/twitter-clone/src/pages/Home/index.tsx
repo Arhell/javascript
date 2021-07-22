@@ -27,7 +27,6 @@ import {Tags} from "../../components/Tags";
 import {Route} from "react-router-dom";
 import {BackButton} from "../../components/BackButton";
 import {FullTweet} from "./Components/FullTweet";
-import {fetchTweetData} from "../../store/ducks/tweet/actionCreators";
 
 
 export const Home = ():React.ReactElement => {
@@ -39,7 +38,6 @@ export const Home = ():React.ReactElement => {
   useEffect(() => {
     dispatch(fetchTweets())
     dispatch(fetchTags())
-    dispatch(fetchTweetData('5f625ff6bd97609c6925e2b4'))
   }, [dispatch])
 
   return (
