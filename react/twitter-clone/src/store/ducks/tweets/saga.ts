@@ -13,6 +13,15 @@ export function* fetchTweetRequest(): Generator<unknown, void, Tweet[]> {
   }
 }
 
+export function* addTweetRequest(): Generator<unknown, void, Tweet[]> {
+  try {
+    const items: Tweet[] = yield call(fetchTweetsApi);
+    yield put(setTweets(items))
+  } catch (error) {
+    yield put(setTweetsLoadingState(LoadingState.ERROR));
+  }
+}
+
 export function* tweetsSaga() {
   yield takeLatest(TweetsActionsType.FETCH_TWEETS, fetchTweetRequest)
 }
