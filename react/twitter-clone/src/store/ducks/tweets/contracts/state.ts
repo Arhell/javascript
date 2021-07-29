@@ -5,6 +5,12 @@ export enum LoadingState {
   NEWER = 'NEWER'
 }
 
+export enum AddFormState {
+  LOADING = 'LOADING',
+  ERROR = 'ERROR',
+  NEWER = 'NEWER'
+}
+
 export interface Tweet {
   _id: String
   text: String
@@ -16,6 +22,7 @@ export interface Tweet {
 }
 
 export interface TweetsState {
-  items: Tweet[],
+  items: Tweet[]
   loadingState: LoadingState
+  addFormState: AddFormState
 }

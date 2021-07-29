@@ -6,9 +6,9 @@ export function fetchTweetsApi(): Promise<TweetsState['items']> {
 }
 
 export function fetchTweetData(id: string): Promise<Tweet[]> {
-  return axios.get('/tweet?_id=' + id).then(({data}) => data)
+  return axios.get('/tweets?_id=' + id).then(({data}) => data)
 }
 
-export function addTweet(payload: Tweet): Promise<Tweet> {
-  return axios.get('/tweet?_id=' + id).then(({data}) => data)
+export function addTweetApi(payload: Tweet): Promise<Tweet> {
+  return axios.post('/tweets', payload).then(({data}) => data)
 }

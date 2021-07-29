@@ -5,6 +5,8 @@ import classNames from "classnames";
 import {useHomeStyles} from "../pages/Home/theme";
 import MoodIcon from '@material-ui/icons/Mood';
 import CropOriginalIcon from '@material-ui/icons/CropOriginal';
+import {useDispatch} from "react-redux";
+import {fetchAddTweet} from "../store/ducks/tweets/actionCreators";
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>
@@ -14,6 +16,7 @@ interface AddTweetFormProps {
 const MAX_LENGTH = 280
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: AddTweetFormProps):React.ReactElement => {
+  const dispatch = useDispatch()
   const [text, setText] = useState<string>('')
   const textLimitPercent = Math.round((text.length / MAX_LENGTH) * 100)
   const textCount = MAX_LENGTH - text.length
@@ -25,9 +28,9 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: Ad
   }
 
   const handleClickAddTweet = (): void => {
+    dispatch(fetchAddTweet(text))
     setText('')
   }
-
 
   return (
     <div>
@@ -81,7 +84,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: Ad
           }
           <Button
             onClick={handleClickAddTweet}
-            disabled={text.length >= MAX_LENGTH}
+            disabled={!text || text.length >= MAX_LENGTH}
             color="primary"
             variant="contained"
           >
