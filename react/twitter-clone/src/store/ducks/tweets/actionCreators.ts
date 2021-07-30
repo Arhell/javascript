@@ -39,4 +39,5 @@ export type TweetsActions =
   | FetchTweetsActionInterface
   | SetTweetsLoadingStateActionInterface
   | FetchAddTweetActionInterface
-  | AddTweetActionInterface;
+  | AddTweetActionInterface
+  | SetAddFormStateActionInterface;
