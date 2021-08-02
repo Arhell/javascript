@@ -71,6 +71,11 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
       fontWeight: 700
     }
   },
+  tweetsHeaderUser: {
+    display: "flex",
+    alignItems: "center",
+    flex: 1
+  },
   tweetsHeaderMain: {
     marginLeft: '-15px',
     marginRight: '-15px',

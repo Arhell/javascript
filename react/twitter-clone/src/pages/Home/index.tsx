@@ -85,7 +85,7 @@ export const Home = ():React.ReactElement => {
               }
             </Route>
 
-            <Route path="/home/tweet/:id" component={FullTweet} exact />
+            <Route path="/home/tweets/:id" component={FullTweet} exact />
           </Paper>
         </Grid>
         <Grid item sm={3} md={3}>

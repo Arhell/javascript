@@ -3,10 +3,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchTweetData} from "../../../services/api/tweetsApi";
 import {useEffect} from "react";
 import {selectTweetData} from "../../../store/ducks/tweet/selectors";
-import {Tweet} from "../../../components/Tweet";
 import {useHomeStyles} from "../theme";
-import {CircularProgress} from "@material-ui/core";
+import {Avatar, CircularProgress, Paper, Typography} from "@material-ui/core";
 import {selectIsTweetsLoading} from "../../../store/ducks/tweets/selectors";
+import classNames from "classnames";
 
 export const FullTweet: React.FC = ():React.ReactElement | null => {
   const classes = useHomeStyles()
@@ -27,7 +27,27 @@ export const FullTweet: React.FC = ():React.ReactElement | null => {
   }
 
   if(tweetData) {
-   return <Tweet classes={classes} {...tweetData}/>
+   return (
+     <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined">
+       <div style={{display: 'flex'}}>
+         <div className={classes.tweetsHeaderUser}>
+           {/* @ts-ignore */}
+           <Avatar className={classes.tweetAvatar} alt={`Avatar ${tweetData.user.userName}`} src={tweetData.user.avatarUrl} />
+           <Typography>
+             <strong>{tweetData.user.fullName}</strong>
+             <div>
+               <span className={classes.tweetsUserName}>&nbsp;@{tweetData.user.userName}</span>
+               <span className={classes.tweetsUserName}>&nbsp;.&nbsp;</span>
+               <span className={classes.tweetsUserName}>1 h</span>
+             </div>
+           </Typography>
+         </div>
+       </div>
+       <Typography variant="body1" gutterBottom>
+         {tweetData.text}
+       </Typography>
+     </Paper>
+   )
   }
 
   return null
