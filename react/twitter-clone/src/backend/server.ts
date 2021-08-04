@@ -3,6 +3,9 @@ const express = require('express');
 
 const app = express()
 
-app.listen(8888, () => {
+app.get('/users')
+
+app.listen(8888, (): void => {
   console.log("SERVER ON")
 })
+

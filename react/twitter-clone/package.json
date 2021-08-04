@@ -24,6 +24,7 @@
     "immer": "^9.0.5",
     "mongoose": "^5.13.5",
     "node-sass": "^4.14.1",
+    "nodemon": "^2.0.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
@@ -43,7 +44,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "json-server --watch public/db.json --port 3001",
-    "dev": "ts-node src/backend/server.ts"
+    "dev": "ts-node src/backend/server.ts",
+    "nodemon": "nodemon"
   },
   "eslintConfig": {
     "extends": [
