@@ -1,8 +1,11 @@
 import express from "express";
+import mongoose from 'mongoose'
 import {UserModel, UserModelInterface} from '../models/UserModel'
 import {validationResult} from 'express-validator'
 import {generateMD5} from "../utils/generateHash";
 import {sendEmail} from "../utils/sendEmail";
+
+const isValidObjectId = mongoose.Types.ObjectId.isValid
 
 class UserController {
   async index(_: any, res: express.Response): Promise<void> {
@@ -26,12 +29,18 @@ class UserController {
     try {
       const userId = req.params.id
 
-      if(!userId) {
-        res.status(400)
+      if(!isValidObjectId(userId)) {
+        res.status(400).send()
         return
       }
 
       const user = await UserModel.findById(userId).exec()
+
+
+      if(!user) {
+        res.status(404).send()
+        return
+      }
 
       res.json({
         status: 'success',
