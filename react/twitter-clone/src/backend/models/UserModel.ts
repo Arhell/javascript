@@ -32,7 +32,7 @@ const UserSchema = new Schema<UserModelInterface>({
   location: String,
   password: {
     required: true,
-    type: String
+    type: String,
   },
   confirmed: {
     type: Boolean,
@@ -40,10 +40,19 @@ const UserSchema = new Schema<UserModelInterface>({
   },
   confirmHash: {
     required: true,
-    type: String
+    type: String,
   },
   about: String,
   website: String,
+})
+
+UserSchema.set('toJSON', {
+  // @ts-ignore
+  transform: function (_, obj) {
+    delete obj.password
+    delete obj.confirmHash
+    return obj
+  }
 })
 
 export const UserModel = model<UserModelDocumentInterface>('User', UserSchema)

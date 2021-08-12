@@ -67,11 +67,12 @@ class UserController {
         email: req.body.email,
         fullname: req.body.fullname,
         username: req.body.username,
-        password: req.body.password,
+        password: generateMD5(req.body.password + process.env.SECRET_KEY),
         confirmHash: generateMD5(process.env.SECRET_KEY || Math.random().toString()),
       }
 
       const user = await UserModel.create(data)
+
 
       sendEmail({
         emailFrom: 'test@test.com',
