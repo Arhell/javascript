@@ -1,9 +1,11 @@
+// @ts-ignore
 import express from "express";
 import mongoose from 'mongoose'
 import {UserModel, UserModelInterface} from '../models/UserModel'
 import {validationResult} from 'express-validator'
 import {generateMD5} from "../utils/generateHash";
 import {sendEmail} from "../utils/sendEmail";
+import jwt from "jsonwebtoken"
 
 const isValidObjectId = mongoose.Types.ObjectId.isValid
 
@@ -101,7 +103,7 @@ class UserController {
     }
   }
 
-  async verify(req: any, res: express.Response): Promise<void> {
+  async verify(req: express.Request, res: express.Response): Promise<void> {
     try {
       const hash = req.quary.hash
 
@@ -126,6 +128,47 @@ class UserController {
         })
       }
 
+    } catch (error) {
+      res.status(500).json({
+        status: 'error',
+        message: error
+      })
+    }
+  }
+
+  async afterLogin(req: any, res: express.Response): Promise<void> {
+    try {
+      // @ts-ignore
+      const user = req.user ? (req.user as UserModelInterface).toJSON() : undefined
+
+      res.json({
+        status: 'success',
+        data: {
+          ...user,
+          token: jwt.sign(
+            {data: req.user},
+            process.env.SECRET_KEY || '123',
+            {expiresIn: '30d'}
+          )
+        }
+      })
+    } catch (error) {
+      res.status(500).json({
+        status: 'error',
+        message: error
+      })
+    }
+  }
+
+  async getUserInfo(req: any, res: express.Response): Promise<void> {
+    try {
+      // @ts-ignore
+      const user = req.user ? (req.user as UserModelInterface).toJSON() : undefined
+
+      res.json({
+        status: 'success',
+        data: user,
+      })
     } catch (error) {
       res.status(500).json({
         status: 'error',

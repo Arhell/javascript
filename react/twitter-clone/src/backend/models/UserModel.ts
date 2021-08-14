@@ -1,6 +1,7 @@
 import {model, Schema, Document} from "mongoose"
 
 export interface UserModelInterface {
+  _id?: string
   email: string
   fullname: string
   username: string
@@ -12,7 +13,7 @@ export interface UserModelInterface {
   website?: string
 }
 
-type UserModelDocumentInterface = UserModelInterface & Document
+export type UserModelDocumentInterface = UserModelInterface & Document
 
 const UserSchema = new Schema<UserModelInterface>({
   email: {
