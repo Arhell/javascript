@@ -1,13 +1,12 @@
 // @ts-ignore
 import express from "express";
-import mongoose from 'mongoose'
-import {UserModel, UserModelInterface} from '../models/UserModel'
+import {UserModel, UserModelDocumentInterface, UserModelInterface} from '../models/UserModel'
 import {validationResult} from 'express-validator'
 import {generateMD5} from "../utils/generateHash";
 import {sendEmail} from "../utils/sendEmail";
 import jwt from "jsonwebtoken"
+import {isValidObjectId} from "../utils/isValidObjectId"
 
-const isValidObjectId = mongoose.Types.ObjectId.isValid
 
 class UserController {
   async index(_: any, res: express.Response): Promise<void> {
@@ -80,7 +79,7 @@ class UserController {
         emailFrom: 'test@test.com',
         emailTo: data.email,
         subject: 'Some text',
-        html: `some html <a href="http://localhost:${process.env.PORT || 8888}/users/verify?hash=${data.confirmHash}">Some text</a>>`,
+        html: `some html <a href="http://localhost:${process.env.PORT || 8888}/auth/verify?hash=${data.confirmHash}">Some text</a>>`,
       }, (err: Error | null) => {
         if (err) {
           res.status(500).json({
@@ -105,13 +104,14 @@ class UserController {
 
   async verify(req: express.Request, res: express.Response): Promise<void> {
     try {
-      const hash = req.quary.hash
+      const hash = req.query.hash
 
       if(!hash) {
         res.status(400).send()
         return
       }
 
+      // @ts-ignore
       const user = await UserModel.findOne({confirmHash: hash}).exec()
 
       if(user) {
@@ -139,7 +139,7 @@ class UserController {
   async afterLogin(req: any, res: express.Response): Promise<void> {
     try {
       // @ts-ignore
-      const user = req.user ? (req.user as UserModelInterface).toJSON() : undefined
+      const user = req.user ? (req.user as UserModelDocumentInterface).toJSON() : undefined
 
       res.json({
         status: 'success',
@@ -148,7 +148,7 @@ class UserController {
           token: jwt.sign(
             {data: req.user},
             process.env.SECRET_KEY || '123',
-            {expiresIn: '30d'}
+            {expiresIn: '30 days'}
           )
         }
       })
