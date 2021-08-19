@@ -1,6 +1,6 @@
 // @ts-ignore
 import express from "express";
-import {TweetModel, TweetModelInterface} from "../models/TweetModel";
+import {TweetModel} from "../models/TweetModel";
 import {isValidObjectId} from "../utils/isValidObjectId";
 import {validationResult} from "express-validator";
 import {UserModelInterface} from "../models/UserModel";
@@ -66,7 +66,7 @@ class TweetsController {
           return
         }
 
-        const data: TweetModelInterface = {
+        const data: any = {
           text: req.body.text,
           user: user._id,
         }
@@ -100,8 +100,12 @@ class TweetsController {
         const tweet = await TweetModel.findById(tweetId)
 
         if(tweet) {
-          tweet.remove()
-          res.send()
+          if(String(tweet.user._id) === String(user._id)) {
+            tweet.remove()
+            res.send()
+          } else {
+            res.status(403).send()
+          }
         } else {
           res.status(404).send()
         }
