@@ -58,7 +58,7 @@ class TweetsController {
     try {
       const user = req.user as UserModelInterface
 
-      if(user) {
+      if(user?._id) {
         const errors = validationResult(req)
 
         if(!errors.isEmpty()) {
@@ -68,7 +68,6 @@ class TweetsController {
 
         const data: TweetModelInterface = {
           text: req.body.text,
-          // @ts-ignore
           user: user._id,
         }
 
@@ -80,7 +79,10 @@ class TweetsController {
         })
       }
     } catch (error) {
-
+      res.status(500).json({
+        status: 'error',
+        message: JSON.stringify(error)
+      })
     }
   }
 
@@ -95,13 +97,21 @@ class TweetsController {
           return
         }
 
-        const tweet = await TweetModel.deleteOne({ _id: tweetId })
+        const tweet = await TweetModel.findById(tweetId)
 
-        res.send()
+        if(tweet) {
+          tweet.remove()
+          res.send()
+        } else {
+          res.status(404).send()
+        }
       }
 
     } catch (error) {
-
+      res.status(500).json({
+        status: 'error',
+        message: JSON.stringify(error)
+      })
     }
   }
 
