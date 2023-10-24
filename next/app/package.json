@@ -12,7 +12,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "json-server": "^0.16.3",
-    "next": "10.0.5",
+    "next": "13.5.0",
     "nextjs-progressbar": "0.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
